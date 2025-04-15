@@ -6,28 +6,27 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        #return view('welcome_message');
         return view('principal');
     }
-    public function quienes_Somos(): string
+    public function quienesSomos(): string
     {
-        return view('quienes_somos');
+        return view('quienesSomos');
     }
     public function comercializacion(): string
     {
         return view('comercializacion');
     }
-    public function informacion_Contacto(): string
+    public function informacionContacto(): string
     {
-        return view('informacion_contacto');
+        return view('informacionContacto');
     }
-    public function terminos_Y_Usos(): string
+    public function terminosYUsos(): string
     {
-        return view('terminos_y_usos');
+        return view('terminosYUsos');
     }
-    public function catalogo_Productos(): string
+    public function catalogoProductos(): string
     {
-        return view('catalogo_productos');
+        return view('catalogoProductos');
     }
     public function consultas(): string
     {
