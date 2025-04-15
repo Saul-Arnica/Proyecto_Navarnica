@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -63,5 +64,12 @@
     <footer class="text-center py-3 bg-light ">
     <p>&copy; 2025 Veterinaria Navarnica - Todos los derechos reservados</p>
     </footer>
+=======
+
+<?php
+echo view('components/navbar');
+?>
+<h1>Principal</h1>
+>>>>>>> a1c1ac17f8a2ba7d81a9b3c4b8c4913eef8b2202
 </body>
 </html>
