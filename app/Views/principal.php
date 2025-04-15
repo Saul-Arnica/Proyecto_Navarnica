@@ -1,21 +1,21 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeteNavarnica</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <body class="d-flex flex-column min-vh-100">
-</head>
-<body>
-    <header class="text-center my-4">
-        <h1>Veterinaria Navarnica</h1>
-        <h5>La mejor atencion de Corrientes Capital</h5>
+    <meta charset="UTF-8"> <!-- Codificacion de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para que la pagina se vea bien en dispositivos moviles -->
+    <meta name="description" content="Veterinaria Navarnica - La mejor atención de Corrientes Capital"> <!-- Descripción de la página cuando la buscamos-->
+    <title>VeteNavarnica</title> <!-- Titulo de la pestaña -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/> <!-- Bootstrap CSS -->
+    <script src="../assets/js/bootstrap.bundle.js"></script> <!-- Bootstrap JS -->
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" /> <!-- Icono de la pestaña -->
+    <link rel="canonical" href="http://VeterinariaNavarnica.com/" /> <!-- URL canónica para evitar contenido duplicado y que tome -->
+    <link rel="stylesheet" href="../assets/css/styles.css"/> <!-- CSS personalizado -->
+</head> 
+<body class="background-page> <!-- Cuerpo de la pagina -->
+    <header class="text-center">
+        <img src="../assets/img/logoVete.png" alt="Logo Veterinaria" class="img-fluid logo-vete"/> <!-- Logo de la veterinaria utilizado un CSS personalizado -->
     </header>
     <div class="text-center">
-        <img src="../assets/img/logo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="http://localhost/proyecto_Arnica_Saul_Agustin/public/">Inicio</a>
@@ -48,21 +48,65 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" value=" ">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
         </div>
     </nav>
 
-
     <main class="flex-fill">
-        <p class="text-center my-4">Bienvenido a la Veterinaria Navarnica, donde cuidamos de tus mascotas como si fueran nuestras.</p>
     <!-- Aquí va tu contenido -->
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     </main>
-
-    <footer class="text-center py-3 bg-light ">
-    <p>&copy; 2025 Veterinaria Navarnica - Todos los derechos reservados</p>
+    <aside>
+        <p>La mejor atención de Corrientes Capital</p>
+    </aside>
+    <footer class="text-center py-3">
+    <p class="text-center">Bienvenido a la Veterinaria Navarnica, donde cuidamos de tus mascotas como si fueran nuestras.</p>
+    <p class="text-center my-1">&copy;2025 Veterinaria Navarnica - Todos los derechos reservados</p>
     </footer>
 </body>
-</html>
+</html> 
