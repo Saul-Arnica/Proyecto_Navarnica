@@ -1,0 +1,40 @@
+/* Clase logo-vete */
+.logo-vete {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: block;
+    margin: 0 auto;
+}
+
+.logo-vete:hover {
+    animation: heartbeat 1.15s ease-in-out infinite;
+}
+
+.mi-navbar{
+    max-width: 5rem;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.9);
+    }
+    15% {
+        transform: scale(1.0);
+    }
+    30% {
+        transform: scale(0.9);
+    }
+    45% {
+        transform: scale(1.0);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+}
+
+/*Clase fondo-pagina*/
+.background-page {
+    background-color: #ffffff; /* o #f8f9fa para un gris muy clarito */
+    height: 100vh;
+    width: 100vw;
+}
