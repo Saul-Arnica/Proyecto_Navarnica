@@ -1,35 +1,62 @@
+/* Navbar */
+:root {
+}
+
 .nav-link {
-    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-radius 0.3s ease;
 }
 
-.nav-link:hover{
-    border-radius: 50rem; 
-    background-color: #4caf50 !important;
-    color: #fff !important;
-    padding: 0.5rem 1rem;          /* Opcional: más espacio */
+.nav-link:hover {
+  border-radius: 50rem;
+  background-color: #8ccbcb !important;
+  color: #fff !important;
+  padding: 0.5rem 1rem; /* Opcional: más espacio */
 }
-.nav-link.active{
-    border-radius: 50rem; 
-    background-color: #3d8c40 !important;
-    color: #fff !important;
-    padding: 0.5rem 1rem;          /* Opcional: más espacio */
-}
-
-.mi-nav{
-    background-color: #fff;
-    max-height: 80px;
+.nav-link.active {
+  border-radius: 50rem;
+  background-color: #3b9c9c !important;
+  color: #fff !important;
+  padding: 0.5rem 1rem; /* Opcional: más espacio */
 }
 
+.ul-custom-navbar {
+  gap: 0.5rem;
+}
+
+.mi-nav {
+  background-color: #fff;
+  max-height: 80px;
+}
+
+.collapse-custom-navbar {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  z-index: 9999;
+}
 
 .navbar-logo {
-    max-height: 100px;
-    height: auto;
-    width: auto;
-    scale: 1/1;
+  max-height: 100px;
+  height: auto;
+  width: auto;
+  scale: 1/1;
 }
 
 @media (max-width: 768px) {
-    .navbar-logo {
-        max-height: 60px;
-    }
+  .navbar-logo {
+    max-height: 60px;
+  }
+}
+
+/* Principal */
+
+.principal-custom {
+  min-height: 100vh;
+}
+
+/* Footer */
+.footer-custom {
+  background-color: #3b9c9c;
+  color: #fff;
 }

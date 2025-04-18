@@ -12,8 +12,8 @@ $actualMethod = service('router')->methodName();
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse collapse-custom-navbar" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto ul-custom-navbar">
                 <li class="nav-item">
                     <a class="nav-link <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
                         href="<?= base_url() ?>">Inicio</a>
