@@ -6,7 +6,10 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('principal');
+        return view('templates/main-layout', [
+            'title' => 'Principal - Mi Tienda',
+            'content' => view('pages/principal')
+        ]);
     }
     public function quienesSomos(): string
     {
@@ -18,7 +21,7 @@ class Home extends BaseController
     }
     public function informacionContacto(): string
     {
-        return view('informacionContacto');
+        return view('pages/informacionContacto');
     }
     public function terminosYUsos(): string
     {

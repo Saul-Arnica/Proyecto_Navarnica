@@ -1,5 +1,5 @@
-<?php include_once("components/navbar.php"); ?>
+<?php echo view("components/navbar.php"); ?>
     <section>
         <h1>Información de Contacto</h1>
     </section>
-<?php include_once("components/footer.php"); ?>
+<?php echo view("components/footer.php"); ?>
