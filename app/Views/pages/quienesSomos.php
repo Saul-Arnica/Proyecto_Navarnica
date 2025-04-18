@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeteNavarnica</title>
-</head>
-<body>
-    <header>
-        <h1>About Us</h1>
-    </header>
-
-    <main>
+<section class="container p-3">
+    <div class="mt-5 mb-5">
+        <h2 class="text-center ">Quienes Somos</h2>
+    </div>
     
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Mi Página Web</p>
-    </footer>
-</body>
-</html>
+    <div class="row align-items-center mt-5 mb-5 p-3">
+        <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+        <img src="../public/assets/img/quienessomos.avif" class="rounded img-fluid" alt="...">
+        </div>
+        <div class="col-12 col-lg-6">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto architecto quibusdam vel repellat doloremque illo quaerat. Ad, maxime repudiand
+                ae? Laudantium, porro! Ipsum ullam culpa deleniti molestias, et est sapiente.
+            </p>
+        </div>
+    </div>
+</section>
