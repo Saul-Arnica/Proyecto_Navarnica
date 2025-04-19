@@ -12,13 +12,13 @@ main{
 .nav-link:hover {
     border-radius: 50rem;
     background-color: #8ccbcb !important;
-    color: #fff !important;
+    color: #ffff !important;
   padding: 0.5rem 1rem; /* Opcional: más espacio */
 }
 .nav-link.active {
     border-radius: 50rem;
     background-color: #3b9c9c !important;
-    color: #fff !important;
+    color: #ffff !important;
     padding: 0.5rem 1rem; /* Opcional: más espacio */
 }
 
@@ -27,12 +27,12 @@ main{
 }
 
 .mi-nav {
-    background-color: #fff;
+    background-color: #ffff;
     max-height: 80px;
 }
 
 .collapse-custom-navbar {
-    background-color: #fff;
+    background-color: #ffff;
     padding: 1rem;
     border-radius: 0.5rem;
     z-index: 9999;
@@ -55,6 +55,7 @@ main{
 
 .principal-custom {
     min-height: 100vh;
+  
 }
 
 .principal-img-bg{
@@ -63,6 +64,13 @@ main{
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
+}
+
+.card-custom1 {
+  background-color: #ffff;
+}
+.card-custom2 {
+  background-color: #8ccbcb;
 }
 
 /* Info de contacto*/
