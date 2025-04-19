@@ -25,7 +25,7 @@
     border-radius: 50rem;
     background-color: #3b9c9c !important;
     color: #fff !important;
-  padding: 0.5rem 1rem; /* Opcional: más espacio */
+    padding: 0.5rem 1rem; /* Opcional: más espacio */
 }
 
 .ul-custom-navbar {
@@ -69,4 +69,9 @@
     color: #fff;
 }
 
-
+.logos-custom {
+    height: 32px;
+    width: auto;
+    margin-right: 3px; /* separa el logo del texto */
+    vertical-align: middle; /* alinea con el texto */
+}
