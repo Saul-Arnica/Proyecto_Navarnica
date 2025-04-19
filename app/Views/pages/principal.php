@@ -1,26 +1,16 @@
-<section class="container principal-custom mt-3">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-                <img src="../public/assets/img/perritoygatito.jpg" class="d-block w-100" alt="perrito y gatito">
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <img src="../public/assets/img/veterinario-gsc1.jpg" class="d-block w-100" alt="veterinarios">
-            </div>
-            <div class="carousel-item">
-                <img src="../public/assets/img/gato.jpg" class="d-block w-100" alt="gato">
+<section class="container-fluid principal-custom">
+    <div class="container-fluid principal-img-bg text-center ">
+        <!-- Card: Solicitar Turno -->
+        <div class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm">
+                <!--<img src="../public/assets/img/fondo.jpg" class="card-img-top" alt="Solicitar turno">-->
+                <div class="card-body text-center">
+                    <h5 class="card-title">Solicitar Turno</h5>
+                    <p class="card-text">Reservá una consulta para tu mascota de forma rápida y sencilla.</p>
+                    <a href="turnos.php" class="btn btn-info text-white">Solicitar Turno</a>
+                </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 
 </section>

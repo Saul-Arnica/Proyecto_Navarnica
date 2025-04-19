@@ -2,7 +2,7 @@
 $actualMethod = service('router')->methodName();
 ?>
 
-<nav class="navbar navbar-expand-lg mi-nav px-3">
+<nav class="navbar navbar-expand-lg mi-nav px-3 border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
             href="<?= base_url() ?>">

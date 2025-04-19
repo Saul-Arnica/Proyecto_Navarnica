@@ -1,3 +1,8 @@
+main{
+  padding: 0;
+  margin: 0;
+}
+
 /* Navbar */
 .nav-link {
     transition: background-color 0.3s ease, color 0.3s ease,
@@ -52,6 +57,14 @@
     min-height: 100vh;
 }
 
+.principal-img-bg{
+    background-image: url("../img/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
 /* Info de contacto*/
 .logos-custom {
     height: 32px;
@@ -78,5 +91,10 @@
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;
-  color: #fff;
+}
+
+.footer-logo {
+  max-height: 50px;
+  height: auto;
+  width: auto;
 }
