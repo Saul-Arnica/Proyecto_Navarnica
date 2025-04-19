@@ -34,9 +34,9 @@
         </div>
         
                 <br>
-        <div class="container mt-5">
+        <div class="container-center">
             <div class="row">
-                <div class="col-md-6">
+                <div class="">
                     <h2>Formulario para consultas generales</h2>
                     <form action="<?= base_url('contacto/enviar') ?>" method="post">
                         <div class="mb-3">
@@ -57,14 +57,5 @@
             </div>
         </div>
         <br>
-        <p class="fw-bold">Bold text.</p>
-<p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
-<p class="fw-semibold">Semibold weight text.</p>
-<p class="fw-medium">Medium weight text.</p>
-<p class="fw-normal">Normal weight text.</p>
-<p class="fw-light">Light weight text.</p>
-<p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
-<p class="fst-italic">Italic text.</p>
-<p class="fst-normal">Text with normal font style</p>
     </div>
 </section>

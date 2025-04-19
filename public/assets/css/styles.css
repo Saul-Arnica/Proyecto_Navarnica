@@ -1,15 +1,4 @@
 /* Navbar */
-:root {
-    --bs-primary: #3b9c9c;
-    --bs-secondary: #8ccbcb;
-    --bs-success: #3b9c9c;
-    --bs-info: #8ccbcb;
-    --bs-warning: #3b9c9c;
-    --bs-danger: #8ccbcb;
-    --bs-light: #fff;
-    --bs-dark: #000;
-}
-
 .nav-link {
     transition: background-color 0.3s ease, color 0.3s ease,
     border-radius 0.3s ease;
