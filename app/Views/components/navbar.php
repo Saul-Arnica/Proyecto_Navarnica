@@ -14,10 +14,10 @@ $actualMethod = service('router')->methodName();
         </button>
         <div class="collapse navbar-collapse collapse-custom-navbar" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto ul-custom-navbar">
-                <!--<li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
-                        href="<?= base_url() ?>"></a>
-                </li>-->
+                        href="<?= base_url() ?>">Inicio</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link <?= ($actualMethod === 'quienesSomos') ? 'active text-success' : '' ?>"
                         href="<?= base_url('quienesSomos') ?>">Quienes Somos</a>
