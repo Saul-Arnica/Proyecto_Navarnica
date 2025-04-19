@@ -52,15 +52,31 @@
     min-height: 100vh;
 }
 
-/* Footer */
-.footer-custom {
-    background-color: #3b9c9c;
-    color: #fff;
-}
-
+/* Info de contacto*/
 .logos-custom {
     height: 32px;
     width: auto;
     margin-right: 3px; /* separa el logo del texto */
     vertical-align: middle; /* alinea con el texto */
+}
+
+.ul-custom{
+  list-style: none;
+  margin-left: -1.75rem;
+}
+
+.ul-custom a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.ul-custom a:hover{
+  text-decoration: underline;
+  color: #3b9c9c;
+}
+
+/* Footer */
+.footer-custom {
+  background-color: #3b9c9c;
+  color: #fff;
 }

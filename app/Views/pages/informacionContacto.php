@@ -2,7 +2,7 @@
     <div class="container mt-4">
         <div class="row">
             <!-- Columna izquierda: texto de contacto -->
-            <div class="col-12 col-lg-6 mb-3">
+            <div class="col-12 col-lg-6 mb-3 fondo-img-info">
                 <h1 class="text-center">Información de Contacto</h1>
                 <h6>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</h5>
                 <ul class="mt-3">
@@ -12,7 +12,7 @@
                 </ul>
                 <p class="fs-6">También puedes seguirnos en nuestras <strong>redes sociales</strong>
                                                 para estar al tanto de nuestras <strong>novedades y promociones</strong>.</p>
-                <ul>
+                <ul class="ul-custom">
                     <li><a href="https://www.facebook.com/VeterinariaNavarnica" target="_blank">
                     <img src="../public/assets/img/faceicon.png" class="logos-custom" alt="logo face"> 
                                                     Facebook - Veterinaria Navarnica</a></li>
