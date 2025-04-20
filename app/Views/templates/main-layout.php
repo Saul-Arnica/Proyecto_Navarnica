@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<lang="en">
+    <lang="en">
     <head>
         <meta charset="UTF-8"> <!-- Codificacion de caracteres -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para que la pagina se vea bien en dispositivos moviles -->
@@ -28,6 +28,6 @@
             </footer>
         </div>
 
-    <script src="../public/assets/js/bootstrap.bundle.js"></script>
+        <script src="../public/assets/js/bootstrap.js"></script>
     </body>
 </html>
