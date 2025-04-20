@@ -12,17 +12,21 @@
         <link rel="stylesheet" href="../public/assets/css/styles.css"/> <!-- CSS personalizado -->
     </head>
     <body>
-        <header>
-            <?= view("components/navbar") ?>
-        </header>
 
-        <main>
-            <?= $content ?? '' ?>    
-        </main>
+        <div class="container-custom">
 
-        <footer>
-            <?= view("components/footer") ?>    
-        </footer>
+            <header>
+                <?= view("components/navbar") ?>
+            </header>
+
+            <main>
+                <?= $content ?? '' ?>    
+            </main>
+
+            <footer>
+                <?= view("components/footer") ?>    
+            </footer>
+        </div>
 
     <script src="../public/assets/js/bootstrap.bundle.js"></script>
     </body>

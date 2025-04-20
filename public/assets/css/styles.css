@@ -3,10 +3,23 @@ main{
   margin: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*Contenedor dentro del body*/
+.container-custom {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Cambia a 1fr para que el footer ocupe el espacio restante */
+}
+
 /* Navbar */
 .nav-link {
-    transition: background-color 0.3s ease, color 0.3s ease,
-    border-radius 0.3s ease;
+  transition-duration: background-color 0.3s ease, color 0.3s ease,
+  border-radius 0.3s ease;
 }
 
 .nav-link:hover {
@@ -106,3 +119,8 @@ main{
   height: auto;
   width: auto;
 }
+
+.footer-logo {
+  max-height: 40px;
+}
+
