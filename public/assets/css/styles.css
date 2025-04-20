@@ -57,14 +57,11 @@ html, body {
     width: auto;
     scale: 1/1;
 }
-
-@media (max-width: 768px) {
+/*@media (max-width: 992px) {
   .navbar-logo {
-  max-height: 80px;
+  max-height: 85px;
   }
-}
-
-
+} NO TOCAR
 /* Principal */
 
 .principal-custom {
@@ -110,6 +107,13 @@ html, body {
   color: #3b9c9c;
 }
 
+/*Comercializacion*/
+.logos-comercializacion {
+  max-height: 150px;
+  height: auto;
+  width: auto;
+  scale: 1/1;
+}
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;
