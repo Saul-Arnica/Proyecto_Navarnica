@@ -108,10 +108,19 @@ html, body {
 }
 
 /*Comercializacion*/
+.carousel-comercializacion img {
+  max-height: 500px;
+  height: auto;
+  width: auto;
+  scale: 1/1;
+
+}
+
 .logos-comercializacion {
   max-height: 150px;
   height: auto;
   width: auto;
+  object-fit: cover;
   scale: 1/1;
 }
 /* Footer */

@@ -6,16 +6,16 @@
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item active" style="max-height: 500px;">
-                    <img src="../public/assets/img/perritoygatito.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-item active carousel-comercializacion">
+                    <img src="../public/assets/img/prueba2.png" class="w-100" alt="...">
                 </div>
                 
-                <div class="carousel-item col-md-6" style="max-height: 500px;"> 
-                    <img src="../public/assets/img/Otrologo.png" class="d-block w-25" alt="...">
+                <div class="carousel-item carousel-comercializacion"> 
+                    <img src="../public/assets/img/prueba2.png" class="w-100" alt="...">
                 </div>
                 
-                <div class="carousel-item" style="max-height: 500px;">
-                    <img src="../public/assets/img/veterinario-gsc1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-item carousel-comercializacion">
+                    <img src="../public/assets/img/prueba3.png" class="w-100" alt="...">
                 </div>
 
             </div>
