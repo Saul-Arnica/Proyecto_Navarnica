@@ -23,3 +23,14 @@
         </div>
     </div>
 </section>
+<section>
+    <h2 class="text-center">Fundadores</h2>
+    <div class="row">
+        <div class="col-12 col-lg-6 ">
+
+        </div>
+        <div class="col-12 col-lg-6">
+
+        </div>
+    </div>
+</section>

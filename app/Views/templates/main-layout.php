@@ -5,11 +5,11 @@
         <meta charset="UTF-8"> <!-- Codificacion de caracteres -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para que la pagina se vea bien en dispositivos moviles -->
         <meta name="description" content="Veterinaria Navarnica - La mejor atención de Corrientes Capital"> <!-- Descripción de la página cuando la buscamos-->
-        <link rel="icon" type="image/png" href="../public/assets/img/favicon.png"/> <!-- Icono de la pestaña -->
+        <link rel="icon" type="image/png" href="/public/assets/img/favicon.png"/> <!-- Icono de la pestaña -->
         <title><?= $title ?? 'Vete Navarnica' ?></title> <!-- Titulo de la pestaña -->
-        <link rel="stylesheet" href="../public/assets/css/bootstrap.min.css"/> <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="public/assets/css/bootstrap.min.css"/> <!-- Bootstrap CSS -->
         <link rel="canonical" href="http://VeterinariaNavarnica.com/"/> <!-- URL canónica para evitar contenido duplicado y que tome -->
-        <link rel="stylesheet" href="../public/assets/css/styles.css"/> <!-- CSS personalizado -->
+        <link rel="stylesheet" href="public/assets/css/styles.css"/> <!-- CSS personalizado -->
     </head>
     <body>
 
@@ -28,6 +28,6 @@
             </footer>
         </div>
 
-        <script src="../public/assets/js/bootstrap.js"></script>
+        <script src="public/assets/js/bootstrap.js"></script>
     </body>
 </html>
