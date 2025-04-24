@@ -29,4 +29,15 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    public static function validation($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('validation');
+        }
+
+        $config = config('Validation');
+        $renderer = service('renderer');
+        return new \CodeIgniter\Validation\Validation($config, $renderer);
+    }
 }

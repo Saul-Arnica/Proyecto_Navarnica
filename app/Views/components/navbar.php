@@ -6,7 +6,7 @@ $actualMethod = service('router')->methodName();
     <div class="container-fluid">
         <a class="navbar-brand <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
             href="<?= base_url() ?>">
-            <img src="../public/assets/img/favicon.png" class="navbar-logo" alt="Logo">
+            <img src="public/assets/img/favicon.png" class="navbar-logo" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,11 +35,11 @@ $actualMethod = service('router')->methodName();
                         href="<?= base_url('terminosYUsos') ?>">Términos y usos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($actualMethod === 'catalogoProductos') ? 'active text-success' : '' ?>"
+                    <a class="nav-link disabled <?= ($actualMethod === 'catalogoProductos') ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
+                    <a class="nav-link disabled <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
                 </li>
             </ul>

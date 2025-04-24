@@ -38,6 +38,31 @@ class Validation extends BaseConfig
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
 
+    public $contacto = [
+        'nombre' => [
+            'rules' => 'required|min_length[3]',
+            'errors' => [
+                'required' => 'El nombre es obligatorio.',
+                'min_length' => 'El nombre debe tener al menos 3 caracteres.'
+            ]
+            ],
+        'email' => [
+            'rules' => 'required|valid_email',
+            'errors' => [
+                'required' => 'El email es obligatorio.',
+                'valid_email' => 'El email no es válido.'
+            ]
+        ],
+        'mensaje' => [
+            'rules' => 'required|min_length[10]',
+            'errors' => [
+                'required' => 'El mensaje es obligatorio.',
+                'min_length' => 'El mensaje debe tener al menos 10 caracteres.'
+            ]
+            ],
+        ];
+
+        
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------

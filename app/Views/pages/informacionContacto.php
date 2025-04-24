@@ -14,10 +14,10 @@
                                                 para estar al tanto de nuestras <strong>novedades y promociones</strong>.</p>
                 <ul class="ul-custom">
                     <li><a href="https://www.facebook.com/VeterinariaNavarnica" target="_blank">
-                    <img src="../public/assets/img/faceicon.png" class="logos-custom" alt="logo face"> 
+                    <img src="public/assets/img/faceicon.png" class="logos-custom" alt="logo face"> 
                                                     Facebook - Veterinaria Navarnica</a></li>
                     <li><a href="https://www.instagram.com/veterinarianavarnica/" target="_blank">
-                    <img src="../public/assets/img/instagramicon.png" class="logos-custom" alt="logo face"> 
+                    <img src="public/assets/img/instagramicon.png" class="logos-custom" alt="logo face"> 
                                                     Instagram - Veterinaria Navarnica</a></li>
                 </ul>
             </div>
@@ -38,7 +38,24 @@
             <div class="row">
                 <div class="">
                     <h2>Formulario para consultas generales</h2>
-                    <form action="<?= base_url('contacto/enviar') ?>" method="post">
+
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->getFlashdata('success') ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (session()->get('errors')): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <ul class="mb-0">
+                                <?php foreach (session()->get('errors') as $error): ?>
+                                        <li><?= esc($error) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <form action="<?= base_url('informacionContacto/enviar') ?>" method="post">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
