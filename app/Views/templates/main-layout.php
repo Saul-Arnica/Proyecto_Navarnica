@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="public/assets/css/bootstrap.min.css"/> <!-- Bootstrap CSS -->
         <link rel="canonical" href="http://VeterinariaNavarnica.com/"/> <!-- URL canónica para evitar contenido duplicado y que tome -->
         <link rel="stylesheet" href="public/assets/css/styles.css"/> <!-- CSS personalizado -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"> <!-- Bootstrap Icons -->
     </head>
     <body>
 

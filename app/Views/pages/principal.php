@@ -17,10 +17,8 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Productos Caninos y Felinos!</h5>
                         <p class="card-text text-center">Los mejores precios de Corrientes Capital.</p>
+                        
                         <a href="turnos.php" class="btn btn-info text-white rounded-pill">Ver Productos</a>
-                        <div class="alert alert-success" role="alert">
-                            A simple success alert—check it out!
-                        </div>
                     </div>
                 </div>
             </div>

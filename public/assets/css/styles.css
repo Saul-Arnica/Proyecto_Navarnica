@@ -118,11 +118,27 @@ p{
   height: auto;
   width: auto;
   scale: 1/1;
-
+}
+.modal-custom {
+  background-color: transparent;
+  transition: none;
+  border-bottom: #8ccbcb;
+  border-radius: 1rem;
+}
+.boton-custom:active {
+  background-color: #8ccbcb;
+  border-radius: 50rem;
 }
 
 .logos-comercializacion {
   max-height: 150px;
+  height: auto;
+  width: auto;
+  object-fit: cover;
+  scale: 1/1;
+}
+.logos-comercializacion-modal {
+  max-height: 30px;
   height: auto;
   width: auto;
   object-fit: cover;
