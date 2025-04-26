@@ -20,6 +20,7 @@
                     <img src="public/assets/img/instagramicon.png" class="logos-custom" alt="logo face"> 
                                                     Instagram - Veterinaria Navarnica</a></li>
                 </ul>
+                
             </div>
             
             <!-- Columna derecha: Google Maps -->

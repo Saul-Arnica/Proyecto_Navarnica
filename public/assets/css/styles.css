@@ -71,7 +71,6 @@ p{
 
 .principal-custom {
     min-height: 100dvh;
-  
 }
 
 .principal-img-bg{
@@ -119,31 +118,50 @@ p{
   width: auto;
   scale: 1/1;
 }
-.modal-custom {
+/*.modal-custom {
   background-color: transparent;
   transition: none;
   border-bottom: #8ccbcb;
   border-radius: 1rem;
-}
+}*/
 .boton-custom:active {
   background-color: #8ccbcb;
   border-radius: 50rem;
 }
 
 .logos-comercializacion {
-  max-height: 150px;
+  max-height: 145px;
   height: auto;
   width: auto;
-  object-fit: cover;
+  object-fit: contain;
   scale: 1/1;
 }
+
 .logos-comercializacion-modal {
-  max-height: 30px;
-  height: auto;
-  width: auto;
-  object-fit: cover;
-  scale: 1/1;
+  animation: entradaSuave 0.7s ease-in-out;
 }
+
+.logos-comercializacion-modal:hover {
+  box-shadow: -10px 6px 10px #8ccbcb;;
+  transform: scale(1.05);
+  border-radius: 3.5rem;
+}
+
+/* Animaciones Comercializacion*/
+
+@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;

@@ -6,7 +6,7 @@ $actualMethod = service('router')->methodName();
     <div class="container-fluid">
         <a class="navbar-brand <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
             href="<?= base_url() ?>">
-            <img src="public/assets/img/favicon.png" class="navbar-logo" alt="Logo">
+            <img src="public/assets/img/favicon.png" class="navbar-logo logos-comercializacion-modal" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

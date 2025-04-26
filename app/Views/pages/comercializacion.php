@@ -34,81 +34,140 @@
         <!--Iconos de Comercializacion-->
         <div class="container-flex text-center">
 
-            <div class="row aling-items-center">
+            <div class="row align-items-center">
 
                 <div class="col-lg-4">
-    
                     
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="public/assets/img/formadepago.png" class="logos-comercializacion" alt="...">
+                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalPagos">
+                        <img src="public/assets/img/formadepago.png" class="logos-comercializacion logos-comercializacion-modal" alt="...">
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalPagos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header modal-custom">
+                                <div class="modal-header">
                                     <h1 class="modal-title fs-3" id="exampleModalLabel">Formas de Pago</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <ul class="" style="text-align: left">
+                                    <ul style="text-align: left">
                                         <li>
-                                            <img src="public/assets/img/Visa-logo.png" class="logos-comercializacion-modal" alt="logo-visa">
+                                            <img src="public/assets/img/Visa-logo.png" class="logos-comercializacion" style="max-height: 35px;" alt="logo-visa">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/Mastercard-logo.png" class="logos-comercializacion-modal ms-2" style="max-height: 65px;"alt="logo-mastercard">
+                                            <img src="public/assets/img/Mastercard-logo.png" class="logos-comercializacion ms-2" style="max-height: 65px;"alt="logo-mastercard">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/amex.png" class="logos-comercializacion-modal" style="max-height: 40px;"alt="logo-american-express">
+                                            <img src="public/assets/img/amex.png" class="logos-comercializacion" style="max-height: 40px;" alt="logo-american-express">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/brubank.png" class="logos-comercializacion-modal ms-4" style="max-height: 60px;"alt="logo-brubank">
+                                            <img src="public/assets/img/brubank.png" class="logos-comercializacion ms-4" style="max-height: 60px;" alt="logo-brubank">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/mp.png" class="logos-comercializacion-modal" style="max-height: 100px;"alt="logo-mercadopago">
+                                            <img src="public/assets/img/mp.png" class="logos-comercializacion" style="max-height: 100px;" alt="logo-mercadopago">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/uala.png" class="logos-comercializacion-modal ms-4" style="max-height: 60px;"alt="logo-uala">
+                                            <img src="public/assets/img/uala.png" class="logos-comercializacion ms-4" style="max-height: 60px;" alt="logo-uala">
                                         </li>
                                         <li>
-                                            <img src="public/assets/img/transferencia.png" class="logos-comercializacion-modal ms-1" style="max-height: 75px;"alt="logo-transferencia">
+                                            <img src="public/assets/img/transferencia.png" class="logos-comercializacion ms-1" style="max-height: 75px;" alt="logo-transferencia">
                                         </li>
                                         <li class="mt-3 p-1">
-                                            <img src="public/assets/img/efectivo.png" class="logos-comercializacion-modal ms-1" style="max-height: 75px;"alt="logo-efectivo">
+                                            <img src="public/assets/img/efectivo.png" class="logos-comercializacion ms-1" style="max-height: 75px;" alt="logo-efectivo">
                                         </li>
                                         <li class="list-unstyled aling-items-center mt-2 p-1">
                                             <i class="bi bi-credit-card-fill text-success me-2 fs-2"></i>
                                             <strong>En 3-6-9-12 cuotas con Visa y Mastercard</strong>
                                         </li>
                                     </ul>
-                                    <p class="text-center">*No se aceptan pagos en cuotas con Mercado Pago ni Uala</p>
-
+                                    <p class="text-center text-muted" style="font-size: 0.9rem;">*No se aceptan pagos en cuotas con Mercado Pago ni Uala</p>
 
                                 </div>
-                                <div class="modal-footer text-center" style="text-align: center">
-                                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>-->
-                                </div>
-                                
+
                             </div>
                             
                         </div>
                         
                     </div>
-                    <p class=""style="text-align: center"><strong>Aceptamos todo tipo de tarjetas y efectivo</strong></p>
+                    <p style="text-align: center"><strong>Aceptamos todo tipo de tarjetas y efectivo</strong></p>
                 </div>
 
                 <div class="col-lg-4">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalEnvios">
+                        <img src="public/assets/img/envio.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-envio">
+                    </button>
 
-                    <img src="public/assets/img/envio.png" class="logos-comercializacion" alt="...">
-                    <p class="text-center"><strong>Se envia a domicilio</strong></p>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalEnvios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel">Metodos de Envio</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul style="text-align: left mb-2 mt-2">
+                                            <i class="bi bi-truck-front-fill text-success fs-4 "> Se hacen envios al interior mediante:</i>
+                                        
+                                            <img src="public/assets/img/Andreani.png" class="logos-comercializacion" style="max-height: 45px;" alt="logo-Andreani">
+                                        
+                                            <img src="public/assets/img/correo-oca-logo-png_seeklogo-507837.png" class="logos-comercializacion ms-2" style="max-height: 100px;"alt="logo-OCA">
+                                        
 
+                                        <p class="text-success-emphasis text-center fs-5 fw-semibold mt-1">Para envios dentro de Corrientes Capital, hay 7% de descuento por envío pagando en <strong>efectivo</strong>.</p>
+
+                                    </ul>
+                                    <p class="text-center text-muted" style="font-size: 0.9rem;">*Para que el envío sea gratis entre las 4 avenidas de Corrientes Capital, debe ser mínimo 30kg o una compra de $35.000 en adelante</p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <p style="text-align: center"><strong>Se envia a domicilio</strong></p>
                 </div>
 
                 <div class="col-lg-4">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalSucursal">
+                        <img src="public/assets/img/tienda.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-sucursal">
+                    </button>
 
-                    <img src="public/assets/img/tienda.png" class="logos-comercializacion" alt="...">
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel">Sucursales</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul style="text-align: left">
+                                        <li>
+                                            <p><strong>Hipólito Yrigoyen 1373</strong></p>
+                                        </li>
+                                        <li>
+                                        <p><strong>Juan V. Pampin 151</strong></p>
+
+                                        </li>
+
+                                    </ul>
+                                    <i class="bi bi-shop fs-1 text-info"></i>
+                                    <p class="text-success-emphasis fs-5 fw-semibold mt-1 text-center">Las compras en sucursal tienen 7% de descuento pagando en efectivo.</p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
                     <p class="text-center"><strong>Se puede retirar por sucursal</strong></p>
 
                 </div>
