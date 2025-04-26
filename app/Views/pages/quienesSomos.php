@@ -1,6 +1,6 @@
-<section class="container border-bottom">
+<section class="container py-3 border-bottom">
 
-    <h1 class="text-center mt-5">Quiénes Somos</h1>
+    <h1 class="text-center mt-2">Quiénes Somos</h1>
 
 
     <div class="row mt-3 p-3">

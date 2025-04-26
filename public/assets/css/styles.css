@@ -69,9 +69,18 @@ p{
 } NO TOCAR
 /* Principal */
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
 .principal-custom {
     min-height: 100dvh;
 }
+.bg-principal-custom {
+  background-color: #8ccbcb;
+}
+
 
 .principal-img-bg{
     background-image: url("../img/fondo.jpg");
@@ -141,7 +150,6 @@ p{
   animation: entradaSuave 0.7s ease-in-out;
 }
 
-<<<<<<< HEAD
 .logos-comercializacion-modal:hover {
   box-shadow: -10px 6px 10px #8ccbcb;;
   transform: scale(1.05);
@@ -163,7 +171,6 @@ p{
 
 
 
-=======
 /* Quienes Somos */
 .card-custom-qs {
   width: 24rem;
@@ -174,7 +181,6 @@ p{
   object-fit: cover;
 }
 
->>>>>>> origin/main
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;
