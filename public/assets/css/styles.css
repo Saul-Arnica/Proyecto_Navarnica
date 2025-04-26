@@ -144,6 +144,17 @@ p{
   object-fit: cover;
   scale: 1/1;
 }
+
+/* Quienes Somos */
+.card-custom-qs {
+  width: 24rem;
+}
+
+.img-custom-qs {
+  max-height: 300px;
+  object-fit: cover;
+}
+
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;

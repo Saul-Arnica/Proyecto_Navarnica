@@ -7,7 +7,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Reserva tu turno</h5>
                         <p class="card-text text-center">Para tu mascota de forma rápida y sencilla.</p>
-                        <a href="turnos.php" class="btn btn-primary text-white rounded-pill">Solicitar Turno</a>
+                        <a href="<?= base_url() ?>" class="btn btn-primary text-white rounded-pill">Solicitar Turno</a>
                     </div>
                 </div>
             </div>
@@ -17,12 +17,11 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">Productos Caninos y Felinos!</h5>
                         <p class="card-text text-center">Los mejores precios de Corrientes Capital.</p>
-                        
-                        <a href="turnos.php" class="btn btn-info text-white rounded-pill">Ver Productos</a>
+
+                        <a href="<?= base_url() ?>" class="btn btn-info text-white rounded-pill">Ver Productos</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
