@@ -141,6 +141,7 @@ p{
   animation: entradaSuave 0.7s ease-in-out;
 }
 
+<<<<<<< HEAD
 .logos-comercializacion-modal:hover {
   box-shadow: -10px 6px 10px #8ccbcb;;
   transform: scale(1.05);
@@ -162,6 +163,18 @@ p{
 
 
 
+=======
+/* Quienes Somos */
+.card-custom-qs {
+  width: 24rem;
+}
+
+.img-custom-qs {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+>>>>>>> origin/main
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;
