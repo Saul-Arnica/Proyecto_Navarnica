@@ -6,18 +6,14 @@
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item carousel-comercializacion">
-                    <img src="public/assets/img/prueba3.png" class="w-100" alt="...">
+                <div class="carousel-item active carousel-comercializacion">
+                    <img src="public/assets/img/imagen_recortada.png" class="w-100" alt="...">
                 </div>
 
                 <div class="carousel-item carousel-comercializacion">
-                    <img src="public/assets/img/banner-promo-abril.png" class="w-100" alt="...">
+                    <img src="public/assets/img/promo-abril.jpg" class="w-100 " alt="...">
                 </div>
                 
-                <div class="carousel-item carousel-comercializacion"> 
-                    <img src="public/assets/img/017.png" class="w-100" alt="...">
-                </div>
-
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

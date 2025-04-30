@@ -3,34 +3,52 @@
         <div class="container-fluid principal-img-bg text-center">
             <!-- Card: Solicitar Turno -->
             <div class="row justify-content-center">
+
                 <div class="col-12 col-md-6 col-lg-4 mb-3 mt-3">
+
                     <div class="card w-10 shadow-sm rounded-pill card-custom1 ">
+
                         <div class="card-body text-center">
+
                             <h5 class="card-title">Reserva tu turno</h5>
+
                             <p class="card-text text-center">Para tu mascota de forma rápida y sencilla.</p>
-                            <a href="<?= base_url() ?>" class="btn btn-primary text-white rounded-pill">Solicitar
-                                Turno</a>
+                            <a href="<?= base_url() ?>" class="btn btn-primary text-white rounded-pill">Solicitar Turno</a>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 <!-- Card: Ver productos -->
                 <div class="col-12 col-md-6 col-lg-4 mb-3 mt-3">
+
                     <div class="card w-10 shadow-sm rounded-pill card-custom2 text-white">
+
                         <div class="card-body text-center">
+
                             <h5 class="card-title">Productos Caninos y Felinos!</h5>
                             <p class="card-text text-center">Los mejores precios de Corrientes Capital.</p>
 
                             <a href="<?= base_url() ?>" class="btn btn-info text-white rounded-pill">Ver Productos</a>
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
-    <div class="container principal-custom mt-5">
+
+    <div class="container pb-5 mt-5">
         <h1 class="text-center mt-5">Productos destacados</h1>
 
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+
             <div class="carousel-inner" id="carouselInner"></div>
 
             <!-- Controles -->
@@ -38,12 +56,16 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
+
             <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>
+
         </div>
+
     </div>
+
 </section>
 
 <!-- Scripts -->
@@ -53,22 +75,22 @@
     const products = [
         {
             title: 'Bolsa Pedigree',
-            price: '$10.00',
+            price: '$15.900',
             image: 'public/assets/img/bolsa-pedigree.jpg'
         },
         {
             title: 'Transportadora',
-            price: '$12.00',
+            price: '$60.000',
             image: 'public/assets/img/transportadora.jpeg'
         },
         {
             title: 'Correa para perro',
-            price: '$15.00',
+            price: '$6.900',
             image: 'public/assets/img/correa-perro.png'
         },
         {
             title: 'Castillo para gato',
-            price: '$18.00',
+            price: '$45.000',
             image: 'public/assets/img/castillo-gatuno.jpg'
         }
     ];

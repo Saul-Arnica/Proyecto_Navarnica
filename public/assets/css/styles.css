@@ -124,9 +124,9 @@ p{
 .carousel-comercializacion img {
   max-height: 500px;
   height: auto;
-  width: auto;
   scale: 1/1;
 }
+
 /*.modal-custom {
   background-color: transparent;
   transition: none;
