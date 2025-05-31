@@ -1,0 +1,28 @@
+CRITICAL - 2025-05-31 23:40:41 --> ErrorException: Undefined array key "imagen"
+[Method: GET, Route: /]
+in APPPATH/Views/pages/principal.php on line 73.
+ 1 APPPATH/Views/pages/principal.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen"', '/opt/lampp/htdocs/proyecto_Navarnica/app/Views/pages/principal.php', 73)
+ 2 SYSTEMPATH/View/View.php(224): include('/opt/lampp/htdocs/proyecto_Navarnica/app/Views/pages/principal.php')
+ 3 SYSTEMPATH/View/View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1173): CodeIgniter\View\View->render('pages/principal', [], true)
+ 5 APPPATH/Controllers/Home.php(18): view('pages/principal', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-31 23:52:30 --> ErrorException: Undefined variable $data
+[Method: GET, Route: /]
+in APPPATH/Views/pages/principal.php on line 69.
+ 1 APPPATH/Views/pages/principal.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', '/opt/lampp/htdocs/proyecto_Navarnica/app/Views/pages/principal.php', 69)
+ 2 SYSTEMPATH/View/View.php(224): include('/opt/lampp/htdocs/proyecto_Navarnica/app/Views/pages/principal.php')
+ 3 SYSTEMPATH/View/View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1173): CodeIgniter\View\View->render('pages/principal', [], true)
+ 5 APPPATH/Controllers/Home.php(18): view('pages/principal', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

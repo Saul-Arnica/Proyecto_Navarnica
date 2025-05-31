@@ -6,9 +6,16 @@ class Home extends BaseController
 {
     public function index(): string
     {
+        
+        $producto = new \App\Models\ProductoModelo();
+        $productos = $producto->findAll(); 
+        $data = [
+            'productos' => $productos
+        ];
+
         return view('templates/main-layout', [
             'title' => 'Principal - Navarnica',
-            'content' => view('pages/principal')
+            'content' => view('pages/principal', $data)
         ]);
     }
     public function quienesSomos(): string
