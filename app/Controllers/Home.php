@@ -8,7 +8,7 @@ class Home extends BaseController
     {
         
         $producto = new \App\Models\ProductoModelo();
-        $productos = $producto->findAll(); 
+        $productos = $producto->where('destacado >', 0)->findAll();
         $data = [
             'productos' => $productos
         ];

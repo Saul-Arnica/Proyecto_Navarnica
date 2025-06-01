@@ -31,12 +31,14 @@ function generateProductCarousel(products, containerId) {
                   : ""
               }">
                 <div class="card h-100">
-                  <img src="${prod.image}" class="card-img-top" alt="${
-                      prod.title
+                  <img src="public/assets/img/saul.jpg" class="card-img-top" alt="${
+                      prod.nombre
                     }">
                   <div class="card-body">
-                    <h5 class="card-title">${prod.title}</h5>
-                    <p class="card-text">${prod.price}</p>
+                    <h5 class="card-title">${prod.nombre}</h5>
+                    <p class="card-text">${prod.descripcion}</p>
+                    <p class="card-text">stock: ${prod.stock}</p>
+                    <p class="card-text">${prod.precio}</p>
                   </div>
                 </div>
               </div>

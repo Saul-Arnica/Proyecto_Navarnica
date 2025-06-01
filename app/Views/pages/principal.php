@@ -64,22 +64,7 @@
 
         </div>
 
-    </div>
-    <div class="carousel-inner">
-    <?php foreach ($productos as $index => $producto): ?>
-        <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-            <div class="d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <img src="<?= base_url('public/assets/img/correa-perro.png') ?>" class="card-img-top" alt="<?= esc($producto['nombre']) ?>">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><?= esc($producto['nombre']) ?></h5>
-                        <p class="card-title text-center"><?= esc($producto['descripcion']) ?></p>
-                        <p class="card-text text-center">$<?= esc(number_format($producto['precio'], 2)) ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+    </div> 
 </div>
 
 </section>
@@ -87,38 +72,18 @@
 <!-- Scripts -->
 <script src="<?= base_url('public/assets/js/carrusel_productos.js') ?>"></script>
 
-<!--<script>
-    
-    const products = [
-        {
-            title: 'Bolsa Pedigree',
-            price: '$15.900',
-            image: 'public/assets/img/bolsa-pedigree.jpg'
-        },
-        {
-            title: 'Transportadora',
-            price: '$60.000',
-            image: 'public/assets/img/transportadora.jpeg'
-        },
-        {
-            title: 'Correa para perro',
-            price: '$6.900',
-            image: 'public/assets/img/correa-perro.png'
-        },
-        {
-            title: 'Castillo para gato',
-            price: '$45.000',
-            image: 'public/assets/img/castillo-gatuno.jpg'
-        }
-    ];
+<script>
+    const products = <?= json_encode($productos) ?>;
 
     function initCarousel() {
         generateProductCarousel(products, 'carouselInner');
     }
 
-    initCarousel(); // Cargar al principio
+    initCarousel();
 
     window.addEventListener('resize', () => {
-        initCarousel(); // Regenerar si cambia el tamaño
+        initCarousel();
     });
-</script>-->`
+
+    console.log(products);
+</script>
