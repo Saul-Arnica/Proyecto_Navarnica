@@ -9,7 +9,7 @@ class ProductoModelo extends Model
     protected $table            = 'productos';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array'; //tambien puede ser 'object'
+    protected $returnType       = 'array'; //tambien puede ser 'object', dependera de como uno quiera trabajar con los datos.
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['nombre', 'descripcion', 'precio', 'stock', 'destacado'];

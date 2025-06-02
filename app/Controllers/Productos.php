@@ -26,7 +26,11 @@ class Productos extends BaseController
         }
 
         unset($producto); // Limpiamos la referencia al último producto
-
+        
+        /*  Esto para cuando ruteemos de forma correcta a la vista de productos
+                Si no se encuentra la vista, se mostrará un error 404 automáticamente
+                    Si se encuentra, se mostrará la vista con los datos de los productos
+        */
         $data = [
             'productos' => $productos
         ];
@@ -54,6 +58,5 @@ class Productos extends BaseController
 
         return $productosDestacados;
     }
-
 
 }
