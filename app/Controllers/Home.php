@@ -6,9 +6,9 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        
-        $producto = new \App\Models\ProductoModelo();
-        $productos = $producto->where('destacado >', 0)->findAll();
+        $productosDestacados = new \App\Controllers\Productos();
+        $productos = $productosDestacados->productosDestacados();
+
         $data = [
             'productos' => $productos
         ];

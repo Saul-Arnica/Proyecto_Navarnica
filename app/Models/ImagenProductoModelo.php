@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProductoModelo extends Model
+class ImagenProductoModelo extends Model
 {
-    protected $table            = 'productos';
+    protected $table            = 'imagenes_producto';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array'; //tambien puede ser 'object'
+    protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre', 'descripcion', 'precio', 'stock', 'destacado'];
+    protected $allowedFields    = ['producto_id', 'url_imagen'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -28,7 +28,10 @@ class ProductoModelo extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'producto_id' => 'required|is_natural_no_zero',
+        'url_imagen' => 'required|string|max_length[255]'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

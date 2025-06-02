@@ -34,16 +34,16 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link <?= ($actualMethod === 'terminosYUsos') ? 'active text-success' : '' ?>"
                         href="<?= base_url('terminosYUsos') ?>">Términos y usos</a>
                 </li>
-                <!--
+                
                 <li class="nav-item">
-                    <a class="nav-link disabled <?= ($actualMethod === 'catalogoProductos') ? 'active text-success' : '' ?>"
+                    <a class="nav-link  <?= ($actualMethod === 'catalogoProductos') ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
+                    <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
                 </li>
-                -->
+                
             </ul>
         </div>
     </div>

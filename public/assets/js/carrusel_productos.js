@@ -1,4 +1,4 @@
-function generateProductCarousel(products, containerId) {
+function generateProductCarousel(products, containerId, baseUrl) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -31,9 +31,7 @@ function generateProductCarousel(products, containerId) {
                   : ""
               }">
                 <div class="card h-100">
-                  <img src="public/assets/img/saul.jpg" class="card-img-top" alt="${
-                      prod.nombre
-                    }">
+                    <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
                   <div class="card-body">
                     <h5 class="card-title">${prod.nombre}</h5>
                     <p class="card-text">${prod.descripcion}</p>
