@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index(): string
     {
         $productosDestacados = new \App\Controllers\Productos();
-        $productos = $productosDestacados->productosDestacados();
+        $productos = $productosDestacados->obtenerProductosDestacados();
 
         $data = [
             'productos' => $productos

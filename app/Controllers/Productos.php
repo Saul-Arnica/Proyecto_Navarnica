@@ -6,7 +6,7 @@ use App\Models\ImagenProductoModelo; // Importamos el modelo imagen producto
 
 class Productos extends BaseController
 {
-    public function productos()
+    public function obtenerProductos()
     {
         $modeloProducto = new ProductoModelo(); // Creamos instancia del modelo
         $modeloImagenProducto = new ImagenProductoModelo(); // Creamos instancia del modelo de imagen
@@ -37,7 +37,7 @@ class Productos extends BaseController
 
         return view('productos/index', $data); // Mostramos la vista
     }
-    public function productosDestacados()
+    public function obtenerProductosDestacados()
     {
         $modeloProducto = new \App\Models\ProductoModelo();
         $modeloImagen = new \App\Models\ImagenProductoModelo();
