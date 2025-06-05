@@ -181,6 +181,32 @@ p{
   object-fit: cover;
 }
 
+
+/* Catalogo */
+.img-catalogo-custom {
+  max-width: 270px;
+  max-height: 250px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.img-catalogo-custom:hover {
+  transform: scale(1.1);
+}
+
+.overlay-catalogo-text {
+  position: absolute;
+  bottom: 1.25rem; /* ~20px */
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+
+
 /* Footer */
 .footer-custom {
   background-color: #3b9c9c;
@@ -195,4 +221,3 @@ p{
 .footer-logo {
   max-height: 40px;
 }
-

@@ -12,6 +12,7 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
+$routes->get('/productos', 'Home::productosPorCategoria');
 
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');

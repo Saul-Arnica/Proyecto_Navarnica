@@ -60,4 +60,12 @@ class Home extends BaseController
             'content' => view('pages/consultas')
         ]);
     }
+
+    public function productosPorCategoria(): string
+    {
+        return view('templates/main-layout', [
+            'title' => 'Productos por categoría - Navarnica',
+            'content' => view('pages/productosPorCategoria')
+        ]);
+    }
 }
