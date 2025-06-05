@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-//Rutas de vistas
+//Rutas de vistas basicas
 $routes->get('/', 'Home::index');
 $routes->get('/quienesSomos', 'Home::quienesSomos');
 $routes->get('/comercializacion', 'Home::comercializacion');
