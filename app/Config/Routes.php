@@ -13,13 +13,11 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
-<<<<<<< HEAD
-$routes->get('/productos', 'Home::productosPorCategoria');
-=======
-//Rutas para los productos
 
-//Rutas para inicio de sesión
->>>>>>> 94513d00e1a772aa388789b313e0245c0167783e
+$routes->get('/mascotas', 'Home::productosPorCategoria');
+$routes->get('/campo', 'Home::productosPorCategoria');
+$routes->get('/insumos', 'Home::productosPorCategoria');
+$routes->get('/servicios', 'Home::productosPorCategoria');
 
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');

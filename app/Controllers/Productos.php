@@ -59,4 +59,6 @@ class Productos extends BaseController
         return $productosDestacados;
     }
 
+    
+
 }

@@ -4,8 +4,8 @@
 
 
     <div class="row mt-3 p-3">
-        <div class="col-12 col-lg-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="#" class="position-relative d-inline-block text-decoration-none">
+        <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
+            <a href="<?= base_url('mascotas') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/mascotas.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Mascotas
@@ -13,8 +13,8 @@
             </a>
         </div>
 
-        <div class="col-12 col-lg-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="#" class="position-relative d-inline-block text-decoration-none">
+        <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
+            <a href="<?= base_url('campo') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/campo.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Campo
@@ -22,8 +22,8 @@
             </a>
         </div>
 
-        <div class="col-12 col-lg-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="#" class="position-relative d-inline-block text-decoration-none">
+        <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
+            <a href="<?= base_url('insumos') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/insumos.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Insumos
@@ -31,8 +31,8 @@
             </a>
         </div>
 
-        <div class="col-12 col-lg-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="#" class="position-relative d-inline-block text-decoration-none">
+        <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
+            <a href="<?= base_url('servicios') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/servicios.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Servicios
