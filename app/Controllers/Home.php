@@ -63,21 +63,15 @@ class Home extends BaseController
 
     public function productosPorCategoria(): string
     {
-
         $productosCategoria = new \App\Controllers\Productos();
-        
         $categoria = $this->request->getGet('categoria');
-        
-
         $productos = $productosCategoria->obtenerProductosPorCategoria($categoria);
-
 
         $data = [
             'productos' => $productos
         ];
-
         return view('templates/main-layout', [
-            'title' => $categoria .' - Navarnica',
+            'title' => $categoria . ' - Navarnica',
             'content' => view('pages/productosPorCategoria', $data)
         ]);
     }

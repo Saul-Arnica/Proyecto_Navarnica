@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Models\ProductoModelo; // Importamos el modelo producto
 use App\Models\ImagenProductoModelo; // Importamos el modelo imagen producto
+use \App\Models\CategoriasProductosModelo;
+use \App\Models\CategoriaModelo; // Importamos el modelo categoria
 
 class Productos extends BaseController
 {   
@@ -25,7 +27,7 @@ class Productos extends BaseController
 
         return $imagenes;
     }
-    //
+    //Metodos privados para obtener las categorias del producto.
 
     //TODOS LOS PRODUCTOS
     public function obtenerProductos()//listo
@@ -80,24 +82,30 @@ class Productos extends BaseController
         return view('productos/detalle', ['producto' => $producto]);
     }
 
-    public function obtenerProductosPorCategoria($categoria)//listo
+    public function obtenerProductosPorCategoria($categoriaSolicitud)//listo
     {
         $modeloProducto = new ProductoModelo();
         $modeloImagen = new ImagenProductoModelo();
+        $modeloCategoria = new CategoriaModelo();
+        $modeloCategoriasProductos = new CategoriasProductosModelo();
 
-        $productos = $modeloProducto->where('categoria', $categoria)->findAll();
-
+        $categoria = $modeloCategoria->where('nombre', $categoriaSolicitud)->first();
+        if (!$categoria) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("La categoría '$categoriaSolicitud' no existe.");
+        }
+        
+        $categoriasProductos = $modeloCategoriasProductos->where('id_categoria', $categoria['id_categoria'])->findAll();
+        $idsProductos = array_column($categoriasProductos, 'id_producto');
+        $productos = $modeloProducto->whereIn('id_producto', $idsProductos)->findAll();
         foreach ($productos as &$producto) {
             $producto['imagenes'] = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
             $producto['imagen'] = $this->obtenerImagenPrincipalDelProducto($producto['id_producto']);
         }
-
-        unset($producto);
-
-        return view('productos/categoria', [
-            'productos' => $productos,
-            'categoria' => $categoria
-        ]);
+        unset($producto); // Limpiamos referencia
+        if (empty($productos)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("No se encontraron productos en la categoría solicitada");
+        }
+        return $productos;
     }
 
     public function buscarProductos()//listo

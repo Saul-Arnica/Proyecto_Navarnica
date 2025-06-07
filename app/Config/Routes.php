@@ -14,9 +14,8 @@ $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
 
-
+// Rutas de las categorías
 $routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
-
 
 //$routes->get('/productos', 'Home::productosPorCategoria');
 
