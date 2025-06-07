@@ -112,4 +112,8 @@
             </div>
         </div>
     </div>
+    <script>
+        const products = <?= json_encode($productos) ?>;
+        console.log(products);
+    </script>
 </div>
