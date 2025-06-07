@@ -15,13 +15,10 @@ $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
 
 
-$routes->get('/mascotas', 'Home::productosPorCategoria');
-$routes->get('/campo', 'Home::productosPorCategoria');
-$routes->get('/insumos', 'Home::productosPorCategoria');
-$routes->get('/servicios', 'Home::productosPorCategoria');
+$routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
 
 
-$routes->get('/productos', 'Home::productosPorCategoria');
+//$routes->get('/productos', 'Home::productosPorCategoria');
 
 //Rutas para los productos
 

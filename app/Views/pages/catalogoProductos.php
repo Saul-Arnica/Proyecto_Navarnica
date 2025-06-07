@@ -5,7 +5,7 @@
 
     <div class="row mt-3 p-3">
         <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="<?= base_url('mascotas') ?>" class="position-relative d-inline-block text-decoration-none">
+            <a href="<?= base_url('productosPorCategoria?categoria=Mascotas') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/mascotas.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Mascotas
@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="<?= base_url('campo') ?>" class="position-relative d-inline-block text-decoration-none">
+            <a href="<?= base_url('productosPorCategoria?categoria=Campo') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/campo.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Campo
@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="<?= base_url('insumos') ?>" class="position-relative d-inline-block text-decoration-none">
+            <a href="<?= base_url('productosPorCategoria?categoria=Insumos') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/insumos.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Insumos
@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-12 col-xl-3 col-md-6 d-flex justify-content-center mt-5">
-            <a href="<?= base_url('servicios') ?>" class="position-relative d-inline-block text-decoration-none">
+            <a href="<?= base_url('') ?>" class="position-relative d-inline-block text-decoration-none">
                 <img src="public/assets/img/servicios.jpg" alt="sergio" class="img-catalogo-custom img-fluid rounded" />
                 <p class="overlay-catalogo-text">
                     Servicios
