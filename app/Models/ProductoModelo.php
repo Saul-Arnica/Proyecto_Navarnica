@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class ProductoModelo extends Model
 {
-    protected $table            = 'productos';
-    protected $primaryKey       = 'id';
+    protected $table            = 'Productos';
+    protected $primaryKey       = 'id_producto';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array'; //tambien puede ser 'object', dependera de como uno quiera trabajar con los datos.
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre', 'descripcion', 'precio', 'stock', 'destacado'];
+    protected $allowedFields    = ['nombre', 'descripcion', 'precio', 'stock', 'destacado', 'marca'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

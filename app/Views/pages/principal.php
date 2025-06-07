@@ -76,7 +76,7 @@
     const products = <?= json_encode($productos) ?>;
     const baseUrl = '<?= base_url() ?>';
     function initCarousel() {
-        generateProductCarousel(products, 'carouselInner', baseUrl);
+        generateProductCarousel(products, 'carouselInner');
     }
 
     initCarousel();

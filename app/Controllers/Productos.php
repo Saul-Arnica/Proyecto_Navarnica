@@ -14,7 +14,7 @@ class Productos extends BaseController
         $productos = $modeloProducto->findAll(); // Traemos todos los productos
         
         foreach ($productos as &$producto) {
-            $imagenes = $modeloImagenProducto->where('producto_id', $producto['id'])->findAll();
+            $imagenes = $modeloImagenProducto->where('id_producto', $producto['id_producto'])->findAll();
             $producto['imagenes'] = $imagenes;
 
             // Armamos la ruta completa para la primera imagen (si existe)
@@ -37,6 +37,7 @@ class Productos extends BaseController
 
         return view('productos/index', $data); // Mostramos la vista
     }
+
     public function obtenerProductosDestacados()
     {
         $modeloProducto = new \App\Models\ProductoModelo();
@@ -45,7 +46,7 @@ class Productos extends BaseController
         $productosDestacados = $modeloProducto->where('destacado >', 0)->findAll();
 
         foreach ($productosDestacados as &$productoDestacado) {
-            $imagenes = $modeloImagen->where('producto_id', $productoDestacado['id'])->findAll();
+            $imagenes = $modeloImagen->where('id_producto', $productoDestacado['id_producto'])->findAll();
 
             if (!empty($imagenes)) {
                 $productoDestacado['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);

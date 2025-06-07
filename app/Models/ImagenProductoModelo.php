@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class ImagenProductoModelo extends Model
 {
-    protected $table            = 'imagenes_producto';
-    protected $primaryKey       = 'id';
+    protected $table            = 'Imagenes_productos';
+    protected $primaryKey       = 'id_imagen_producto';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['producto_id', 'url_imagen'];
+    protected $allowedFields    = ['id_producto', 'url_imagen'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -29,7 +29,7 @@ class ImagenProductoModelo extends Model
 
     // Validation
     protected $validationRules      = [
-        'producto_id' => 'required|is_natural_no_zero',
+        'id_producto' => 'required|is_natural_no_zero',
         'url_imagen' => 'required|string|max_length[255]'
     ];
     protected $validationMessages   = [];
