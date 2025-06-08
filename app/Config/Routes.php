@@ -20,6 +20,7 @@ $routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
 //$routes->get('/productos', 'Home::productosPorCategoria');
 
 //Rutas para los productos
+$routes->post('api/filtrar-productos', 'Productos::filtrarProductosAjax');
 
 //Rutas para inicio de sesión
 

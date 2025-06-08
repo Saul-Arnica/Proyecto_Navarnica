@@ -7,10 +7,10 @@ use \App\Models\CategoriasProductosModelo;
 use \App\Models\CategoriaModelo; // Importamos el modelo categoria
 
 class Productos extends BaseController
-{   
+{
     /*Método privado para obtener la imagen principal de un producto
         Si no hay imágenes, devuelve una imagen por defecto*/
-    private function obtenerImagenPrincipalDelProducto($idProducto) 
+    private function obtenerImagenPrincipalDelProducto($idProducto)
     {
         $modeloImagen = new ImagenProductoModelo();
         $imagenes = $modeloImagen->where('id_producto', $idProducto)->findAll();
@@ -20,7 +20,7 @@ class Productos extends BaseController
             : base_url('public/assets/img/img_Productos/default.png');
     }
     //Metodo privado para obtener todas las imagenes de un producto.
-    private function obtenerTodasLasImagenesDelProducto($idProducto) 
+    private function obtenerTodasLasImagenesDelProducto($idProducto)
     {
         $modeloImagen = new ImagenProductoModelo();
         $imagenes = $modeloImagen->where('id_producto', $idProducto)->findAll();
@@ -93,7 +93,7 @@ class Productos extends BaseController
         if (!$categoria) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("La categoría '$categoriaSolicitud' no existe.");
         }
-        
+
         $categoriasProductos = $modeloCategoriasProductos->where('id_categoria', $categoria['id_categoria'])->findAll();
         $idsProductos = array_column($categoriasProductos, 'id_producto');
         $productos = $modeloProducto->whereIn('id_producto', $idsProductos)->findAll();
@@ -155,8 +155,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('precio >=', $precioMin)
-                                    ->where('precio <=', $precioMax)
-                                    ->findAll();
+            ->where('precio <=', $precioMax)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -175,7 +175,7 @@ class Productos extends BaseController
         return view('productos/precio', ['productos' => $productos, 'precioMin' => $precioMin, 'precioMax' => $precioMax]);
     }
 
-    public function obtenerProductosPorNombre($nombre) 
+    public function obtenerProductosPorNombre($nombre)
     {
         $modeloProducto = new ProductoModelo();
         $modeloImagen = new ImagenProductoModelo();
@@ -229,8 +229,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('fecha_creacion >=', $fechaInicio)
-                                    ->where('fecha_creacion <=', $fechaFin)
-                                    ->findAll();
+            ->where('fecha_creacion <=', $fechaFin)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -303,8 +303,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('marca', $marca)
-                                    ->findAll();
+            ->where('marca', $marca)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -329,9 +329,9 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('precio >=', $precioMin)
-                                    ->where('precio <=', $precioMax)
-                                    ->findAll();
+            ->where('precio >=', $precioMin)
+            ->where('precio <=', $precioMax)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -356,8 +356,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('stock >=', $stock)
-                                    ->findAll();
+            ->where('stock >=', $stock)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -382,9 +382,9 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('fecha_creacion >=', $fechaInicio)
-                                    ->where('fecha_creacion <=', $fechaFin)
-                                    ->findAll();
+            ->where('fecha_creacion >=', $fechaInicio)
+            ->where('fecha_creacion <=', $fechaFin)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -409,8 +409,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('calificacion >=', $calificacion)
-                                    ->findAll();
+            ->where('calificacion >=', $calificacion)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -435,8 +435,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('categoria', $categoria)
-                                    ->where('descuento >=', $descuento)
-                                    ->findAll();
+            ->where('descuento >=', $descuento)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -461,9 +461,9 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('marca', $marca)
-                                    ->where('precio >=', $precioMin)
-                                    ->where('precio <=', $precioMax)
-                                    ->findAll();
+            ->where('precio >=', $precioMin)
+            ->where('precio <=', $precioMax)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -488,8 +488,8 @@ class Productos extends BaseController
         $modeloImagen = new ImagenProductoModelo();
 
         $productos = $modeloProducto->where('marca', $marca)
-                                    ->where('stock >=', $stock)
-                                    ->findAll();
+            ->where('stock >=', $stock)
+            ->findAll();
 
         foreach ($productos as &$producto) {
             $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
@@ -506,6 +506,108 @@ class Productos extends BaseController
         unset($producto);
 
         return view('productos/marca_stock', ['productos' => $productos, 'marca' => $marca, 'stock' => $stock]);
+    }
+
+    private function obtenerProductosConTodasLasCategorias(array $idsCategorias)
+    {
+        $modeloCategoriasProductos = new CategoriasProductosModelo();
+
+        // Obtener todas las filas que tengan esas categorías
+        $asociaciones = $modeloCategoriasProductos
+            ->whereIn('id_categoria', $idsCategorias)
+            ->findAll();
+
+        // Agrupar por id_producto
+        $conteoCategorias = [];
+        foreach ($asociaciones as $fila) {
+            $productoId = $fila['id_producto'];
+            if (!isset($conteoCategorias[$productoId])) {
+                $conteoCategorias[$productoId] = [];
+            }
+            $conteoCategorias[$productoId][] = $fila['id_categoria'];
+        }
+
+        // Filtrar productos que tengan TODAS las categorías requeridas
+        $productosValidos = [];
+        foreach ($conteoCategorias as $idProducto => $cats) {
+            if (count(array_intersect($cats, $idsCategorias)) === count($idsCategorias)) {
+                $productosValidos[] = $idProducto;
+            }
+        }
+
+        if (empty($productosValidos)) {
+            return [];
+        }
+
+        $modeloProducto = new ProductoModelo();
+        return $modeloProducto
+            ->whereIn('id_producto', $productosValidos)
+            ->asArray()
+            ->findAll();
+    }
+    public function obtenerProductosPorFiltros($categoriaPrincipal, array $filtrosSubcategorias = [], $precioMin = null, $precioMax = null)
+    {
+        $modeloProducto = new ProductoModelo();
+        $modeloCategoria = new CategoriaModelo();
+        $modeloCategoriasProductos = new CategoriasProductosModelo();
+        $modeloImagen = new ImagenProductoModelo();
+
+        $categoriaIds = [];
+
+        // ID de categoría principal
+        $catPrincipal = $modeloCategoria->where('nombre', $categoriaPrincipal)->first();
+        if (!$catPrincipal) {
+            return [];
+        }
+        $categoriaIds[] = $catPrincipal['id_categoria'];
+
+        // IDs de subcategorías (filtros)
+        foreach ($filtrosSubcategorias as $nombreFiltro) {
+            $catFiltro = $modeloCategoria->where('nombre', $nombreFiltro)->first();
+            if ($catFiltro) {
+                $categoriaIds[] = $catFiltro['id_categoria'];
+            }
+        }
+        if (!empty($filtrosSubcategorias) && count($categoriaIds) === 1) {
+            // Solo está la categoría principal, no se encontraron subcategorías válidas
+            return [];
+        }
+
+        // Buscar productos que tengan TODAS esas categorías
+        $productosFiltrados = $this->obtenerProductosConTodasLasCategorias($categoriaIds);
+
+        // Filtros por precio
+        if ($precioMin !== null) {
+            $productosFiltrados = array_filter($productosFiltrados, fn($p) => $p['precio'] >= $precioMin);
+        }
+        if ($precioMax !== null) {
+            $productosFiltrados = array_filter($productosFiltrados, fn($p) => $p['precio'] <= $precioMax);
+        }
+
+        // Agregar imágenes
+        foreach ($productosFiltrados as &$producto) {
+            $producto['imagenes'] = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
+            $producto['imagen'] = $this->obtenerImagenPrincipalDelProducto($producto['id_producto']);
+        }
+
+        return array_values($productosFiltrados);
+    }
+    public function filtrarProductosAjax()
+    {
+        $data = $this->request->getJSON(true);
+
+        $categoria = $data['categoria'] ?? '';
+        $filtros = $data['filtros'] ?? [];
+        $precioMin = $data['precio_min'] ?? null;
+        $precioMax = $data['precio_max'] ?? null;
+
+        $productos = $this->obtenerProductosPorFiltros($categoria, $filtros, $precioMin, $precioMax);
+
+        if (empty($productos)) {
+            return $this->response->setJSON([]);
+        }
+
+        return $this->response->setJSON($productos);
     }
 
 }

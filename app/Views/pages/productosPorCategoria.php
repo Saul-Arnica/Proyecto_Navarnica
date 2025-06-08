@@ -15,105 +15,103 @@
 
                 <!-- Ejemplo de filtros -->
                 <div class="mb-3">
-                    <label class="form-label">Especie</label>
-                    <select class="form-select">
-                        <option>Todos</option>
-                        <option>Perros</option>
-                        <option>Gatos</option>
-                        <option>Peces</option>
-                        <option>Otros</option>
-                    </select>
+                    <label class="form-label">Perros</label>
+                    <input type="checkbox" name="filtros[]" value="Perros">
+
+                    <label class="form-label">Gatos</label>
+                    <input type="checkbox" name="filtros[]" value="Gatos">
+
+                    <label class="form-label">Peces</label>
+                    <input type="checkbox" name="filtros[]" value="Peces">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Precio</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" name="precio_min" placeholder="Mínimo" min="0">
+                        <input type="number" class="form-control" name="precio_min" placeholder="Mínimo" min="0"
+                            id="precioMin">
                         <span class="input-group-text">-</span>
-                        <input type="number" class="form-control" name="precio_max" placeholder="Máximo" min="0">
+                        <input type="number" class="form-control" name="precio_max" placeholder="Máximo" min="0"
+                            id="precioMax">
                     </div>
                 </div>
 
-                <button class="btn btn-primary mt-2 w-100">Aplicar</button>
+                <button class="btn btn-primary mt-2 w-100" id="btnAplicarFiltros">Aplicar</button>
             </div>
         </aside>
 
         <!-- Productos -->
         <div class="col-md-10">
-            <div class="row g-3">
-
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100">
-                        <img src="public/assets/img/sergio.jpg" class="card-img-top" alt="prueba">
-                        <div class="card-body">
-                            <h5 class="card-title">prueba</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="card-text">Stock: 4</p>
-                            <p class="card-text">$200</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-3" id="contenedorProductos">
+                <!-- Aquí se insertarán las cards con JS -->
             </div>
         </div>
     </div>
     <script>
-        const products = <?= json_encode($productos) ?>;
+        const productos = <?= json_encode($productos) ?>;
+
+        renderizarProductos(productos);
+
+        document.getElementById('btnAplicarFiltros').addEventListener('click', async () => {
+            const categoria = "Mascotas"; // Podés ponerla dinámica si querés
+            const filtros = Array.from(document.querySelectorAll('input[name="filtros[]"]:checked')).map(cb => cb.value);
+            const precioMin = document.getElementById('precioMin').value || null;
+            const precioMax = document.getElementById('precioMax').value || null;
+
+            const response = await fetch('<?= base_url('api/filtrar-productos') ?>', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    categoria,
+                    filtros,
+                    precio_min: precioMin,
+                    precio_max: precioMax
+                })
+            });
+
+            if (!response.ok) {
+                const texto = await response.text();
+                console.error("Error del servidor:", texto);
+                return;
+            }
+            
+            const productos = await response.json();
+
+            renderizarProductos(productos);
+            console.log(productos);
+        });
+
+        function renderizarProductos(productos) {
+            const contenedor = document.getElementById('contenedorProductos');
+            contenedor.innerHTML = ''; // Limpia los productos actuales
+
+            if (productos.length === 0) {
+                contenedor.innerHTML = '<p>No se encontraron productos.</p>';
+                return;
+            }
+
+
+
+            productos.forEach(prod => {
+                contenedor.innerHTML += `
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="${prod.imagen ?? 'ruta/por_defecto.jpg'}" class="card-img-top" alt="${prod.nombre}">
+                    <div class="card-body">
+                        <h5 class="card-title">${prod.nombre}</h5>
+                        <p class="card-text">${prod.descripcion}</p>
+                        <p class="card-text">Stock: ${prod.stock}</p>
+                        <p class="card-text">$${prod.precio}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+        }
+
+
+        
         console.log(products);
     </script>
 </div>

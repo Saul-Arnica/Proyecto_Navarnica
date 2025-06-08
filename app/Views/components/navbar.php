@@ -36,7 +36,7 @@ $actualMethod = service('router')->methodName();
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link  <?= ($actualMethod === 'catalogoProductos') ? 'active text-success' : '' ?>"
+                    <a class="nav-link  <?= ($actualMethod === 'catalogoProductos' || strpos($actualMethod, 'productosPorCategoria') !== false) ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
                 </li>
                 <li class="nav-item">
