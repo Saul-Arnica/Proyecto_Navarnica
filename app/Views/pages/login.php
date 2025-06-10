@@ -1,0 +1,35 @@
+<section class="container py-4">
+    <div class="row justify-content-center h-100 pb-4">
+        <img src="public/assets/img/logo.png" alt="Logo" class="rounded mx-auto d-block img-login">
+    </div>
+    <div class="row justify-content-center h-100">
+        <div class="col-sm-8 col-md-6 rounded">
+            <div class="row">
+                <div class="col-sm-10 col-md-12">
+                    <form action="" method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="perfil">
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                            <input type="text" name="usuario" class="form-control" placeholder="Correo electronico"
+                                aria-label="Email" aria-describedby="Email" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="password">
+                                <i class="bi bi-lock-fill"></i>
+                            </span>
+                            <input type="password" name="password" class="form-control" placeholder="Contraseña"
+                                aria-label="Password" aria-describedby="Password" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary btn-sm" type="submit">
+                                Ingresar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

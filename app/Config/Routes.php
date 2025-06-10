@@ -13,9 +13,11 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
+$routes->get('/login', 'Home::login');
 
 // Rutas de las categorías
 $routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
+$routes->get('/producto', 'Home::producto');
 
 //$routes->get('/productos', 'Home::productosPorCategoria');
 
@@ -26,4 +28,3 @@ $routes->post('api/filtrar-productos', 'Productos::filtrarProductosAjax');
 
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');
-

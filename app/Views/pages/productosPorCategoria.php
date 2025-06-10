@@ -13,16 +13,9 @@
             <div class="bg-light p-3 rounded shadow-sm">
                 <h5 class="mb-3">Filtros</h5>
 
-                <!-- Ejemplo de filtros -->
-                <div class="mb-3">
-                    <label class="form-label">Perros</label>
-                    <input type="checkbox" name="filtros[]" value="Perros">
-
-                    <label class="form-label">Gatos</label>
-                    <input type="checkbox" name="filtros[]" value="Gatos">
-
-                    <label class="form-label">Peces</label>
-                    <input type="checkbox" name="filtros[]" value="Peces">
+                <!-- Contenedor dinámico de filtros -->
+                <div class="mb-3" id="contenedorFiltrosCheckboxes">
+                    <!-- Aquí se cargarán los checkboxes dinámicamente con JS -->
                 </div>
 
                 <div class="mb-3">
@@ -49,12 +42,39 @@
         </div>
     </div>
     <script>
+
+        const filtrosPorCategoria = {
+            Mascotas: ['Perros', 'Gatos', 'Peces'],
+            Campo: ['Semillas', 'Fertilizantes', 'Herramientas'],
+            Insumos: ['Papelería', 'Limpieza', 'Tecnología']
+        };
+
         const productos = <?= json_encode($productos) ?>;
+        const categoriaPrincipal = "<?= $categoria ?>";
+
+        renderizarFiltros(categoriaPrincipal);
 
         renderizarProductos(productos);
 
+
+        function renderizarFiltros(categoria) {
+            const filtros = filtrosPorCategoria[categoria] || [];
+            const contenedor = document.getElementById('contenedorFiltrosCheckboxes');
+            contenedor.innerHTML = '';
+
+            filtros.forEach(filtro => {
+                const id = `filtro_${filtro}`;
+                contenedor.innerHTML += `
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="filtros[]" value="${filtro}" id="${id}">
+                <label class="form-check-label" for="${id}">${filtro}</label>
+            </div>
+        `;
+            });
+        }
+
         document.getElementById('btnAplicarFiltros').addEventListener('click', async () => {
-            const categoria = "Mascotas"; // Podés ponerla dinámica si querés
+            const categoria = categoriaPrincipal; // Podés ponerla dinámica si querés
             const filtros = Array.from(document.querySelectorAll('input[name="filtros[]"]:checked')).map(cb => cb.value);
             const precioMin = document.getElementById('precioMin').value || null;
             const precioMax = document.getElementById('precioMax').value || null;
@@ -75,7 +95,7 @@
                 console.error("Error del servidor:", texto);
                 return;
             }
-            
+
             const productos = await response.json();
 
             renderizarProductos(productos);
@@ -95,23 +115,25 @@
 
             productos.forEach(prod => {
                 contenedor.innerHTML += `
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card h-100">
-                    <img src="${prod.imagen ?? 'ruta/por_defecto.jpg'}" class="card-img-top" alt="${prod.nombre}">
-                    <div class="card-body">
-                        <h5 class="card-title">${prod.nombre}</h5>
-                        <p class="card-text">${prod.descripcion}</p>
-                        <p class="card-text">Stock: ${prod.stock}</p>
-                        <p class="card-text">$${prod.precio}</p>
+                
+                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                        <a href="<?= base_url('producto?id=')?>${prod.id_producto}" class="text-decoration-none">
+                            <div class="card h-100">
+                                <img src="${prod.imagen ?? 'ruta/por_defecto.jpg'}" class="card-img-top" alt="${prod.nombre}">
+                                <div class="card-body">
+                                <h5 class="card-title">${prod.nombre}</h5>
+                                <p class="card-text">${prod.descripcion}</p>
+                                <p class="card-text">Stock: ${prod.stock}</p>
+                                <p class="card-text">$${prod.precio}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            </div>
-        `;
+                
+                `;
             });
         }
 
-
-        
         console.log(products);
     </script>
 </div>

@@ -79,7 +79,7 @@ class Productos extends BaseController
         $producto['imagenes'] = $modeloImagen->where('id_producto', $id)->findAll();
         $producto['imagen'] = $this->obtenerImagenPrincipalDelProducto($id);
 
-        return view('productos/detalle', ['producto' => $producto]);
+        return $producto;
     }
 
     public function obtenerProductosPorCategoria($categoriaSolicitud)//listo
@@ -545,7 +545,7 @@ class Productos extends BaseController
             ->asArray()
             ->findAll();
     }
-    public function obtenerProductosPorFiltros($categoriaPrincipal, array $filtrosSubcategorias = [], $precioMin = null, $precioMax = null)
+    public function obtenerProductosPorFiltros($categoriaPrincipal, array $filtrosSubcategorias = [], $precioMin = null, $precioMax = null): array
     {
         $modeloProducto = new ProductoModelo();
         $modeloCategoria = new CategoriaModelo();

@@ -67,12 +67,38 @@ class Home extends BaseController
         $categoria = $this->request->getGet('categoria');
         $productos = $productosCategoria->obtenerProductosPorCategoria($categoria);
 
+
         $data = [
-            'productos' => $productos
+            'productos' => $productos,
+            'categoria' => $categoria
         ];
         return view('templates/main-layout', [
             'title' => $categoria . ' - Navarnica',
             'content' => view('pages/productosPorCategoria', $data)
+        ]);
+    }
+
+    public function producto(): string
+    {
+        $producto = new \App\Controllers\Productos();
+        $id = $this->request->getGet('id');
+        $producto = $producto->obtenerProductoPorId($id);
+
+        $data = [
+            'producto' => $producto
+        ];
+        return view('templates/main-layout', [
+            'title' => $producto['nombre'],
+            'content' => view('pages/producto', $data)
+        ]);
+    }
+    
+    public function login(): string
+    {
+
+        return view('templates/main-layout', [
+            'title' => 'Login - Navarnica',
+            'content' => view('pages/login')
         ]);
     }
 }
