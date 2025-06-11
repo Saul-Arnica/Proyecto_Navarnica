@@ -5,7 +5,7 @@ use App\Models\UsuarioModelo;
 
 class InicioSesion extends BaseController
 {
-    public function inicioDeSesion()
+    public function login()
     {
         $usuarioModelo = new UsuarioModelo();
 
@@ -19,7 +19,10 @@ class InicioSesion extends BaseController
 
             if (!$this->validate($reglas)) {
                 session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
-                return view('inicio_sesion/index');
+                return view('templates/main-layout', [
+                    'title' => 'Login - Navarnica',
+                    'content' => view('pages/login')
+                ]);
             }
 
             // Obtener datos del formulario
@@ -53,10 +56,16 @@ class InicioSesion extends BaseController
             } else {
                 // Credenciales incorrectas
                 session()->setFlashdata('error', 'Email o contraseña incorrectos.');
-                return view('inicio_sesion/index');
+                return view('templates/main-layout', [
+                    'title' => 'Login - Navarnica',
+                    'content' => view('pages/login')
+                    ]);
             }
         }
 
-        return view('inicio_sesion/index');
+        return view('templates/main-layout', [
+            'title' => 'Login - Navarnica',
+            'content' => view('pages/login')
+        ]);
     }
 }

@@ -25,6 +25,6 @@ $routes->get('/producto', 'Home::producto');
 $routes->post('api/filtrar-productos', 'Productos::filtrarProductosAjax');
 
 //Rutas para inicio de sesión
-
+$routes->post('/login', 'InicioSesion::login');
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');
