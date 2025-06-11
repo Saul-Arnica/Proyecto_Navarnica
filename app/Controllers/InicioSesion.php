@@ -20,7 +20,7 @@ class InicioSesion extends BaseController
         // Validación de formulario
         if ($this->request->getMethod() === 'POST') {
             // Reglas de validación
-            
+
             if (!$validation->withRequest($this->request)->run()) {
                 return redirect()->back()->withInput()->with('errors', $validation->getErrors());
             }
@@ -59,7 +59,7 @@ class InicioSesion extends BaseController
                 return view('templates/main-layout', [
                     'title' => 'Login - Navarnica',
                     'content' => view('pages/login')
-                    ]);
+                ]);
             }
         }
 

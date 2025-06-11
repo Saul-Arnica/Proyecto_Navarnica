@@ -92,6 +92,4 @@ class Home extends BaseController
             'content' => view('pages/producto', $data)
         ]);
     }
-
-    
 }

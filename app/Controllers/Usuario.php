@@ -2,9 +2,9 @@
 namespace App\Controllers;
 use App\Models\UsuarioModelo;
 
-class RegistroUsuario extends BaseController
+class Usuario extends BaseController
 {
-    public function registrar()
+    public function altaUsuario()
     {
         $usuarioModelo = new UsuarioModelo();
 
