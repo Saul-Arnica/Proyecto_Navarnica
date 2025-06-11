@@ -15,7 +15,7 @@ class Contacto extends BaseController
     public function enviar()
     {
         // Validación (opcional)
-        $validation = \Config\Services::validation();
+        $validation = Services::validation();
 
         $validation->setRules([
             'nombre'  => 'required|min_length[3]',

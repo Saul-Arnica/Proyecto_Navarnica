@@ -92,13 +92,6 @@ class Home extends BaseController
             'content' => view('pages/producto', $data)
         ]);
     }
-    
-    public function login(): string
-    {
 
-        return view('templates/main-layout', [
-            'title' => 'Login - Navarnica',
-            'content' => view('pages/login')
-        ]);
-    }
+    
 }

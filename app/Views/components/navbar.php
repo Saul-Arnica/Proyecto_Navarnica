@@ -43,7 +43,7 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
                 </li>
-                
+
             </ul>
         </div>
     </div>
