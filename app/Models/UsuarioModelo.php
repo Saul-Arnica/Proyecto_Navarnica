@@ -28,11 +28,7 @@ class UsuarioModelo extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules = [
-        'nombre'   => 'required|min_length[3]|max_length[50]',
-        'email'    => 'required|valid_email|is_unique[usuarios.email]',
-        'password' => 'required|min_length[8]',
-    ];
+    protected $validationRules = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

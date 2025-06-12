@@ -609,5 +609,16 @@ class Productos extends BaseController
 
         return $this->response->setJSON($productos);
     }
+    public function altaProducto() 
+    {
 
+    }
+    public function bajaProducto() 
+    {
+
+    }
+    public function modificacionProducto() 
+    {
+
+    }
 }

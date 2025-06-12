@@ -62,6 +62,22 @@ class Validation extends BaseConfig
             ],
         ];
 
+        public $inicioSesion = [
+            'email' => [
+                'rules' => 'required|valid_email',
+                'errors' => [
+                    'required' => 'El email es obligatorio.',
+                    'valid_email' => 'El email no es válido.'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'La contraseña es obligatoria.'
+                ]
+            ]
+        ];
+
         
     // --------------------------------------------------------------------
     // Rules
