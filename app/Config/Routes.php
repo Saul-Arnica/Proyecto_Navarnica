@@ -13,7 +13,7 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
-$routes->get('/login', 'Home::login');
+//$routes->get('/login', 'Home::login');
 
 $routes->get('/admin/gestion', 'Administrador::gestion');
 

@@ -1,4 +1,6 @@
 <section class="container py-3">
+    <?php $producto['stock'] = 1 ?>
+
     <div id="carouselExampleIndicators" class="carousel slide w-75 mx-auto" style="max-height: 400px;">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"

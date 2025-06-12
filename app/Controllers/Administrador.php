@@ -19,8 +19,8 @@ class Administrador extends BaseController
         $usuarios = $usuarioModelo->findAll();
 
         return view('templates/main-layout', [
-            'title' => 'Gestión - Navarnica',
-            'content' => view('pages/gestionAdministrador', ['usuarios' => $usuarios])
-        ]);
+                    'title' => 'Gestión del Administrador - Navarnica',
+                    'content' => view('pages/gestionAdministrador')
+            ]);
     }
 }

@@ -4,13 +4,13 @@ use App\Models\UsuarioModelo;
 
 class Usuario extends BaseController
 {
-    public function altaUsuario()
+    public function altaUsuario($tipoUsuario) //string
     {
         $usuarioModelo = new UsuarioModelo();
 
-        switch($this->request->getMethod()) {
-            case 'Administrador':
-                if ($this->request->getMethod() === 'post') {
+        switch($tipoUsuario) {
+            case 'admin':
+                if ($this->request->getMethod() === 'POST') {
                     // Reglas de validación
                     $reglas = [
                         'nombre' => 'required|min_length[3]|max_length[50]',
@@ -29,7 +29,7 @@ class Usuario extends BaseController
                         'nombre' => $this->request->getPost('nombre'),
                         'email' => $this->request->getPost('email'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'tipo' => 'admin'
+                        'tipo_usuario' => 'admin'
                     ];
 
                     // Guardar usuario en la base de datos
@@ -41,9 +41,9 @@ class Usuario extends BaseController
                     }
                 }
                                                         break;
-            case 'Veterinario':
+            case 'empleado':
                 
-                if ($this->request->getMethod() === 'post') {
+                if ($this->request->getMethod() === 'POST') {
                     // Reglas de validación
                     $reglas = [
                         'nombre' => 'required|min_length[3]|max_length[50]',
@@ -60,9 +60,12 @@ class Usuario extends BaseController
                     // Obtener datos del formulario
                     $datos = [
                         'nombre' => $this->request->getPost('nombre'),
+                        'apellido' => $this->request->getPost('apellido'),
+                        'telefono' => $this->request->getPost('telefono'),
+                        'direccion' => $this->request->getPost('direccion'),
                         'email' => $this->request->getPost('email'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'tipo' => 'cliente'
+                        'tipo_usuario' => 'cliente'
                     ];
 
                     // Guardar usuario en la base de datos
@@ -74,9 +77,9 @@ class Usuario extends BaseController
                     }
                 }
                                                         break;              
-            case 'Cliente':
+            case 'cliente':
 
-                if ($this->request->getMethod() === 'post') {
+                if ($this->request->getMethod() === 'POST') {
                     // Reglas de validación
                     $reglas = [
                         'nombre' => 'required|min_length[3]|max_length[50]',
@@ -95,7 +98,7 @@ class Usuario extends BaseController
                         'nombre' => $this->request->getPost('nombre'),
                         'email' => $this->request->getPost('email'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'tipo' => 'cliente'
+                        'tipo_usuario' => 'cliente'
                     ];
 
                     // Guardar usuario en la base de datos

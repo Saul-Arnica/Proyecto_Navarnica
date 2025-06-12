@@ -47,7 +47,12 @@ class InicioSesion extends BaseController
                     case 'cliente':
                         return redirect()->to('/cliente/dashboard');
                     case 'admin':
-                        return redirect()->to('/admin/gestion');
+                        //return redirect()->to('/');
+                        return view('templates/main-layout', [
+                            'title' => 'Gestión del Administrador - Navarnica',
+                            'content' => view('pages/gestionAdministrador')
+                        ]);
+                        
                     default:
                         session()->destroy();
                         session()->setFlashdata('error', 'Tipo de usuario no reconocido.');

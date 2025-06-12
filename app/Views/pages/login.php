@@ -6,17 +6,11 @@
         <div class="col-sm-8 col-md-6 rounded">
             <div class="row">
                 <div class="col-sm-10 col-md-12">
-                    <?php if (session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('success') ?>
-                        </div>
-                    <?php endif; ?>
-
                     <?php if (session()->get('errors')): ?>
                         <div class="alert alert-danger" role="alert">
                             <ul class="mb-0">
                                 <?php foreach (session()->get('errors') as $error): ?>
-                                        <li><?= esc($error) ?></li>
+                                    <li><?= esc($error) ?></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
