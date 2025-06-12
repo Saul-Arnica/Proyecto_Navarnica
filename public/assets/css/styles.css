@@ -202,10 +202,33 @@ p {
   backdrop-filter: blur(5px);
 }
 
-/* Login */	
+/* Login */
 .img-login {
   height: 250px;
   width: 250px;
+}
+
+/* Registro */
+.img-registro {
+  height: 170px;
+  width: 200px;
+}
+
+.registro-form {
+  background-color: #8ccbcb;
+}
+
+.boton-custom {
+  background-color: #479697;
+  border-color: #8ccbcb;
+  color: #479697;
+  color: white
+}
+
+.boton-custom:hover {
+  border-color: white;
+  background-color: #378d8f;
+  color: white;
 }
 
 /* Footer */

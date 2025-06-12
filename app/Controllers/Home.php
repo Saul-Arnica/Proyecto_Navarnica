@@ -92,4 +92,13 @@ class Home extends BaseController
             'content' => view('pages/producto', $data)
         ]);
     }
+
+    public function registro(): string
+    {
+        return view('templates/main-layout', [
+            'title' => 'registro',
+            'content' => view('pages/registro')
+        ]);
+    }
+
 }

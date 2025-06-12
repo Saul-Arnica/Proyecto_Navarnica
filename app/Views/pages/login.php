@@ -31,7 +31,7 @@
                                 aria-label="Password" aria-describedby="Password" required>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-outline-primary btn-sm" type="submit">
+                            <button class="btn boton-custom btn-sm" type="submit">
                                 Ingresar
                             </button>
                         </div>
