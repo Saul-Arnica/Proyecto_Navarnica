@@ -17,6 +17,9 @@ $routes->get('/consultas', 'Home::consultas');
 
 $routes->get('/registro', 'Home::registro');
 
+//Rutas de registro de usuario
+$routes->post('/registro', 'Usuario::altaUsuario');
+
 
 $routes->get('/admin/gestion', 'Administrador::gestion');
 
