@@ -1,8 +1,8 @@
-<section class="container py-4 registro-form rounded">
-    <div class="row justify-content-center h-100 pb-4">
+<section class="container py-4 registro-form rounded h-100">
+    <div class="row justify-content-center pb-4">
         <img src="public/assets/img/logo.png" alt="Logo" class="rounded mx-auto d-block img-registro">
     </div>
-    <div class="row justify-content-center h-100">
+    <div class="row justify-content-center">
         <div class="col-sm-8 col-md-6 rounded">
             <div class="row">
                 <div class="col-sm-10 col-md-12">

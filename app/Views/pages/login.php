@@ -37,19 +37,21 @@
                         </div>
                     </form>
                     <?php if (session()->getFlashdata('error')): ?>
-                            <div class="alert alert-danger">
-                                <?= session()->getFlashdata('error') ?>
-                            </div>
+                        <div class="alert alert-danger">
+                            <?= session()->getFlashdata('error') ?>
+                        </div>
                     <?php endif; ?>
+                    <div class="text-center mt-3">
+                        <a href="<?= base_url('recuperar') ?>" class="text-decoration-none">¿Olvidaste tu
+                            contraseña?</a>
+                        <br>
+                        <a href="<?= base_url('registro') ?>" class="text-decoration-none">¿Usuario nuevo?
+                            Registrate</a>
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
-
-    <script>
-        const sesion = <?= json_encode(session()->get('id_usuario')) ?>;
-        console.log("ID de sesión:", sesion);
-    </script>
 
 </section>

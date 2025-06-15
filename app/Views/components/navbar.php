@@ -39,17 +39,17 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link  <?= ($actualMethod === 'catalogoProductos' || strpos($actualMethod, 'producto') !== false) ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
-                </li>
+                </li> -->
                 <?php if (session()->get('id_usuario')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('logout') ?>">Cerrar sesión</a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($actualMethod === 'login') ? 'active text-success' : '' ?>"
+                        <a class="nav-link <?= ($actualMethod === 'login') || ($actualMethod === 'registro') ? 'active text-success' : '' ?>"
                             href="<?= base_url('login') ?>">Iniciar sesión</a>
                     </li>
                 <?php endif; ?>
