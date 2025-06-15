@@ -14,7 +14,12 @@ $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
 //$routes->get('/login', 'Home::login');
+
 $routes->get('/registro', 'Home::registro');
+
+//Rutas de registro de usuario
+$routes->post('/registro', 'Usuario::altaUsuario');
+
 
 $routes->get('/admin/gestion', 'Administrador::gestion');
 

@@ -100,4 +100,5 @@ class Home extends BaseController
             'content' => view('pages/registro')
         ]);
     }
+
 }
