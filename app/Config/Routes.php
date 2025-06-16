@@ -13,13 +13,11 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
-//$routes->get('/login', 'Home::login');
-
-$routes->get('/registro', 'Home::registro');
-
-//Rutas de registro de usuario
+//Rutas de registro
 $routes->post('/registro', 'Usuario::altaUsuario');
-
+$routes->get('/registro', 'Home::registro');
+//Ruta para dar de baja un usuario
+$routes->get('/bajaUsuario', 'Usuario::bajaUsuario');
 
 $routes->get('/admin/gestion', 'Administrador::gestion');
 

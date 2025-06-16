@@ -159,7 +159,6 @@ class Usuario extends BaseController
         session()->setFlashdata('info', 'El usuario se encontro y se elimino.');
         $usuarioModelo->update($idUsuario, ['activo' => 0]); // Desactivar usuario
         return redirect()->back();
-        
     }
 
 
