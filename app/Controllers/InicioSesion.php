@@ -45,11 +45,14 @@ class InicioSesion extends BaseController
                 // Redirigir según tipo de usuario
                 switch ($usuario['tipo_usuario']) {
                     case 'cliente':
-                        return redirect()->to('/cliente/dashboard');
+                        return view('templates/main-layout', [
+                            'title' => 'Cliente - Navarnica',
+                            'content' => view('pages/Cliente', ['usuario' => $usuario])
+                        ]);
                     case 'admin':
                         //return redirect()->to('/');
                         return view('templates/main-layout', [
-                            'title' => 'Gestión del Administrador - Navarnica',
+                            'title' => 'Gestión Administrador - Navarnica',
                             'content' => view('pages/gestionAdministrador')
                         ]);
                         

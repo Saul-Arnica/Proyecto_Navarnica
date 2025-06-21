@@ -611,6 +611,36 @@ class Productos extends BaseController
     }
     public function altaProducto() 
     {
+        
+
+        if($this->request->getMethod() !== 'POST') {
+            // Manejo de error, por ejemplo, redirigir con un mensaje de error
+            session()->setFlashdata('error', 'Método no permitido');
+            return redirect()->back();
+        }
+        
+        $productoModelo = new ProductoModelo();
+        $datosProducto = [
+            'nombre' => $this->request->getPost('nombre'),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'precio' => $this->request->getPost('precio'),
+            'descuento' => $this->request->getPost('descuento'),
+            'stock' => $this->request->getPost('stock'),
+            'marca' => $this->request->getPost('marca'),
+            'destacado' => $this->request->getPost('destacado') ? 1 : 0,
+        ];
+
+        $resultado = $productoModelo->insert($datosProducto);
+
+        if($resultado === false) {
+            // Manejo de error, por ejemplo, redirigir con un mensaje de error
+            log_message('error', 'Error en insert: ' . print_r($productoModelo->errors(), true));
+            session()->setFlashdata('error', 'Error al crear el producto: ' . implode(', ', $productoModelo->errors()));
+            return redirect()->back();
+        }
+        // Si se insertó correctamente, redirigir o mostrar un mensaje de éxito
+        session()->setFlashdata('success', 'Producto creado exitosamente.');
+        return redirect()->to('/productos'); // 
 
     }
     public function bajaProducto() 

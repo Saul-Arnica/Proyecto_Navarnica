@@ -140,6 +140,7 @@ class Usuario extends BaseController
                 return redirect()->back()->with('error', 'Tipo de usuario no permitido.');
         }
     }
+
     public function bajaUsuario($idUsuario)
     {
         $usuarioModelo = new UsuarioModelo();
@@ -161,5 +162,16 @@ class Usuario extends BaseController
         return redirect()->back();
     }
 
+    public function modificacionUsuario($idUsuario)
+    {
+        $usuarioModelo = new UsuarioModelo();
+        $usuario = $usuarioModelo->find($idUsuario);
+
+        if($usuario === null) {
+            session()->setFlashdata('error', 'Usuario no encontrado.');
+            return redirect()->back();
+        }
+        
+    }
 
 }
