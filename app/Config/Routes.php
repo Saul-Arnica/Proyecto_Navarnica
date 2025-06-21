@@ -38,3 +38,6 @@ $routes->get('/logout', 'InicioSesion::logout');
 
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');
+
+// Rutas de Categorias
+$routes->get('altaCategoria', 'Home::altaCategoria');

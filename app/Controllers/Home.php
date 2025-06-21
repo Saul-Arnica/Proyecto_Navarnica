@@ -101,4 +101,12 @@ class Home extends BaseController
         ]);
     }
 
+    public function altaCategoria(): string
+    {
+        return view('templates/main-layout', [
+            'title' => 'Alta de Categoria',
+            'content' => view('pages/altaCategoria')
+        ]);
+    }
+
 }

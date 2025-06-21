@@ -222,7 +222,7 @@ p {
   background-color: #479697;
   border-color: #8ccbcb;
   color: #479697;
-  color: white
+  color: white;
 }
 
 .boton-custom:hover {
@@ -244,4 +244,25 @@ p {
 
 .footer-logo {
   max-height: 40px;
+}
+
+/* Gestion */
+.sidebar-gestion {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #343a40;
+  color: white;
+  padding-top: 60px;
+}
+.sidebar-gestion a {
+  color: white;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+.sidebar-gestion a:hover {
+  background: #495057;
 }
