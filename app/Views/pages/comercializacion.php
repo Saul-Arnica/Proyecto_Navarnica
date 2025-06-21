@@ -35,7 +35,7 @@
                 <div class="col-lg-4">
                     
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalPagos">
+                    <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalPagos">
                         <img src="public/assets/img/formadepago.png" class="logos-comercializacion logos-comercializacion-modal" alt="...">
                     </button>
 
@@ -92,7 +92,7 @@
 
                 <div class="col-lg-4">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalEnvios">
+                    <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalEnvios">
                         <img src="public/assets/img/envio.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-envio">
                     </button>
 
@@ -130,7 +130,7 @@
 
                 <div class="col-lg-4">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn boton-custom" data-bs-toggle="modal" data-bs-target="#modalSucursal">
+                    <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalSucursal">
                         <img src="public/assets/img/tienda.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-sucursal">
                     </button>
 
