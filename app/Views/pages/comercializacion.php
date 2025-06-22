@@ -89,45 +89,7 @@
                     </div>
                     <p style="text-align: center"><strong>Aceptamos todo tipo de tarjetas y efectivo</strong></p>
                 </div>
-
-                <div class="col-lg-4">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalEnvios">
-                        <img src="public/assets/img/envio.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-envio">
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modalEnvios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-3" id="exampleModalLabel">Metodos de Envio</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <ul style="text-align: left mb-2 mt-2">
-                                            <i class="bi bi-truck-front-fill text-success fs-4 "> Se hacen envios al interior mediante:</i>
-                                        
-                                            <img src="public/assets/img/Andreani.png" class="logos-comercializacion" style="max-height: 45px;" alt="logo-Andreani">
-                                        
-                                            <img src="public/assets/img/correo-oca-logo-png_seeklogo-507837.png" class="logos-comercializacion ms-2" style="max-height: 100px;"alt="logo-OCA">
-                                        
-
-                                        <p class="text-success-emphasis text-center fs-5 fw-semibold mt-1">Para envios dentro de Corrientes Capital, hay 7% de descuento por envío pagando en <strong>efectivo</strong>.</p>
-
-                                    </ul>
-                                    <p class="text-center text-muted" style="font-size: 0.9rem;">*Para que el envío sea gratis entre las 4 avenidas de Corrientes Capital, debe ser mínimo 30kg o una compra de $35.000 en adelante</p>
-
-                                </div>
-
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    <p style="text-align: center"><strong>Se envia a domicilio</strong></p>
-                </div>
-
+                
                 <div class="col-lg-4">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalSucursal">
@@ -166,6 +128,44 @@
 
                     <p class="text-center"><strong>Se puede retirar por sucursal</strong></p>
 
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalEnvios">
+                        <img src="public/assets/img/envio.png" class="logos-comercializacion logos-comercializacion-modal" alt="logo-envio">
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalEnvios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3" id="exampleModalLabel">Metodos de Envio</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul style="text-align: left mb-2 mt-2">
+                                            <i class="bi bi-truck-front-fill text-success fs-4 "> Se hacen envios al interior mediante:</i>
+                                        
+                                            <img src="public/assets/img/Andreani.png" class="logos-comercializacion" style="max-height: 45px;" alt="logo-Andreani">
+                                        
+                                            <img src="public/assets/img/correo-oca-logo-png_seeklogo-507837.png" class="logos-comercializacion ms-2" style="max-height: 100px;"alt="logo-OCA">
+                                        
+
+                                        <p class="text-success-emphasis text-center fs-5 fw-semibold mt-1">Para envios dentro de Corrientes Capital, hay 7% de descuento por envío pagando en <strong>efectivo</strong>.</p>
+
+                                    </ul>
+                                    <p class="text-center text-muted" style="font-size: 0.9rem;">*Para que el envío sea gratis entre las 4 avenidas de Corrientes Capital, debe ser mínimo 30kg o una compra de $35.000 en adelante</p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <p style="text-align: center"><strong>Se envia a domicilio</strong></p>
                 </div>
 
             </div>

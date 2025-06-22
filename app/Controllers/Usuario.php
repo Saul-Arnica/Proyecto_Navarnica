@@ -4,141 +4,138 @@ use App\Models\UsuarioModelo;
 
 class Usuario extends BaseController
 {
+    public function registroCliente()
+    {
+        
+        if ($this->request->getMethod() === 'POST') {
+            $usuarioModelo = new UsuarioModelo();
+
+                    $reglas = [
+                        'nombre' => 'required|min_length[3]|max_length[50]',
+                        'apellido' => 'required|min_length[3]|max_length[50]',
+                        'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                        'password' => 'required|min_length[6]',
+                    ];
+
+                    if (!$this->validate($reglas)) {
+                        session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
+                        return redirect()->to('/registro');
+                    }
+
+                    $datos = [
+                        'nombre' => $this->request->getPost('nombre'),
+                        'apellido' => $this->request->getPost('apellido'),
+                        'email' => $this->request->getPost('email'),
+                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                        'telefono' => $this->request->getPost('telefono'),
+                        'direccion' => $this->request->getPost('direccion'),
+                        'tipo_usuario' => 'cliente'
+                    ];
+
+                    $resultado = $usuarioModelo->insert($datos);
+
+                    if (!$resultado) {
+                        log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
+                        session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
+                        return redirect()->to('/registro');
+                    }
+
+                    session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+                    return redirect()->to('/login');
+                }
+    }
     public function altaUsuario() //string
     {
-        $usuarioModelo = new UsuarioModelo();
+        if($this->request->getMethod() === 'POST') {
 
-        $tipoUsuario = 'cliente';
+            $usuarioModelo = new UsuarioModelo();
 
-        switch($tipoUsuario) {
-            case 'admin':
-                if ($this->request->getMethod() === 'POST') {
-                    // Reglas de validación
-                    $reglas = [
-                        'nombre' => 'required|min_length[3]|max_length[50]',
-                        'email' => 'required|valid_email|is_unique[Usuarios.email]',
-                        'password' => 'required|min_length[6]',
-                        'confirm_password' => 'matches[password]'
-                    ];
+            $tipoUsuario = $this->request->getPost('tipo_usuario');
 
-                    if (!$this->validate($reglas)) {
-                        session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
-                        return redirect()->to('/registro');
-                    }
+            switch($tipoUsuario) {
+                case 'admin':
+                        $reglas = [
+                            'nombre' => 'required|min_length[3]|max_length[50]',
+                            'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                            'password' => 'required|min_length[6]',
+                            'confirm_password' => 'matches[password]'
+                        ];
 
-                    // Obtener datos del formulario
-                    $datos = [
-                        'nombre' => $this->request->getPost('nombre'),
-                        'apellido' => $this->request->getPost('apellido'),
-                        'email' => $this->request->getPost('email'),
-                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'telefono' => $this->request->getPost('telefono'),
-                        'direccion' => $this->request->getPost('direccion'),
-                        'activo' => 1, // Usuario activo por defecto
-                        'tipo_usuario' => 'admin'
-                    ];
+                        if (!$this->validate($reglas)) {
+                            session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
+                            return redirect()->to('/registro');
+                        }
 
-                    if (!$usuarioModelo->insert($datos)) {
-                        log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
-                        session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
-                    }
+                        // Obtener datos del formulario
+                        $datos = [
+                            'nombre' => $this->request->getPost('nombre'),
+                            'apellido' => $this->request->getPost('apellido'),
+                            'email' => $this->request->getPost('email'),
+                            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                            'telefono' => $this->request->getPost('telefono'),
+                            'direccion' => $this->request->getPost('direccion'),
+                            'activo' => 1, // Usuario activo por defecto
+                            'tipo_usuario' => 'admin'
+                        ];
+
+                        if (!$usuarioModelo->insert($datos)) {
+                            log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
+                            session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
+                        }
 
 
-                    // Guardar usuario en la base de datos
-                    $resultado = $usuarioModelo->insert($datos);
+                        // Guardar usuario en la base de datos
+                        $resultado = $usuarioModelo->insert($datos);
 
-                    if (!$resultado) {
-                        log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
-                        session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
-                        return redirect()->to('/registro');
-                    }
+                        if (!$resultado) {
+                            log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
+                            session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
+                            return redirect()->to('/registro');
+                        }
 
-                    session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-                    return redirect()->to('/login');
-                }
-                                                        break;
-            case 'empleado':
-                
-                if ($this->request->getMethod() === 'POST') {
-                    // Reglas de validación
-                    $reglas = [
-                        'nombre' => 'required|min_length[3]|max_length[50]',
-                        'email' => 'required|valid_email|is_unique[Usuarios.email]',
-                        'password' => 'required|min_length[6]',
-                        'confirm_password' => 'matches[password]'
-                    ];
+                        session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+                        return redirect()->to('/login');
+                                                            break;              
+                case 'cliente':
+                        $reglas = [
+                            'nombre' => 'required|min_length[3]|max_length[50]',
+                            'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                            'password' => 'required|min_length[6]',
+                        ];
 
-                    if (!$this->validate($reglas)) {
-                        session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
-                        return redirect()->to('/registro');
-                    }
+                        if (!$this->validate($reglas)) {
+                            session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
+                            return redirect()->to('/registro');
+                        }
 
-                    // Obtener datos del formulario
-                    $datos = [
-                        'nombre' => $this->request->getPost('nombre'),
-                        'apellido' => $this->request->getPost('apellido'),
-                        'email' => $this->request->getPost('email'),
-                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'telefono' => $this->request->getPost('telefono'),
-                        'direccion' => $this->request->getPost('direccion'),
-                        'activo' => 1, // Usuario activo por defecto
-                        'tipo_usuario' => 'empleado'
-                    ];
+                        $datos = [
+                            'nombre' => $this->request->getPost('nombre'),
+                            'apellido' => $this->request->getPost('apellido'),
+                            'email' => $this->request->getPost('email'),
+                            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                            'telefono' => $this->request->getPost('telefono'),
+                            'direccion' => $this->request->getPost('direccion'),
+                            'tipo_usuario' => 'cliente',
+                            'activo' => 1,
+                        ];
 
-                    // Guardar usuario en la base de datos
-                    $resultado = $usuarioModelo->insert($datos);
+                        $resultado = $usuarioModelo->insert($datos);
 
-                    if (!$resultado) {
-                        log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
-                        session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
-                        return redirect()->to('/registro');
-                    }
+                        if (!$resultado) {
+                            log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
+                            session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
+                            return redirect()->to('/registro');
+                        }
 
-                    session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-                    return redirect()->to('/login');
-                }
-                                                        break;              
-            case 'cliente':
-
-                if ($this->request->getMethod() === 'POST') {
-                    $reglas = [
-                        'nombre' => 'required|min_length[3]|max_length[50]',
-                        'email' => 'required|valid_email|is_unique[Usuarios.email]',
-                        'password' => 'required|min_length[6]',
-                    ];
-
-                    if (!$this->validate($reglas)) {
-                        session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
-                        return redirect()->to('/registro');
-                    }
-
-                    $datos = [
-                        'nombre' => $this->request->getPost('nombre'),
-                        'apellido' => $this->request->getPost('apellido'),
-                        'email' => $this->request->getPost('email'),
-                        'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                        'telefono' => $this->request->getPost('telefono'),
-                        'direccion' => $this->request->getPost('direccion'),
-                        'tipo_usuario' => 'cliente',
-                        'activo' => 1,
-                    ];
-
-                    $resultado = $usuarioModelo->insert($datos);
-
-                    if (!$resultado) {
-                        log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
-                        session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
-                        return redirect()->to('/registro');
-                    }
-
-                    session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-                    return redirect()->to('/login');
-                }
-                                                        break;          
-            default:
-                // Método no permitido
-                return redirect()->back()->with('error', 'Tipo de usuario no permitido.');
+                        session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+                        return redirect()->to('/login');
+                                                            break;          
+                default:
+                    // Método no permitido
+                    return redirect()->back()->with('error', 'Tipo de usuario no permitido.');
+            }
         }
+
     }
 
     public function bajaUsuario($idUsuario)
@@ -152,7 +149,7 @@ class Usuario extends BaseController
         }
 
         if ((int)$usuario['activo'] === 0) {
-        session()->setFlashdata('warning', 'El usuario ya está desactivado.');
+        session()->setFlashdata('warning', 'El usuario ya ha sido eliminado.');
         return redirect()->back();
         }
 
@@ -167,11 +164,64 @@ class Usuario extends BaseController
         $usuarioModelo = new UsuarioModelo();
         $usuario = $usuarioModelo->find($idUsuario);
 
-        if($usuario === null) {
+        if ($usuario === null) {
             session()->setFlashdata('error', 'Usuario no encontrado.');
             return redirect()->back();
         }
-        
+
+        if ((int)$usuario['activo'] === 0) {
+            session()->setFlashdata('warning', 'El usuario fue eliminado.');
+            return redirect()->back();
+        }
+
+        if ($this->request->getMethod() === 'POST') {
+
+            // Reglas mínimas para validar si los campos están bien formados
+            $reglas = [
+                'nombre'    => 'permit_empty|min_length[3]|max_length[50]',
+                'apellido'  => 'permit_empty|min_length[3]|max_length[50]',
+                'email'     => "permit_empty|valid_email|is_unique[Usuarios.email,id,{$idUsuario}]",
+                'password'  => 'permit_empty|min_length[6]',
+            ];
+
+            if (!$this->validate($reglas)) {
+                session()->setFlashdata('error', 'Verifica los datos ingresados.');
+                return redirect()->back()->withInput();
+            }
+
+            $datos = [];
+
+            // Comparar campo por campo, si está presente, no vacío y diferente, agregarlo
+            $campos = ['nombre', 'apellido', 'email', 'telefono', 'direccion', 'tipo_usuario', 'activo'];
+            foreach ($campos as $campo) {
+                $nuevoValor = $this->request->getPost($campo);
+                if ($nuevoValor !== null && $nuevoValor !== '' && $nuevoValor != $usuario[$campo]) {
+                    $datos[$campo] = $nuevoValor;
+                }
+            }
+
+            $nuevaPassword = $this->request->getPost('password');
+            if (!empty($nuevaPassword)) {
+                $datos['password'] = password_hash($nuevaPassword, PASSWORD_DEFAULT);
+            }
+
+            if (empty($datos)) {
+                session()->setFlashdata('info', 'No se realizaron cambios.');
+                return redirect()->back();
+            }
+
+            if (!$usuarioModelo->update($idUsuario, $datos)) {
+                log_message('error', 'Error al actualizar usuario: ' . print_r($usuarioModelo->errors(), true));
+                session()->setFlashdata('error', 'No se pudo modificar el usuario.');
+                return redirect()->back()->withInput();
+            }
+
+            session()->setFlashdata('success', 'Usuario actualizado correctamente.');
+            return redirect()->to('/usuarios');
+        }
+
+        // En GET, mostrar el formulario con los datos actuales
+        return view('usuarios/editar', ['usuario' => $usuario]);
     }
 
 }

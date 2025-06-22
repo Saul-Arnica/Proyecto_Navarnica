@@ -643,12 +643,85 @@ class Productos extends BaseController
         return redirect()->to('/productos'); // 
 
     }
-    public function bajaProducto() 
+    public function bajaProducto($idProducto)
     {
+        $productoModelo = new ProductoModelo();
+        $producto = $productoModelo->find($idProducto);
 
+        if ($producto === null) {
+            session()->setFlashdata('error', 'Producto no encontrado.');
+            return redirect()->back();
+        }
+
+        if ((int)$producto['activo'] === 0) {
+            session()->setFlashdata('warning', 'El producto ya fue dado de baja.');
+            return redirect()->back();
+        }
+
+        if (!$productoModelo->update($idProducto, ['activo' => 0])) {
+            session()->setFlashdata('error', 'Error al dar de baja el producto.');
+            return redirect()->back();
+        }
+
+        session()->setFlashdata('success', 'Producto dado de baja correctamente.');
+        return redirect()->back();
     }
-    public function modificacionProducto() 
-    {
 
+    public function modificacionProducto($idProducto)
+    {
+        $productoModelo = new ProductoModelo();
+        $producto = $productoModelo->find($idProducto);
+
+        if ($producto === null) {
+            session()->setFlashdata('error', 'Producto no encontrado.');
+            return redirect()->back();
+        }
+
+        if ((int)$producto['activo'] === 0) {
+            session()->setFlashdata('warning', 'El producto está dado de baja y no puede modificarse.');
+            return redirect()->back();
+        }
+
+        if ($this->request->getMethod() === 'POST') {
+
+            // Reglas mínimas, sólo validamos campos que pueden cambiar
+            $reglas = [
+                'nombre' => 'permit_empty|min_length[3]|max_length[100]',
+                'descripcion' => 'permit_empty|max_length[255]',
+                'precio' => 'permit_empty|decimal',
+                'stock' => 'permit_empty|integer'
+            ];
+
+            if (!$this->validate($reglas)) {
+                session()->setFlashdata('error', 'Verifica los datos ingresados.');
+                return redirect()->back()->withInput();
+            }
+
+            $datos = [];
+            $campos = ['nombre', 'descripcion', 'precio', 'descuento', 'stock', 'marca', 'activo', 'destacado'];
+            foreach ($campos as $campo) {
+                $nuevoValor = $this->request->getPost($campo);
+                if ($nuevoValor !== null && $nuevoValor !== '' && $nuevoValor != $producto[$campo]) {
+                    $datos[$campo] = $nuevoValor;
+                }
+            }
+
+            if (empty($datos)) {
+                session()->setFlashdata('info', 'No se realizaron cambios.');
+                return redirect()->back();
+            }
+
+            if (!$productoModelo->update($idProducto, $datos)) {
+                log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
+                session()->setFlashdata('error', 'No se pudo modificar el producto.');
+                return redirect()->back()->withInput();
+            }
+
+            session()->setFlashdata('success', 'Producto modificado correctamente.');
+            return redirect()->to('/productos');
+        }
+
+        // Si es GET, cargar vista con datos actuales
+        return view('productos/editar', ['producto' => $producto]);
     }
 }
