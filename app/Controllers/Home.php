@@ -101,12 +101,11 @@ class Home extends BaseController
         ]);
     }
 
-    public function altaCategoria(): string
+    public function estamosTrabajando(): string
     {
         return view('templates/main-layout', [
-            'title' => 'Alta de Categoria',
-            'content' => view('pages/altaCategoria')
+            'title' => 'Estamos trabajando - Navarnica',
+            'content' => view('pages/paginaEnProceso')
         ]);
     }
-
 }

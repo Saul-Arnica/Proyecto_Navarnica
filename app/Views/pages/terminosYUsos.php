@@ -50,6 +50,6 @@
     <h2 class="mt-4">4. Contacto</h2>
     <p>Si tenés dudas, consultas o comentarios relacionados con estos Términos y Condiciones, o sobre cualquier aspecto
         del sitio web, podés ponerte en contacto con nosotros a través del siguiente apartado:</p>
-    <a class="btn btn-outline-primary w-100" href="<?= base_url('informacionContacto') ?>">Contactanos</a>
+    <a class="btn boton-custom w-100" href="<?= base_url('informacionContacto') ?>">Contactanos</a>
     
 </section>

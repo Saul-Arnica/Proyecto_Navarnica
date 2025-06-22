@@ -13,6 +13,8 @@ $routes->get('/informacionContacto', 'Home::informacionContacto');
 $routes->get('/terminosYUsos', 'Home::terminosYUsos');
 $routes->get('/catalogoProductos', 'Home::catalogoProductos');
 $routes->get('/consultas', 'Home::consultas');
+
+
 //Rutas de registro
 $routes->post('/registro', 'Usuario::altaUsuario');
 $routes->get('/registro', 'Home::registro');
@@ -32,6 +34,7 @@ $routes->post('api/filtrar-productos', 'Productos::filtrarProductosAjax');
 
 //Rutas para inicio de sesión
 $routes->match(['get', 'post'], '/login', 'InicioSesion::login');
+$routes->get('/recuperar', 'Home::estamosTrabajando');
 
 $routes->post('/logout', 'InicioSesion::logout');
 $routes->get('/logout', 'InicioSesion::logout');
@@ -39,5 +42,9 @@ $routes->get('/logout', 'InicioSesion::logout');
 //Rutas de contacto
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');
 
-// Rutas de Categorias
-$routes->get('altaCategoria', 'Home::altaCategoria');
+// Rutas de Gestion
+$routes->get('gestion/dashboard', 'Gestion::gestion');
+$routes->get('gestion/productos', 'Gestion::productos');
+$routes->get('gestion/categorias', 'Gestion::categorias');
+$routes->get('gestion/usuarios', 'Gestion::usuarios');
+$routes->get('gestion/consultas', 'Gestion::consultas');

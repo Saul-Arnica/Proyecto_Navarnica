@@ -247,22 +247,16 @@ p {
 }
 
 /* Gestion */
-.sidebar-gestion {
-  width: 250px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: #343a40;
-  color: white;
-  padding-top: 60px;
+.sidebar-custom {
+  background-color: #3b9c9c;
+  width: 220px;
+  z-index: 1030;
 }
-.sidebar-gestion a {
-  color: white;
-  display: block;
-  padding: 12px;
-  text-decoration: none;
+
+.body-gestion{
+  padding-top: 51px;
 }
-.sidebar-gestion a:hover {
-  background: #495057;
+
+.contenido-gestion{
+  margin-left: 220px;
 }
