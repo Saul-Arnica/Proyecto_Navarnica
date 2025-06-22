@@ -89,7 +89,6 @@
                     </div>
                     <p style="text-align: center"><strong>Aceptamos todo tipo de tarjetas y efectivo</strong></p>
                 </div>
-
                 <div class="col-lg-4">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn boton-custom-comercializacion" data-bs-toggle="modal" data-bs-target="#modalSucursal">

@@ -41,6 +41,11 @@
                             <?= session()->getFlashdata('error') ?>
                         </div>
                     <?php endif; ?>
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success">
+                            <?= session()->getFlashdata('success') ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="text-center mt-3">
                         <a href="<?= base_url('recuperar') ?>" class="text-decoration-none">¿Olvidaste tu
                             contraseña?</a>

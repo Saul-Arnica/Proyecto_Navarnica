@@ -46,11 +46,18 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="email">
-                                <i class="bi bi-person-fill"></i>
+                                <i class="bi bi-envelope-at-fill"></i>
                             </span>
                             <input type="text" name="email" class="form-control" placeholder="Correo electronico"
                                 aria-label="Email" aria-describedby="Email" required>
                         </div>
+                        <div class="input-group mb-3">
+                                    <span class="input-group-text" id="dni">
+                                        <i class="bi bi-person-fill"></i>
+                                    </span>
+                                    <input type="number" name="dni" class="form-control" placeholder="DNI"
+                                        aria-label="DNI" aria-describedby="DNI">
+                                </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="password">
                                 <i class="bi bi-lock-fill"></i>
@@ -62,7 +69,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="telefono">
-                                        <i class="bi bi-person-fill"></i>
+                                        <i class="bi bi-telephone-fill"></i>
                                     </span>
                                     <input type="text" name="telefono" class="form-control" placeholder="Telefono"
                                         aria-label="Telefono" aria-describedby="Telefono">
@@ -71,7 +78,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="direccion">
-                                        <i class="bi bi-person-fill"></i>
+                                        <i class="bi bi-house-door-fill"></i>
                                     </span>
                                     <input type="text" name="direccion" class="form-control" placeholder="Direccion"
                                         aria-label="Direccion" aria-describedby="Direccion">
@@ -88,29 +95,6 @@
 
             </div>
         </div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
 
-        function obtenerDatosFormulario(formId) {
-            const formulario = document.getElementById(formId);
-            const datos = {};
-
-            Array.from(formulario.elements).forEach(elemento => {
-                if (elemento.name && elemento.type !== 'submit' && elemento.type !== 'button') {
-                    datos[elemento.name] = elemento.value;
-                }
-            });
-
-            console.log("Datos del formulario:", datos);
-            return datos;
-        }
-
-        const formulario = document.getElementById('formularioCliente');
-        formulario.addEventListener('submit', function (e) {
-            //e.preventDefault(); // ← IMPORTANTE: prevenir el envío real
-            obtenerDatosFormulario('formularioCliente');
-        });
-
-    });
-    </script>
+    </div>
 </section>

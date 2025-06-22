@@ -44,7 +44,7 @@ class Productos extends BaseController
 
         unset($producto); // Limpiamos referencia
 
-        return view('productos/index', ['productos' => $productos]);
+        return $productos;
     }
 
     public function obtenerProductosDestacados()//listo
@@ -129,52 +129,6 @@ class Productos extends BaseController
         ]);
     }
 
-    public function obtenerProductosPorMarca($marca)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('marca', $marca)->findAll();
-
-        foreach ($productos as &$producto) {
-            $producto['imagenes'] = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagen'] = $this->obtenerImagenPrincipalDelProducto($producto['id_producto']);
-        }
-
-        unset($producto);
-
-        return view('productos/marca', [
-            'productos' => $productos,
-            'marca' => $marca
-        ]);
-    }
-
-    public function obtenerProductosPorPrecio($precioMin, $precioMax)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('precio >=', $precioMin)
-            ->where('precio <=', $precioMax)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/precio', ['productos' => $productos, 'precioMin' => $precioMin, 'precioMax' => $precioMax]);
-    }
-
     public function obtenerProductosPorNombre($nombre)
     {
         $modeloProducto = new ProductoModelo();
@@ -196,317 +150,9 @@ class Productos extends BaseController
 
         unset($producto);
 
-        return view('productos/nombre', ['productos' => $productos, 'nombre' => $nombre]);
+        return $productos;
     }
 
-    public function obtenerProductosPorStock($stock)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('stock >=', $stock)->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/stock', ['productos' => $productos, 'stock' => $stock]);
-    }
-
-    public function obtenerProductosPorFecha($fechaInicio, $fechaFin) //no
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('fecha_creacion >=', $fechaInicio)
-            ->where('fecha_creacion <=', $fechaFin)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/fecha', ['productos' => $productos, 'fechaInicio' => $fechaInicio, 'fechaFin' => $fechaFin]);
-    }
-
-    public function obtenerProductosPorCalificacion($calificacion)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('calificacion >=', $calificacion)->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/calificacion', ['productos' => $productos, 'calificacion' => $calificacion]);
-    }
-
-    public function obtenerProductosPorDescuento($descuento) //capaz usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('descuento >=', $descuento)->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/descuento', ['productos' => $productos, 'descuento' => $descuento]);
-    }
-
-    public function obtenerProductosPorCategoriaYMarca($categoria, $marca)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('marca', $marca)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_marca', ['productos' => $productos, 'categoria' => $categoria, 'marca' => $marca]);
-    }
-
-    public function obtenerProductosPorCategoriaYPrecio($categoria, $precioMin, $precioMax)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('precio >=', $precioMin)
-            ->where('precio <=', $precioMax)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_precio', ['productos' => $productos, 'categoria' => $categoria, 'precioMin' => $precioMin, 'precioMax' => $precioMax]);
-    }
-
-    public function obtenerProductosPorCategoriaYStock($categoria, $stock) //seguro usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('stock >=', $stock)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_stock', ['productos' => $productos, 'categoria' => $categoria, 'stock' => $stock]);
-    }
-
-    public function obtenerProductosPorCategoriaYFecha($categoria, $fechaInicio, $fechaFin) //capaz capaz usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('fecha_creacion >=', $fechaInicio)
-            ->where('fecha_creacion <=', $fechaFin)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_fecha', ['productos' => $productos, 'categoria' => $categoria, 'fechaInicio' => $fechaInicio, 'fechaFin' => $fechaFin]);
-    }
-
-    public function obtenerProductosPorCategoriaYCalificacion($categoria, $calificacion) //capaz usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('calificacion >=', $calificacion)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_calificacion', ['productos' => $productos, 'categoria' => $categoria, 'calificacion' => $calificacion]);
-    }
-
-    public function obtenerProductosPorCategoriaYDescuento($categoria, $descuento) //capaz usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('categoria', $categoria)
-            ->where('descuento >=', $descuento)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/categoria_descuento', ['productos' => $productos, 'categoria' => $categoria, 'descuento' => $descuento]);
-    }
-
-    public function obtenerProductosPorMarcaYPrecio($marca, $precioMin, $precioMax) //capaz usamos
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('marca', $marca)
-            ->where('precio >=', $precioMin)
-            ->where('precio <=', $precioMax)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/marca_precio', ['productos' => $productos, 'marca' => $marca, 'precioMin' => $precioMin, 'precioMax' => $precioMax]);
-    }
-
-    public function obtenerProductosPorMarcaYStock($marca, $stock)
-    {
-        $modeloProducto = new ProductoModelo();
-        $modeloImagen = new ImagenProductoModelo();
-
-        $productos = $modeloProducto->where('marca', $marca)
-            ->where('stock >=', $stock)
-            ->findAll();
-
-        foreach ($productos as &$producto) {
-            $imagenes = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
-            $producto['imagenes'] = $imagenes;
-
-            // Armamos la ruta completa para la primera imagen (si existe)
-            if (!empty($imagenes)) {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen']);
-            } else {
-                $producto['imagen'] = base_url('public/assets/img/img_Productos/default.png'); // opcional
-            }
-        }
-
-        unset($producto);
-
-        return view('productos/marca_stock', ['productos' => $productos, 'marca' => $marca, 'stock' => $stock]);
-    }
 
     private function obtenerProductosConTodasLasCategorias(array $idsCategorias)
     {
@@ -545,6 +191,7 @@ class Productos extends BaseController
             ->asArray()
             ->findAll();
     }
+
     public function obtenerProductosPorFiltros($categoriaPrincipal, array $filtrosSubcategorias = [], $precioMin = null, $precioMax = null): array
     {
         $modeloProducto = new ProductoModelo();
@@ -609,16 +256,119 @@ class Productos extends BaseController
 
         return $this->response->setJSON($productos);
     }
+
     public function altaProducto() 
     {
+        
+        if($this->request->getMethod() !== 'POST') {
+            // Manejo de error, por ejemplo, redirigir con un mensaje de error
+            session()->setFlashdata('error', 'Método no permitido');
+            return redirect()->back();
+        }
+        
+        $productoModelo = new ProductoModelo();
+        $datosProducto = [
+            'nombre' => $this->request->getPost('nombre'),
+            'descripcion' => $this->request->getPost('descripcion'),
+            'precio' => $this->request->getPost('precio'),
+            'descuento' => $this->request->getPost('descuento'),
+            'stock' => $this->request->getPost('stock'),
+            'marca' => $this->request->getPost('marca'),
+            'destacado' => $this->request->getPost('destacado') ? 1 : 0,
+        ];
+
+        $resultado = $productoModelo->insert($datosProducto);
+
+        if($resultado === false) {
+            // Manejo de error, por ejemplo, redirigir con un mensaje de error
+            log_message('error', 'Error en insert: ' . print_r($productoModelo->errors(), true));
+            session()->setFlashdata('error', 'Error al crear el producto: ' . implode(', ', $productoModelo->errors()));
+            return redirect()->back();
+        }
+        // Si se insertó correctamente, redirigir o mostrar un mensaje de éxito
+        session()->setFlashdata('success', 'Producto creado exitosamente.');
+        return redirect()->to('/gestion/productos'); // 
 
     }
-    public function bajaProducto() 
+    public function bajaProducto($idProducto)
     {
+        $productoModelo = new ProductoModelo();
+        $producto = $productoModelo->find($idProducto);
 
+        if ($producto === null) {
+            session()->setFlashdata('error', 'Producto no encontrado.');
+            return redirect()->back();
+        }
+
+        if ((int)$producto['activo'] === 0) {
+            session()->setFlashdata('warning', 'El producto ya fue dado de baja.');
+            return redirect()->back();
+        }
+
+        if (!$productoModelo->update($idProducto, ['activo' => 0])) {
+            session()->setFlashdata('error', 'Error al dar de baja el producto.');
+            return redirect()->back();
+        }
+
+        session()->setFlashdata('success', 'Producto dado de baja correctamente.');
+        return redirect()->back();
     }
-    public function modificacionProducto() 
-    {
 
+    public function modificacionProducto($idProducto)
+    {
+        $productoModelo = new ProductoModelo();
+        $producto = $productoModelo->find($idProducto);
+
+        if ($producto === null) {
+            session()->setFlashdata('error', 'Producto no encontrado.');
+            return redirect()->back();
+        }
+
+        if ((int)$producto['activo'] === 0) {
+            session()->setFlashdata('warning', 'El producto está dado de baja y no puede modificarse.');
+            return redirect()->back();
+        }
+
+        if ($this->request->getMethod() === 'POST') {
+
+            // Reglas mínimas, sólo validamos campos que pueden cambiar
+            $reglas = [
+                'nombre' => 'permit_empty|min_length[3]|max_length[100]',
+                'descripcion' => 'permit_empty|max_length[255]',
+                'precio' => 'permit_empty|decimal',
+                'stock' => 'permit_empty|integer'
+            ];
+
+            if (!$this->validate($reglas)) {
+                session()->setFlashdata('error', 'Verifica los datos ingresados.');
+                return redirect()->back()->withInput();
+            }
+
+            $datos = [];
+            $campos = ['nombre', 'descripcion', 'precio', 'descuento', 'stock', 'marca', 'activo', 'destacado'];
+            foreach ($campos as $campo) {
+                $nuevoValor = $this->request->getPost($campo);
+                if ($nuevoValor !== null && $nuevoValor !== '' && $nuevoValor != $producto[$campo]) {
+                    $datos[$campo] = $nuevoValor;
+                }
+            }
+
+            if (empty($datos)) {
+                session()->setFlashdata('info', 'No se realizaron cambios.');
+                return redirect()->back();
+            }
+
+            if (!$productoModelo->update($idProducto, $datos)) {
+                log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
+                session()->setFlashdata('error', 'No se pudo modificar el producto.');
+                return redirect()->back()->withInput();
+            }
+
+            session()->setFlashdata('success', 'Producto modificado correctamente.');
+            return redirect()->to('/productos');
+        }
+
+        // Si es GET, cargar vista con datos actuales
+        return view('productos/editar', ['producto' => $producto]);
     }
 }

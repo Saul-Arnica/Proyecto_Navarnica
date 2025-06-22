@@ -43,6 +43,12 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
                 </li> -->
+                <?php if(session()->get('tipo_usuario') === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($actualMethod === 'gestion') ? 'active text-success' : '' ?>"
+                            href="<?= base_url('gestion') ?>">Gestión</a>
+                    </li>
+                <?php endif; ?>
                 <?php if (session()->get('id_usuario')): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('logout') ?>">Cerrar sesión</a>
@@ -53,12 +59,7 @@ $actualMethod = service('router')->methodName();
                             href="<?= base_url('login') ?>">Iniciar sesión</a>
                     </li>
                 <?php endif; ?>
-                <?php if(session()->get('tipo_usuario') === 'admin'): ?>
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($actualMethod === 'gestion') ? 'active text-success' : '' ?>"
-                            href="<?= base_url('admin/gestion') ?>">Gestión Admin</a>
-                    </li>
-                <?php endif; ?>
+                
             </ul>
         </div>
     </div>

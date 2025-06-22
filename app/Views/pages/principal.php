@@ -1,6 +1,13 @@
 <section class="bg-principal-custom">
     <div class="principal-custom">
         <div class="container-fluid principal-img-bg text-center">
+
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
+
             <!-- Card: Solicitar Turno -->
             <div class="row justify-content-center">
 
@@ -10,10 +17,10 @@
 
                         <div class="card-body text-center">
 
-                            <h5 class="card-title">Reserva tu turno</h5>
+                            <h5 class="card-title">Dejanos tu duda!</h5>
 
-                            <p class="card-text text-center">Para tu mascota de forma rápida y sencilla.</p>
-                            <a href="<?= base_url() ?>" class="btn btn-primary text-white rounded-pill">Solicitar Turno</a>
+                            <p class="card-text text-center">Respondemos tus preguntas en breve.</p>
+                            <a href="<?= base_url('/informacionContacto') ?>" class="btn btn-primary text-white rounded-pill">Hacer Consulta</a>
 
                         </div>
 
@@ -64,8 +71,8 @@
 
         </div>
 
-    </div> 
-</div>
+    </div>
+    </div>
 
 </section>
 
@@ -75,6 +82,7 @@
 <script>
     const products = <?= json_encode($productos) ?>;
     const baseUrl = '<?= base_url() ?>';
+
     function initCarousel() {
         generateProductCarousel(products, 'carouselInner');
     }

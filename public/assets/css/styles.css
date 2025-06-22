@@ -253,10 +253,19 @@ p {
   z-index: 1030;
 }
 
-.body-gestion{
+.offcanvas-gestion {
+  background-color: #3b9c9c;
+}
+
+.body-gestion {
   padding-top: 51px;
 }
 
-.contenido-gestion{
+.contenido-gestion {
   margin-left: 220px;
+}
+@media (max-width: 767.98px) {
+  .contenido-gestion {
+    margin-left: 0;
+  }
 }

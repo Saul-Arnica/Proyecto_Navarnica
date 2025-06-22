@@ -45,18 +45,17 @@ class InicioSesion extends BaseController
                 // Redirigir según tipo de usuario
                 switch ($usuario['tipo_usuario']) {
                     case 'cliente':
-                        return redirect()->to('/cliente/dashboard');
+                        redirect()->to('/');
+
+                        break;
                     case 'admin':
-                        //return redirect()->to('/');
-                        return view('templates/main-layout', [
-                            'title' => 'Gestión del Administrador - Navarnica',
-                            'content' => view('pages/gestionAdministrador')
-                        ]);
-                        
+                        return redirect()->to('/gestion');
+                        break;
                     default:
                         session()->destroy();
                         session()->setFlashdata('error', 'Tipo de usuario no reconocido.');
                         return redirect()->to('/login');
+                        break;
                 }
             } else {
                 // Credenciales incorrectas

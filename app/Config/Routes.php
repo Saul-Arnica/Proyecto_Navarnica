@@ -16,7 +16,7 @@ $routes->get('/consultas', 'Home::consultas');
 
 
 //Rutas de registro
-$routes->post('/registro', 'Usuario::altaUsuario');
+$routes->post('/registro', 'Usuario::registroCliente');
 $routes->get('/registro', 'Home::registro');
 //Ruta para dar de baja un usuario
 $routes->get('/bajaUsuario', 'Usuario::bajaUsuario');
@@ -43,8 +43,12 @@ $routes->get('/logout', 'InicioSesion::logout');
 $routes->post('informacionContacto/enviar', 'Contacto::enviar');
 
 // Rutas de Gestion
-$routes->get('gestion/dashboard', 'Gestion::gestion');
+$routes->get('gestion', 'Gestion::productos');
 $routes->get('gestion/productos', 'Gestion::productos');
 $routes->get('gestion/categorias', 'Gestion::categorias');
 $routes->get('gestion/usuarios', 'Gestion::usuarios');
 $routes->get('gestion/consultas', 'Gestion::consultas');
+
+
+$routes->get('gestion/altaProducto', 'Gestion::altaProducto');
+$routes->post('gestion/altaProducto', 'Productos::altaProducto');
