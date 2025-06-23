@@ -312,8 +312,11 @@ class Productos extends BaseController
         }
 
         if (!$productoModelo->update($idProducto, ['activo' => 0])) {
+            log_message('error', 'Error al dar de baja producto ID ' . $idProducto);
             session()->setFlashdata('error', 'Error al dar de baja el producto.');
             return redirect()->back();
+        } else {
+            log_message('info', 'Producto ID ' . $idProducto . ' dado de baja correctamente.');
         }
 
         session()->setFlashdata('success', 'Producto dado de baja correctamente.');
@@ -336,8 +339,7 @@ class Productos extends BaseController
         }
 
         if ($this->request->getMethod() === 'POST') {
-
-            // Reglas mínimas, sólo validamos campos que pueden cambiar
+            // Validar campos editables
             $reglas = [
                 'nombre' => 'permit_empty|min_length[3]|max_length[100]',
                 'descripcion' => 'permit_empty|max_length[255]',
@@ -350,6 +352,7 @@ class Productos extends BaseController
                 return redirect()->back()->withInput();
             }
 
+            // Recopilar cambios
             $datos = [];
             $campos = ['nombre', 'descripcion', 'precio', 'descuento', 'stock', 'marca', 'activo', 'destacado'];
             foreach ($campos as $campo) {
@@ -359,22 +362,38 @@ class Productos extends BaseController
                 }
             }
 
-            if (empty($datos)) {
-                session()->setFlashdata('info', 'No se realizaron cambios.');
-                return redirect()->back();
+            // Actualizar producto solo si hay cambios
+            if (!empty($datos)) {
+                if (!$productoModelo->update($idProducto, $datos)) {
+                    log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
+                    session()->setFlashdata('error', 'No se pudo modificar el producto.');
+                    return redirect()->back()->withInput();
+                }
             }
 
-            if (!$productoModelo->update($idProducto, $datos)) {
-                log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
-                session()->setFlashdata('error', 'No se pudo modificar el producto.');
-                return redirect()->back()->withInput();
+            // Actualizar categorías asociadas
+            $idsCategorias = $this->request->getPost('id_categoria');
+            $categoriasProductosModelo = new \App\Models\CategoriasProductosModelo();
+
+            // Borrar relaciones viejas
+            $categoriasProductosModelo->where('id_producto', $idProducto)->delete();
+
+            // Insertar nuevas relaciones
+            if (is_array($idsCategorias)) {
+                foreach ($idsCategorias as $idCat) {
+                    $categoriasProductosModelo->insert([
+                        'id_producto' => $idProducto,
+                        'id_categoria' => $idCat
+                    ]);
+                }
             }
 
             session()->setFlashdata('success', 'Producto modificado correctamente.');
             return redirect()->to('/productos');
         }
 
-        // Si es GET, cargar vista con datos actuales
+        // Si es GET
         return view('productos/editar', ['producto' => $producto]);
     }
+
 }

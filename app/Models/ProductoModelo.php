@@ -12,7 +12,7 @@ class ProductoModelo extends Model
     protected $returnType       = 'array'; //tambien puede ser 'object', dependera de como uno quiera trabajar con los datos.
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_producto','nombre', 'descripcion', 'precio', 'stock', 'destacado', 'marca', 'descuento'];
+    protected $allowedFields    = ['id_producto','nombre', 'descripcion', 'precio', 'stock', 'destacado', 'marca', 'descuento', 'activo'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

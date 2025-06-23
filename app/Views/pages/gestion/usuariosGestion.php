@@ -26,8 +26,13 @@
                     <td class="text-center"><?= $usuario['telefono'] ?></td>
                     <td class="text-center"><?= $usuario['direccion'] ?></td>
                     <td class="text-center">
-                        <a href="<?= base_url('gestion/editarUsuario' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-warning text-white">Editar</a>
-                        <a href="<?= base_url('gestion/eliminarUsuario' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                        <a href="<?= base_url('gestion/editarUsuario?id_usuario=' . $usuario['id_usuario']) ?>" class="btn btn-sm btn-warning">
+                            Editar
+                        </a>
+                        <form action="<?= base_url('gestion/bajaUsuario/' . $usuario['id_usuario']) ?>" method="post" onsubmit="return confirm('¿Estás seguro?')" class="d-inline">
+                            <?= csrf_field() ?>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>

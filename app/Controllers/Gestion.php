@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\CategoriaModelo;
+use App\Controllers\Productos;
+use App\Models\ProductoModelo;
+use App\Models\CategoriasProductosModelo;
 
 class Gestion extends BaseController
 {
@@ -15,8 +18,8 @@ class Gestion extends BaseController
             return redirect()->to('/login');
         }
 
-        $productosController = new \App\Controllers\Productos();
-        $productos = $productosController->obtenerProductos();
+        $productosController = new ProductoModelo();
+        $productos = $productosController->where('activo', 1)->findAll();
 
         $data = [
             'productos' => $productos
@@ -57,8 +60,8 @@ class Gestion extends BaseController
             return redirect()->to('/login');
         }
 
-        $usuariosController = new \App\Controllers\Usuario();
-        $usuarios = $usuariosController->obtenerUsuarios();
+        $usuarioModelo = new \App\Models\UsuarioModelo();
+        $usuarios = $usuarioModelo->where('activo', 1)->findAll();
 
         $data = [
             'usuarios' => $usuarios
@@ -90,7 +93,7 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/consultasGestion', $data)
         ]);
     }
-    
+
     public function altaProducto()
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
@@ -133,4 +136,96 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/altaCategoria')
         ]);
     }
+
+    public function editarProducto()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado.');
+            return redirect()->to('/login');
+        }
+
+        $idProducto = $this->request->getGet('id_producto');
+        $productosController = new \App\Controllers\Productos();
+        $producto = $productosController->obtenerProductoPorId($idProducto);
+
+        if (!$producto) {
+            session()->setFlashdata('error', 'Producto no encontrado.');
+            return redirect()->to('/gestion/productos');
+        }
+
+        $categoriaModelo = new CategoriaModelo();
+        $categorias = $categoriaModelo->findAll();
+
+        $categoriasProductosModelo = new \App\Models\CategoriasProductosModelo();
+        $categoriasAsignadas = $categoriasProductosModelo
+            ->where('id_producto', $idProducto)
+            ->findAll();
+
+        // Extraer solo los id_categoria asociados
+        $idsCategoriasAsignadas = array_column($categoriasAsignadas, 'id_categoria');
+
+        $data = [
+            'producto' => $producto,
+            'categorias' => $categorias,
+            'idsCategoriasAsignadas' => $idsCategoriasAsignadas
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Editar Producto - Navarnica',
+            'content' => view('pages/gestion/modificacionProducto', $data)
+        ]);
+    }
+    public function editarCategoria()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        $categoriasController = new \App\Controllers\Categorias();
+        $categoria = $categoriasController->obtenerCategoriaPorId($this->request->getGet('id_categoria'));
+
+        if (!$categoria) {
+            session()->setFlashdata('error', 'Categoría no encontrada.');
+            return redirect()->to('/gestion/categorias');
+        }
+
+        $data = [
+            'categoria' => $categoria
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Editar Categoría - Navarnica',
+            'content' => view('pages/gestion/editarCategoria', $data)
+        ]);
+    }
+    public function editarUsuario()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        $usuariosController = new \App\Controllers\Usuario();
+        $usuario = $usuariosController->obtenerUsuarioPorId($this->request->getGet('id'));
+
+        if (!$usuario) {
+            session()->setFlashdata('error', 'Usuario no encontrado.');
+            return redirect()->to('/gestion/usuarios');
+        }
+
+        $data = [
+            'usuario' => $usuario
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Editar Usuario - Navarnica',
+            'content' => view('pages/gestion/editarUsuario', $data)
+        ]);
+    }
+
+
+
+
+
 }

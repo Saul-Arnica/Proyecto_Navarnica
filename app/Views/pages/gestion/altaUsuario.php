@@ -31,50 +31,53 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="marca" class="form-label">Marca</label>
+                            <label for="apellido" class="form-label">Apellido</label>
                             <div class="input-group mb-3">
-                                <input type="text" name="marca" class="form-control" placeholder="Marca"
-                                    aria-label="Marca" aria-describedby="Marca">
+                                <input type="text" name="apellido" class="form-control" placeholder="apellido"
+                                    aria-label="apellido" aria-describedby="apellido">
                             </div>
                         </div>
                     </div>
-                    <label for="descripcion" class="form-label">Descripción</label>
+                    <label for="email" class="form-label">Email</label>
                     <div class="input-group mb-3">
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Escribí una descripción..."></textarea>
+                        <textarea class="form-control" id="email" name="email" rows="4" placeholder="Escribí un email..."></textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <label for="precio" class="form-label">Precio</label>
+                        <label for="dni" class="form-label"></label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" id="precio" name="precio" step="0.01" min="0" placeholder="0.00" required>
+                            <span class="input-group-text">DNI</span>
+                            <input type="text" class="form-control" id="dni" name="dni" placeholder="" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <label for="stock" class="form-label">Stock</label>
+                            <label for="password" class="form-label">Contraseña</label>
                             <div class="input-group mb-3">
-                                <input type="number" class="form-control" id="stock" name="stock" min="0" step="1" placeholder="0">
+                                <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="mb-3">
-                                <label for="descuento" class="form-label">Descuento (%)</label>
+                                <label for="telefono" class="form-label">Teléfono</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="descuento" name="descuento" min="0" max="100" step="1" placeholder="0">
-                                    <span class="input-group-text">%</span>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-check mb-3 col-md-4">
-                            <label class="form-check-label" for="destacado">
-                                Producto destacado
+                            <label class="form-check-label" for="tipo_usuario">
+                                Tipo de usuario
                             </label>
-                            <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1">
+                            <select class="form-select" id="tipo_usuario" name="tipo_usuario" required>
+                                <option value="">Seleccionar tipo de usuario</option>
+                                <option value="admin">Administrador</option>
+                                <option value="cliente">Cliente</option>
+                            </select>
                         </div>
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn boton-custom btn-sm" type="submit">
-                            Agregar producto
+                            Agregar Usuario
                         </button>
                     </div>
                 </form>
