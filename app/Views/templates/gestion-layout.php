@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8"> <!-- Codificacion de caracteres -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para que la pagina se vea bien en dispositivos moviles -->
-    <meta name="description" content="Veterinaria Navarnica - La mejor atención de Corrientes Capital">
+    <meta name="description" content="Veterinaria Navarnica - La mejor atención de Corrientes Capital"/>
     <link rel="icon" type="image/png" href="<?= base_url('public/assets/img/favicon.png') ?>" />
     <title><?= $title ?? 'Vete Navarnica' ?></title>
     <link rel="stylesheet" href="<?= base_url('public/assets/css/bootstrap.min.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('public/assets/css/styles.css') ?>" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"/>
 </head>
 
 <body class="bg-light body-gestion">

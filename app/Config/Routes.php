@@ -24,7 +24,10 @@ $routes->get('/logout', 'InicioSesion::logout');
 $routes->post('/logout', 'InicioSesion::logout');
 
 // Contacto
-$routes->post('informacionContacto/enviar', 'Contacto::enviar');
+$routes->post('informacionContacto/enviar', 'Consulta::altaConsulta');
+$routes->get('/gestion/respuestaConsulta/(:num)', 'Consulta::respuestaConsulta/$1');
+$routes->post('/gestion/respuestaConsulta/(:num)', 'Consulta::respuestaConsulta/$1');
+$routes->post('/gestion/eliminarConsulta/(:num)', 'Consulta::bajaConsulta/$1');
 
 // Productos (vista pública)
 $routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
@@ -61,6 +64,7 @@ $routes->get('gestion/altaCategoria', 'Gestion::altaCategoria');
 $routes->post('gestion/altaCategoria', 'Categorias::altaCategoria');
 $routes->get('gestion/editarCategoria', 'Gestion::editarCategoria');
 $routes->post('gestion/editarCategoria', 'Categorias::modificarCategoria');
+$routes->post('gestion/eliminarCategoria/(:num)', 'Categorias::bajaCategoria/$1');
 
 // === Consultas ===
 $routes->get('gestion/editarConsulta', 'Gestion::editarConsulta');
