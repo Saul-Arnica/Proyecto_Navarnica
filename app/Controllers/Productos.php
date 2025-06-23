@@ -265,7 +265,7 @@ class Productos extends BaseController
             session()->setFlashdata('error', 'Método no permitido');
             return redirect()->back();
         }
-        
+        $categoriaProductoModelo = new CategoriasProductosModelo();
         $productoModelo = new ProductoModelo();
         $datosProducto = [
             'nombre' => $this->request->getPost('nombre'),
@@ -285,6 +285,12 @@ class Productos extends BaseController
             session()->setFlashdata('error', 'Error al crear el producto: ' . implode(', ', $productoModelo->errors()));
             return redirect()->back();
         }
+        // Insertar en tabla intermedia
+        $idCategoria = $this->request->getPost('id_categoria');
+        $categoriaProductoModelo->insert([
+            'id_producto' => $resultado,
+            'id_categoria' => $idCategoria
+        ]);
         // Si se insertó correctamente, redirigir o mostrar un mensaje de éxito
         session()->setFlashdata('success', 'Producto creado exitosamente.');
         return redirect()->to('/gestion/productos'); // 
