@@ -51,6 +51,8 @@
 
         const productos = <?= json_encode($productos) ?>;
         const categoriaPrincipal = "<?= $categoria ?>";
+        const baseImgPath = "<?= base_url('') ?>";
+        
 
         renderizarFiltros(categoriaPrincipal);
 
@@ -119,7 +121,7 @@
                     <div class="col-12 col-md-6 col-lg-3 mb-4">
                         <a href="<?= base_url('producto?id=')?>${prod.id_producto}" class="text-decoration-none">
                             <div class="card h-100">
-                                <img src="${prod.imagen ?? 'ruta/por_defecto.jpg'}" class="card-img-top" alt="${prod.nombre}">
+                                <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
                                 <div class="card-body">
                                 <h5 class="card-title">${prod.nombre}</h5>
                                 <p class="card-text">${prod.descripcion}</p>
@@ -134,6 +136,6 @@
             });
         }
 
-        console.log(products);
+        console.log(productos);
     </script>
 </div>

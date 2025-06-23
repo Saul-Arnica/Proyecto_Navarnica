@@ -1,4 +1,4 @@
-function generateProductCarousel(products, containerId) {
+function generateProductCarousel(products, containerId, baseUrl) {
   const container = document.getElementById(containerId);
   if (!container) return;
 

@@ -21,7 +21,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('gestion/editarProducto') ?>" method="post" id="formularioEditarProducto">
+                <form action="<?= base_url('gestion/editarProducto') ?>" method="post" enctype="multipart/form-data" id="formularioEditarProducto">
                     <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
 
                     <div class="row">
@@ -73,6 +73,10 @@
                                 Producto destacado
                             </label>
                             <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1" <?= $producto['destacado'] ? 'checked' : '' ?>>
+                        </div>
+                            <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen del producto</label>
+                            <input type="file" name="imagenes[]" class="form-control" accept=".jpg,.jpeg,.png" multiple>
                         </div>
                     </div>
 

@@ -101,10 +101,13 @@ class Gestion extends BaseController
             return redirect()->to('/login');
         }
         $categoriaModelo = new CategoriaModelo();
+        $imagenModelo = new \App\Models\ImagenProductoModelo();
         $categorias = $categoriaModelo->findAll();
+        $imagenes = $imagenModelo->findAll();
 
         $data = [
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'imagenes' => $imagenes
         ];
 
         return view('templates/gestion-layout', [

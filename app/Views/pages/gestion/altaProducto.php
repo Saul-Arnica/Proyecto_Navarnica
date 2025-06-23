@@ -21,7 +21,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('gestion/altaProducto') ?>" method="post" id="formularioAltaProducto">
+                <form action="<?= base_url('gestion/altaProducto') ?>" method="post" enctype="multipart/form-data" id="formularioAltaProducto">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -71,13 +71,16 @@
                             </label>
                             <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1">
                         </div>
+                            <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen del producto</label>
+                            <input type="file" name="imagenes[]" class="form-control" accept=".jpg,.jpeg,.png" multiple required>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categorías</label>
                         <select class="form-select" id="categoria" name="id_categoria[]" multiple required>
                             <?php foreach ($categorias as $categoria): ?>
-                                <option value="<?= esc($categoria['id_categoria']) ?>"
-                                    <?= in_array($categoria['id_categoria'], array_column($categoriasDelProducto, 'id_categoria')) ? 'selected' : '' ?>>
+                                <option value="<?= esc($categoria['id_categoria']) ?>">
                                     <?= esc($categoria['nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
