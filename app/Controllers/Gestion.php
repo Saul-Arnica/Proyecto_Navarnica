@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\CategoriaModelo;
+
 class Gestion extends BaseController
 {
 
@@ -95,10 +97,16 @@ class Gestion extends BaseController
             session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
             return redirect()->to('/login');
         }
+        $categoriaModelo = new CategoriaModelo();
+        $categorias = $categoriaModelo->findAll();
+
+        $data = [
+            'categorias' => $categorias
+        ];
 
         return view('templates/gestion-layout', [
             'title' => 'Alta producto - Navarnica',
-            'content' => view('pages/gestion/altaProducto')
+            'content' => view('pages/gestion/altaProducto', $data)
         ]);
     }
     public function altaUsuario()

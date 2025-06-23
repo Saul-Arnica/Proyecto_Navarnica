@@ -72,6 +72,17 @@
                             <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1">
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <select class="form-select" id="categoria" name="id_categoria" required>
+                            <option value="">Seleccionar categoría</option>
+                            <?php foreach ($categorias as $categoria): ?>
+                                <option value="<?= esc($categoria['id_categoria']) ?>">
+                                    <?= esc($categoria['nombre']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                     <div class="d-grid gap-2">
                         <button class="btn boton-custom btn-sm" type="submit">
                             Agregar producto
