@@ -12,6 +12,7 @@
                 <th class="text-center">Mensaje</th>
                 <th class="text-center">Estado</th>
                 <th class="text-center">Acciones</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -22,7 +23,6 @@
                     <td class="text-center"><?= esc($consulta['asunto']) ?></td>
                     <td class=""><?= $consulta['mensaje'] ?></td>
                     <td class="text-center"><?= $consulta['estado'] ?></td>
-                    <td class="text-center"><?= ($consulta['respuesta']) ?></td>
                     <td class="text-center">
                         <a href="<?= base_url('gestion/responderConsulta/' . $consulta['id_consulta']) ?>" class="btn btn-sm btn-warning text-white">Responder</a>
                         <form action="<?= base_url('gestion/eliminarConsulta/' . $consulta['id_consulta']) ?>" method="post" onsubmit="return confirm('¿Estás seguro?')" class="d-inline">
