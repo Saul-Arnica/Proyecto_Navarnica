@@ -83,7 +83,7 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/consultasGestion')
         ]);
     }
-
+    
     public function altaProducto()
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
@@ -112,6 +112,18 @@ class Gestion extends BaseController
         return view('templates/gestion-layout', [
             'title' => 'Alta Usuario - Navarnica',
             'content' => view('pages/gestion/altaUsuario')
+        ]);
+    }
+    public function altaCategoria()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        return view('templates/gestion-layout', [
+            'title' => 'Alta Categoria - Navarnica',
+            'content' => view('pages/gestion/altaCategoria')
         ]);
     }
 }

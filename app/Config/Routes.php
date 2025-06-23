@@ -54,5 +54,8 @@ $routes->get('gestion/consultas', 'Gestion::consultas');
 $routes->get('gestion/altaUsuario', 'Gestion::altaUsuario');
 $routes->post('gestion/altaUsuario', 'Usuario::altaUsuario');
 
+$routes->get('gestion/altaCategoria', 'Gestion::altaCategoria');
+$routes->post('gestion/altaCategoria', 'Categorias::altaCategoria');
+
 $routes->get('gestion/altaProducto', 'Gestion::altaProducto');
 $routes->post('gestion/altaProducto', 'Productos::altaProducto');
