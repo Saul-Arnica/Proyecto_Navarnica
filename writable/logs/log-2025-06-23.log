@@ -40,6 +40,84 @@ in APPPATH/Views/pages/gestion/altaProducto.php on line 79.
  9 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
+CRITICAL - 2025-06-23 05:26:05 --> ErrorException: Undefined variable $usuarios
+[Method: GET, Route: gestion/consultas]
+in APPPATH\Views\pages\gestion\consultasGestion.php on line 18.
+ 1 APPPATH\Views\pages\gestion\consultasGestion.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarios', 'C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php', 18)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('pages/gestion/consultasGestion', [], true)
+ 5 APPPATH\Controllers\Gestion.php(88): view('pages/gestion/consultasGestion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Gestion->consultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gestion))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-23 05:26:22 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: gestion/consultas]
+in APPPATH\Views\pages\gestion\consultasGestion.php on line 27.
+ 1 APPPATH\Views\pages\gestion\consultasGestion.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('pages/gestion/consultasGestion', [], true)
+ 5 APPPATH\Controllers\Gestion.php(88): view('pages/gestion/consultasGestion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Gestion->consultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gestion))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-23 05:28:04 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: gestion/consultas]
+in APPPATH\Views\pages\gestion\consultasGestion.php on line 27.
+ 1 APPPATH\Views\pages\gestion\consultasGestion.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('pages/gestion/consultasGestion', [], true)
+ 5 APPPATH\Controllers\Gestion.php(88): view('pages/gestion/consultasGestion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Gestion->consultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gestion))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-23 05:28:23 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: gestion/consultas]
+in APPPATH\Views\pages\gestion\consultasGestion.php on line 27.
+ 1 APPPATH\Views\pages\gestion\consultasGestion.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php', 27)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\proyecto_Navarnica\\app\\Views\\pages\\gestion\\consultasGestion.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('pages/gestion/consultasGestion', [], true)
+ 5 APPPATH\Controllers\Gestion.php(88): view('pages/gestion/consultasGestion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Gestion->consultas()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gestion))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-23 05:31:14 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "id=2"
+[Method: GET, Route: gestion/responderConsult/id=2]
+in SYSTEMPATH\Router\Router.php on line 739.
+ 1 SYSTEMPATH\Router\Router.php(207): CodeIgniter\Router\Router->checkDisallowedChars('gestion/responderConsult/id=2')
+ 2 SYSTEMPATH\CodeIgniter.php(832): CodeIgniter\Router\Router->handle('gestion/responderConsult/id=2')
+ 3 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-23 05:31:38 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "id=2"
+[Method: GET, Route: gestion/responderConsult/id=2]
+in SYSTEMPATH\Router\Router.php on line 739.
+ 1 SYSTEMPATH\Router\Router.php(207): CodeIgniter\Router\Router->checkDisallowedChars('gestion/responderConsult/id=2')
+ 2 SYSTEMPATH\CodeIgniter.php(832): CodeIgniter\Router\Router->handle('gestion/responderConsult/id=2')
+ 3 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+=======
 CRITICAL - 2025-06-23 04:58:52 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\CategoriaModelo::obtenerCategorias
 [Method: GET, Route: gestion/altaProducto]
 in SYSTEMPATH/Model.php on line 930.
@@ -274,3 +352,4 @@ in SYSTEMPATH/Model.php on line 930.
  5 SYSTEMPATH/Boot.php(334): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+>>>>>>> 1b8e47f4a8b75de97a3afdd7dac5fed415fd629d

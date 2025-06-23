@@ -78,9 +78,16 @@ class Gestion extends BaseController
             return redirect()->to('/login');
         }
 
+        $consultasController = new \App\Controllers\Consulta();
+        $consultas = $consultasController->obtenerConsultas();
+
+        $data = [
+            'consultas' => $consultas
+        ];
+
         return view('templates/gestion-layout', [
             'title' => 'Consultas - Navarnica',
-            'content' => view('pages/gestion/consultasGestion')
+            'content' => view('pages/gestion/consultasGestion', $data)
         ]);
     }
     
