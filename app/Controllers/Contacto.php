@@ -28,7 +28,7 @@ class Contacto extends BaseController
         }
 
         // Acá podrías guardar el mensaje en base de datos o enviar por email
-
+        
         session()->setFlashdata('success', '¡Consulta enviada con éxito!');
         return redirect()->to('/informacionContacto');
     }

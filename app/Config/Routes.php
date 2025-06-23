@@ -23,7 +23,7 @@ $routes->get('/bajaUsuario', 'Usuario::bajaUsuario');
 
 
 
-$routes->get('/admin/gestion', 'Administrador::gestion');
+//$routes->get('/admin/gestion', 'Administrador::gestion');
 
 // Rutas de las categorías
 $routes->get('/productosPorCategoria', 'Home::productosPorCategoria');
