@@ -21,6 +21,8 @@ $routes->get('/registro', 'Home::registro');
 //Ruta para dar de baja un usuario
 $routes->get('/bajaUsuario', 'Usuario::bajaUsuario');
 
+
+
 $routes->get('/admin/gestion', 'Administrador::gestion');
 
 // Rutas de las categorías
@@ -49,6 +51,8 @@ $routes->get('gestion/categorias', 'Gestion::categorias');
 $routes->get('gestion/usuarios', 'Gestion::usuarios');
 $routes->get('gestion/consultas', 'Gestion::consultas');
 
+$routes->get('gestion/altaUsuario', 'Gestion::altaUsuario');
+$routes->post('gestion/altaUsuario', 'Usuario::altaUsuario');
 
 $routes->get('gestion/altaProducto', 'Gestion::altaProducto');
 $routes->post('gestion/altaProducto', 'Productos::altaProducto');

@@ -94,4 +94,16 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/altaProducto')
         ]);
     }
+    public function altaUsuario()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        return view('templates/gestion-layout', [
+            'title' => 'Alta Usuario - Navarnica',
+            'content' => view('pages/gestion/altaUsuario')
+        ]);
+    }
 }
