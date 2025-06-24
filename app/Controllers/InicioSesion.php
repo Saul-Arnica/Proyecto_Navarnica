@@ -45,7 +45,7 @@ class InicioSesion extends BaseController
                 // Redirigir según tipo de usuario
                 switch ($usuario['tipo_usuario']) {
                     case 'cliente':
-                        redirect()->to('/');
+                        return redirect()->to('/');
                         break;
                     case 'admin':
                         return redirect()->to('/gestion');
