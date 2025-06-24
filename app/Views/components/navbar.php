@@ -34,7 +34,7 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link <?= ($actualMethod === 'terminosYUsos') ? 'active text-success' : '' ?>"
                         href="<?= base_url('terminosYUsos') ?>">Términos y usos</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link  <?= ($actualMethod === 'catalogoProductos' || strpos($actualMethod, 'producto') !== false) ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
@@ -43,7 +43,7 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
                         href="<?= base_url('consultas') ?>">Consultas</a>
                 </li> -->
-                <?php if(session()->get('tipo_usuario') === 'admin'): ?>
+                <?php if (session()->get('tipo_usuario') === 'admin'): ?>
                     <li class="nav-item">
                         <a class="nav-link <?= ($actualMethod === 'gestion') ? 'active text-success' : '' ?>"
                             href="<?= base_url('gestion') ?>">Gestión</a>
@@ -59,7 +59,12 @@ $actualMethod = service('router')->methodName();
                             href="<?= base_url('login') ?>">Iniciar sesión</a>
                     </li>
                 <?php endif; ?>
-                
+                <?php if (!empty($carrito)): ?>
+                    <li class="nav-item">
+                        <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart-fill"></i><?= count($carrito) ?></li></a>
+                <?php else: ?>
+                    <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart"></i>0</li></a>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
