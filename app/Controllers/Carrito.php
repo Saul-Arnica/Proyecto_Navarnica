@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 
 use App\Models\ProductoModelo;
+use App\Models\VentaModelo;
+use App\Models\DetalleVentaModelo;
 
 class Carrito extends BaseController
 {
@@ -58,5 +60,77 @@ class Carrito extends BaseController
         }
 
         return redirect()->to('/carrito')->with('success', 'Carrito vaciado.');
+    }
+    public function finalizar()
+    {
+        $carrito = session()->get('carrito') ?? [];
+        $idUsuario = session()->get('id_usuario');
+
+        if (empty($carrito)) {
+            return redirect()->to('/carrito')->with('error', 'Tu carrito está vacío.');
+        }
+
+        if (!$idUsuario) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para finalizar la compra.');
+        }
+
+        $productoModel = new ProductoModelo();
+        $ventaModel = new VentaModelo();
+        $detalleModel = new DetalleVentaModelo();
+
+        $totalVenta = 0;
+
+        // Verificar stock y calcular total
+        foreach ($carrito as $item) {
+            $producto = $productoModel->find($item['id']);
+
+            if (!$producto || !$producto['activo']) {
+                return redirect()->to('/carrito')->with('error', 'Un producto ya no está disponible.');
+            }
+
+            if ($producto['stock'] < $item['cantidad']) {
+                return redirect()->to('/carrito')->with('error', "No hay stock suficiente para '{$producto['nombre']}'.");
+            }
+
+            // Calcular precio final con descuento (si aplica)
+            $precioUnitario = $producto['precio'];
+            if ($producto['descuento'] > 0) {
+                $precioUnitario -= $precioUnitario * $producto['descuento'] / 100;
+            }
+
+            $totalVenta += $precioUnitario * $item['cantidad'];
+        }
+
+        // Insertar venta
+        $idVenta = $ventaModel->insert([
+            'id_usuario' => $idUsuario,
+            'fecha_venta' => date('Y-m-d H:i:s'),
+            'total' => $totalVenta,
+            'estado' => 'pendiente'
+        ]);
+
+        // Insertar detalles y actualizar stock
+        foreach ($carrito as $item) {
+            $producto = $productoModel->find($item['id']);
+            $precioUnitario = $producto['precio'];
+            if ($producto['descuento'] > 0) {
+                $precioUnitario -= $precioUnitario * $producto['descuento'] / 100;
+            }
+
+            $detalleModel->insert([
+                'id_venta' => $idVenta,
+                'id_producto' => $producto['id_producto'],
+                'cantidad' => $item['cantidad'],
+                'precio_unitario' => $precioUnitario
+            ]);
+
+            // Actualizar stock
+            $productoModel->update($producto['id_producto'], [
+                'stock' => $producto['stock'] - $item['cantidad']
+            ]);
+        }
+
+        session()->remove('carrito');
+        return redirect()->to('/carrito')->with('success', 'Compra registrada exitosamente.');
     }
 }

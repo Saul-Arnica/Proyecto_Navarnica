@@ -77,3 +77,7 @@ $routes->get('/carrito', 'Home::carrito');
 $routes->post('/carrito/agregar', 'Carrito::agregar');
 $routes->get('/carrito/eliminar/(:num)', 'Carrito::eliminar/$1');
 $routes->get('/carrito/vaciar', 'Carrito::vaciar');
+$routes->get('/carrito/finalizar', 'Carrito::finalizar');
+
+// === Mis Compras ===
+$routes->get('/misCompras', 'Ventas::misCompras');
