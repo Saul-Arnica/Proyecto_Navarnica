@@ -108,4 +108,12 @@ class Home extends BaseController
             'content' => view('pages/paginaEnProceso')
         ]);
     }
+
+    public function carrito(): string
+    {
+        return view('templates/main-layout', [
+            'title' => 'Carrito - Navarnica',
+            'content' => view('pages/carrito')
+        ]);
+    }
 }

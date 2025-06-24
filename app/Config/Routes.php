@@ -70,3 +70,10 @@ $routes->post('gestion/eliminarCategoria/(:num)', 'Categorias::bajaCategoria/$1'
 $routes->get('gestion/editarConsulta', 'Gestion::editarConsulta');
 $routes->post('gestion/editarConsulta', 'Consultas::modificarConsulta');
 $routes->post('gestion/bajaConsulta/(:num)', 'Consultas::bajaConsulta/$1');
+
+
+// === Carrito ===
+$routes->get('/carrito', 'Home::carrito');
+$routes->post('/carrito/agregar', 'Carrito::agregar');
+$routes->get('/carrito/eliminar/(:num)', 'Carrito::eliminar/$1');
+$routes->get('/carrito/vaciar', 'Carrito::vaciar');
