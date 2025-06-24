@@ -45,6 +45,7 @@
             <!-- Sidebar visible en pantallas medianas o más -->
             <aside class="col-md-3 col-lg-2 d-none d-md-block text-white min-vh-100 p-3 sidebar-custom position-fixed">
                 <ul class="nav flex-column">
+                    <li><a class="nav-link text-white" href="<?= base_url('gestion/ventas') ?>">Ventas</a></li>
                     <li><a class="nav-link text-white" href="<?= base_url('gestion/productos') ?>">Productos</a></li>
                     <li><a class="nav-link text-white" href="<?= base_url('gestion/categorias') ?>">Categorías</a></li>
                     <li><a class="nav-link text-white" href="<?= base_url('gestion/usuarios') ?>">Usuarios</a></li>

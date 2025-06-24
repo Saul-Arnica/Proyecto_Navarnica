@@ -1,0 +1,16 @@
+WARNING - 2025-06-24 12:27:08 --> [DEPRECATED] Passing lowercase HTTP method "get" is deprecated. Use uppercase HTTP method like "GET". in SYSTEMPATH/Router/RouteCollection.php on line 1026.
+ 1 SYSTEMPATH/Router/RouteCollection.php(1026): trigger_error('Passing lowercase HTTP method "get" is deprecated. Use uppercase HTTP method like "GET".', 16384)
+ 2 APPPATH/Config/Routes.php(21): CodeIgniter\Router\RouteCollection->match([...], '/login', 'InicioSesion::login')
+ 3 SYSTEMPATH/Router/RouteCollection.php(339): require('/opt/lampp/htdocs/proyecto_Navarnica/app/Config/Routes.php')
+ 4 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH/Boot.php(360): CodeIgniter\CLI\Console->run()
+ 6 SYSTEMPATH/Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 7 ROOTPATH/spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+WARNING - 2025-06-24 12:27:08 --> [DEPRECATED] Passing lowercase HTTP method "post" is deprecated. Use uppercase HTTP method like "POST". in SYSTEMPATH/Router/RouteCollection.php on line 1026.
+ 1 SYSTEMPATH/Router/RouteCollection.php(1026): trigger_error('Passing lowercase HTTP method "post" is deprecated. Use uppercase HTTP method like "POST".', 16384)
+ 2 APPPATH/Config/Routes.php(21): CodeIgniter\Router\RouteCollection->match([...], '/login', 'InicioSesion::login')
+ 3 SYSTEMPATH/Router/RouteCollection.php(339): require('/opt/lampp/htdocs/proyecto_Navarnica/app/Config/Routes.php')
+ 4 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH/Boot.php(360): CodeIgniter\CLI\Console->run()
+ 6 SYSTEMPATH/Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 7 ROOTPATH/spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))

@@ -227,6 +227,26 @@ class Gestion extends BaseController
         ]);
     }
 
+    public function ventas()
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        $ventasController = new \App\Controllers\Ventas();
+        $ventas = $ventasController->obtenerVentas();
+
+        $data = [
+            'ventas' => $ventas
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Ventas - Navarnica',
+            'content' => view('pages/gestion/ventasGestion', $data)
+        ]);
+    }
+
 
 
 
