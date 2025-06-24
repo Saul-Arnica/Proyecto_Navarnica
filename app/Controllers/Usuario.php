@@ -234,4 +234,16 @@ class Usuario extends BaseController
         return $usuarios;
     }
 
+    public function obtenerUsuarioPorId($idUsuario)
+    {
+        $modeloUsuario = new UsuarioModelo();
+        $usuario = $modeloUsuario->find($idUsuario);
+
+        if ($usuario === null) {
+            return null; // O lanzar una excepción si prefieres
+        }
+
+        return $usuario;
+    }
+
 }

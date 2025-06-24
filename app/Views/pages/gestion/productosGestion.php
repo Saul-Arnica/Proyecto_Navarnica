@@ -24,8 +24,13 @@
                     <td class="text-center">$<?= number_format($producto['precio'], 2, ',', '.') ?></td>
                     <td class="text-center"><?= esc($producto['stock']) ?></td>
                     <td class="text-center">
-                        <a href="<?= base_url('gestion/editarProducto' . $producto['id_producto']) ?>" class="btn btn-sm btn-warning text-white">Editar</a>
-                        <a href="<?= base_url('gestion/eliminarProducto' . $producto['id_producto']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                        <a href="<?= base_url('gestion/editarProducto?id_producto=' . $producto['id_producto']) ?>" class="btn btn-sm btn-warning">
+                            Editar
+                        </a>
+                        <form action="<?= base_url('gestion/bajaProducto/' . $producto['id_producto']) ?>" method="post" onsubmit="return confirm('¿Estás seguro?')" class="d-inline">
+                            <?= csrf_field() ?>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>

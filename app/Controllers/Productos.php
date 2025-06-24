@@ -13,12 +13,18 @@ class Productos extends BaseController
     private function obtenerImagenPrincipalDelProducto($idProducto)
     {
         $modeloImagen = new ImagenProductoModelo();
-        $imagenes = $modeloImagen->where('id_producto', $idProducto)->findAll();
+        $imagen = $modeloImagen
+            ->select('url_imagen')
+            ->where('id_producto', $idProducto)
+            ->first();
 
-        return !empty($imagenes)
-            ? base_url('public/assets/img/img_Productos/' . $imagenes[0]['url_imagen'])
-            : base_url('public/assets/img/img_Productos/default.png');
+        $nombreArchivo = $imagen ? $imagen['url_imagen'] : 'default.png';
+
+        return base_url('public/assets/img/img_Productos/' . $nombreArchivo);
     }
+
+
+
     //Metodo privado para obtener todas las imagenes de un producto.
     private function obtenerTodasLasImagenesDelProducto($idProducto)
     {
@@ -259,7 +265,8 @@ class Productos extends BaseController
 
     public function altaProducto() 
     {
-        
+        log_message('debug', 'Archivos recibidos: ' . print_r($this->request->getFiles(), true));
+
         if($this->request->getMethod() !== 'POST') {
             // Manejo de error, por ejemplo, redirigir con un mensaje de error
             session()->setFlashdata('error', 'Método no permitido');
@@ -285,12 +292,29 @@ class Productos extends BaseController
             session()->setFlashdata('error', 'Error al crear el producto: ' . implode(', ', $productoModelo->errors()));
             return redirect()->back();
         }
-        // Insertar en tabla intermedia
-        $idCategoria = $this->request->getPost('id_categoria');
-        $categoriaProductoModelo->insert([
-            'id_producto' => $resultado,
-            'id_categoria' => $idCategoria
-        ]);
+        // Insertar categoria
+        $idsCategorias = $this->request->getPost('id_categoria');
+        if (is_array($idsCategorias)) {
+        foreach ($idsCategorias as $idCategoria) {
+            $categoriaProductoModelo->insert([
+                'id_producto' => $resultado,
+                'id_categoria' => $idCategoria
+            ]);
+            log_message('debug', 'Categorías insertadas: ' . print_r($idsCategorias, true));
+
+        }
+
+    }
+
+        // Manejo de imágenes
+        helper('imagen');
+
+        $imagenes = $this->request->getFiles()['imagenes'] ?? [];
+        guardarImagenesProducto($imagenes, $resultado);
+        log_message('debug', 'Se llamó a guardarImagenesProducto con ' . count($imagenes) . ' imagenes');
+
+        log_message('debug', 'Imágenes detectadas: ' . print_r($imagenes, true));
+
         // Si se insertó correctamente, redirigir o mostrar un mensaje de éxito
         session()->setFlashdata('success', 'Producto creado exitosamente.');
         return redirect()->to('/gestion/productos'); // 
@@ -312,16 +336,22 @@ class Productos extends BaseController
         }
 
         if (!$productoModelo->update($idProducto, ['activo' => 0])) {
+            log_message('error', 'Error al dar de baja producto ID ' . $idProducto);
             session()->setFlashdata('error', 'Error al dar de baja el producto.');
             return redirect()->back();
+        } else {
+            log_message('info', 'Producto ID ' . $idProducto . ' dado de baja correctamente.');
         }
 
         session()->setFlashdata('success', 'Producto dado de baja correctamente.');
         return redirect()->back();
     }
 
-    public function modificacionProducto($idProducto)
+    public function modificacionProducto()
     {
+        log_message('debug', 'Archivos recibidos: ' . print_r($this->request->getFiles(), true));
+
+        $idProducto = $this->request->getPost('id_producto'); 
         $productoModelo = new ProductoModelo();
         $producto = $productoModelo->find($idProducto);
 
@@ -336,8 +366,7 @@ class Productos extends BaseController
         }
 
         if ($this->request->getMethod() === 'POST') {
-
-            // Reglas mínimas, sólo validamos campos que pueden cambiar
+            // Validar campos editables
             $reglas = [
                 'nombre' => 'permit_empty|min_length[3]|max_length[100]',
                 'descripcion' => 'permit_empty|max_length[255]',
@@ -350,6 +379,7 @@ class Productos extends BaseController
                 return redirect()->back()->withInput();
             }
 
+            // Recopilar cambios
             $datos = [];
             $campos = ['nombre', 'descripcion', 'precio', 'descuento', 'stock', 'marca', 'activo', 'destacado'];
             foreach ($campos as $campo) {
@@ -359,22 +389,43 @@ class Productos extends BaseController
                 }
             }
 
-            if (empty($datos)) {
-                session()->setFlashdata('info', 'No se realizaron cambios.');
-                return redirect()->back();
+            // Actualizar producto si hay cambios
+            if (!empty($datos)) {
+                if (!$productoModelo->update($idProducto, $datos)) {
+                    log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
+                    session()->setFlashdata('error', 'No se pudo modificar el producto.');
+                    return redirect()->back()->withInput();
+                }
             }
 
-            if (!$productoModelo->update($idProducto, $datos)) {
-                log_message('error', 'Error al modificar producto: ' . print_r($productoModelo->errors(), true));
-                session()->setFlashdata('error', 'No se pudo modificar el producto.');
-                return redirect()->back()->withInput();
+            // Actualizar categorías asociadas
+            $idsCategorias = $this->request->getPost('id_categoria');
+            $categoriasProductosModelo = new \App\Models\CategoriasProductosModelo();
+            $categoriasProductosModelo->where('id_producto', $idProducto)->delete();
+
+            if (is_array($idsCategorias)) {
+                foreach ($idsCategorias as $idCat) {
+                    $categoriasProductosModelo->insert([
+                        'id_producto' => $idProducto,
+                        'id_categoria' => $idCat
+                    ]);
+                }
+            }
+
+            //Subir imágenes si se enviaron
+            helper('imagen');
+            $imagenes = $this->request->getFiles()['imagenes'] ?? [];
+            if (!empty($imagenes)) {
+                guardarImagenesProducto($imagenes, $idProducto);
+                log_message('debug', 'Se llamó a guardarImagenesProducto con ' . count($imagenes) . ' imagenes');
             }
 
             session()->setFlashdata('success', 'Producto modificado correctamente.');
-            return redirect()->to('/productos');
+            return redirect()->to('gestion/productos');
         }
 
-        // Si es GET, cargar vista con datos actuales
+        // Si es GET
         return view('productos/editar', ['producto' => $producto]);
     }
+
 }

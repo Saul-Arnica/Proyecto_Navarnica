@@ -81,10 +81,10 @@
 
 <script>
     const products = <?= json_encode($productos) ?>;
-    const baseUrl = '<?= base_url() ?>';
+    const baseUrl = '<?= base_url('public/assets/img/img_Productos/') ?>';
 
     function initCarousel() {
-        generateProductCarousel(products, 'carouselInner');
+        generateProductCarousel(products, 'carouselInner', baseUrl);
     }
 
     initCarousel();
@@ -93,5 +93,5 @@
         initCarousel();
     });
 
-    console.log(products);
+    console.log(productos);
 </script>

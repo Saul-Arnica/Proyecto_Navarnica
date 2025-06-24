@@ -112,4 +112,16 @@ class Categorias extends BaseController
         // En GET, mostrar el formulario con los datos actuales
         return view('gestion/categorias', ['categoria' => $categoria]);
     }
+    public function obtenerCategoriaPorId($id)
+    {
+        $categoriaModelo = new CategoriaModelo();
+        $categoria = $categoriaModelo->find($id);
+
+        if (!$categoria) {
+            return null; // O lanzar una excepción si prefieres
+        }
+
+        return $categoria;
+    }
+
 }

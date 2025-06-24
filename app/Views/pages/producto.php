@@ -11,14 +11,19 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="public/assets/img/correa-perro.png" class="d-block mx-auto" alt="..."
-                    style="max-height: 400px">
-            </div>
-            <div class="carousel-item">
-                <img src="public/assets/img/castillo-gatuno.jpg" class="d-block mx-auto" alt="..."
-                    style="max-height: 400px;">
-            </div>
+            <?php if (is_iterable($producto['imagenes']) && count($producto['imagenes']) > 0): ?>
+                <?php foreach ($producto['imagenes'] as $index => $imagen): ?>
+                    <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                        <img src="<?= base_url('public/assets/img/img_Productos/' . esc($imagen['url_imagen'])) ?>" class="d-block mx-auto" alt="Imagen del producto"
+                            style="max-height: 400px;">
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="carousel-item active">
+                    <img src="<?= base_url('public/assets/img/img_Productos/default.png') ?>" class="d-block mx-auto" alt="Imagen por defecto"
+                        style="max-height: 400px;">
+                </div>
+            <?php endif; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">

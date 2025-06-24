@@ -12,6 +12,7 @@
                 <th class="text-center">Mensaje</th>
                 <th class="text-center">Estado</th>
                 <th class="text-center">Acciones</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -24,7 +25,10 @@
                     <td class="text-center"><?= $consulta['estado'] ?></td>
                     <td class="text-center">
                         <a href="<?= base_url('gestion/responderConsulta/' . $consulta['id_consulta']) ?>" class="btn btn-sm btn-warning text-white">Responder</a>
-                        <a href="<?= base_url('gestion/eliminarConsulta/' . $consulta['id_consulta']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                        <form action="<?= base_url('gestion/eliminarConsulta/' . $consulta['id_consulta']) ?>" method="post" onsubmit="return confirm('¿Estás seguro?')" class="d-inline">
+                            <?= csrf_field() ?>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>

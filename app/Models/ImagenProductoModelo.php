@@ -12,7 +12,7 @@ class ImagenProductoModelo extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_producto', 'url_imagen'];
+    protected $allowedFields = ['id_imagen_producto', 'id_producto', 'url_imagen', 'descripcion_imagen', 'fecha_creacion'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

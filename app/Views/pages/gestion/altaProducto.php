@@ -2,8 +2,8 @@
     <div class="col-sm-8 col-md-6 rounded">
 
         <div class="row">
-            <h1 class="text-center mt-3">Alta de producto</h1>
-            
+            <h1 class="text-center mt-3">Alta de Producto</h1>
+
             <div class="col-sm-10 col-md-12 mt-3">
                 <?php if (session()->get('error')): ?>
                     <div class="alert alert-danger">
@@ -21,7 +21,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?= base_url('gestion/altaProducto') ?>" method="post" id="formularioAltaProducto">
+                <form action="<?= base_url('gestion/altaProducto') ?>" method="post" enctype="multipart/form-data" id="formularioAltaProducto">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -71,17 +71,21 @@
                             </label>
                             <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1">
                         </div>
+                            <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen del producto</label>
+                            <input type="file" name="imagenes[]" class="form-control" accept=".jpg,.jpeg,.png" multiple required>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="categoria" class="form-label">Categoria</label>
-                        <select class="form-select" id="categoria" name="id_categoria" required>
-                            <option value="">Seleccionar categoría</option>
+                        <label for="categoria" class="form-label">Categorías</label>
+                        <select class="form-select" id="categoria" name="id_categoria[]" multiple required>
                             <?php foreach ($categorias as $categoria): ?>
                                 <option value="<?= esc($categoria['id_categoria']) ?>">
                                     <?= esc($categoria['nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <small class="form-text text-muted">Usá Ctrl o Shift para seleccionar varias categorías</small>
                     </div>
                     <div class="d-grid gap-2">
                         <button class="btn boton-custom btn-sm" type="submit">

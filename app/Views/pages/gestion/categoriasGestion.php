@@ -18,8 +18,11 @@
                     <td class="text-center"><?= esc($categoria['nombre']) ?></td>
                     <td class=""><?= $categoria['descripcion'] ?></td>
                     <td class="text-center">
-                        <a href="<?= base_url('gestion/editarCategoria' . $categoria['id_categoria']) ?>" class="btn btn-sm btn-warning text-white">Editar</a>
-                        <a href="<?= base_url('gestion/eliminarCategoria' . $categoria['id_categoria']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                        <a href="<?= base_url('gestion/editarCategoria/' . $categoria['id_categoria']) ?>" class="btn btn-sm btn-warning text-white">Editar</a>
+                        <form action="<?= base_url('gestion/eliminarCategoria/' . $categoria['id_categoria']) ?>" method="post" onsubmit="return confirm('¿Estás seguro?')" class="d-inline">
+                            <?= csrf_field() ?>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
