@@ -10,6 +10,11 @@ class Ventas extends BaseController
 {
     public function misCompras()
     {
+        if (!session()->get('logged_in')) {
+            session()->setFlashdata('error', 'Para ver tus compras, inicia sesión.');
+            return redirect()->to('/login');
+        }
+        
         $idUsuario = session()->get('id_usuario');
         if (!$idUsuario) {
             return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');

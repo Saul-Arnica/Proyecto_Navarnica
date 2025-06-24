@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ConsultaModelo extends Model
 {
-    protected $table            = 'Consultas';
+    protected $table            = 'consultas';
     protected $primaryKey       = 'id_consulta';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

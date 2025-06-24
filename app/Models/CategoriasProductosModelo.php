@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CategoriasProductosModelo extends Model
 {
-    protected $table            = 'Categorias_productos';
+    protected $table            = 'categorias_productos';
     protected $primaryKey       = 'id_categorias_productos';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
