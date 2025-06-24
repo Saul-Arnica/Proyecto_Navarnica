@@ -60,9 +60,10 @@ $actualMethod = service('router')->methodName();
                     </li>
                 <?php endif; ?>
                 <?php if (!empty($carrito)): ?>
-                    <span class="badge bg-primary"><i class="bi bi-cart-fill"></i><?= count($carrito) ?></span>
+                    <li class="nav-item">
+                        <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart-fill"></i><?= count($carrito) ?></li></a>
                 <?php else: ?>
-                    <a href="<?= base_url('carrito') ?>" class="badge bg-secondary"><i class="bi bi-cart-fill"></i></a>
+                    <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart"></i>0</li></a>
                 <?php endif; ?>
             </ul>
         </div>
