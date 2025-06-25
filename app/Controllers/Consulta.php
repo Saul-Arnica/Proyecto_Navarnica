@@ -122,7 +122,8 @@ class Consulta extends BaseController
         $consultaModelo = new \App\Models\ConsultaModelo();
         $email = \Config\Services::email();
 
-        $consulta = $consultaModelo->first($idConsulta);
+        $consulta = $consultaModelo->find($idConsulta);
+
 
         if (!$consulta) {
             session()->setFlashdata('error', 'Consulta no encontrada.');
