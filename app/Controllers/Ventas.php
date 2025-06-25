@@ -41,21 +41,17 @@ class Ventas extends BaseController
             $venta['detalles'] = $detalles;
         }
 
-        return view('templates/main-layout', [
+        return view('templates/gestion-layout', [
             'title' => 'Mis Compras - Navarnica',
             'content' => view('pages/misCompras', ['ventas' => $ventas])
         ]);
     }
-    public function detalleCompra($idVenta)
-    {
-        if (!session()->get('logged_in')) {
-            session()->setFlashdata('error', 'Para ver el detalle de la compra, inicia sesión.');
-            return redirect()->to('/login');
-        }
 
-        $idUsuario = session()->get('id_usuario');
-        if (!$idUsuario) {
-            return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');
+    public function detalleVenta($idVenta)
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
         }
 
         $ventaModel = new VentaModelo();
@@ -63,9 +59,9 @@ class Ventas extends BaseController
         $productoModel = new ProductoModelo();
 
         $venta = $ventaModel->find($idVenta);
-        if (!$venta || $venta['id_usuario'] != $idUsuario) {
-            session()->setFlashdata('error', 'Compra no encontrada o no autorizada.');
-            return redirect()->to('/mis-compras');
+        if (!$venta) {
+            session()->setFlashdata('error', 'Venta no encontrada.');
+            return redirect()->to('/gestion/ventas');
         }
 
         $detalles = $detalleModel->where('id_venta', $idVenta)->findAll();
@@ -75,11 +71,16 @@ class Ventas extends BaseController
             $detalle['nombre_producto'] = $producto ? $producto['nombre'] : 'Producto eliminado';
         }
 
-        return view('templates/main-layout', [
-            'title' => 'Detalle de Compra - Navarnica',
-            'content' => view('pages/detalleCompra', ['venta' => $venta, 'detalles' => $detalles])
+        return view('templates/gestion-layout', [
+            'title' => 'Detalle de Venta - Navarnica',
+            'content' => view('pages/gestion/ventaDetalle', [
+                'venta' => $venta,
+                'detalles' => $detalles
+            ])
         ]);
     }
+
+    
     public function historialVentas()
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {

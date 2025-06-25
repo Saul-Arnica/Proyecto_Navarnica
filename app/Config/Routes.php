@@ -44,6 +44,7 @@ $routes->get('gestion/productos', 'Gestion::productos');
 $routes->get('gestion/usuarios', 'Gestion::usuarios');
 $routes->get('gestion/categorias', 'Gestion::categorias');
 $routes->get('gestion/consultas', 'Gestion::consultas');
+$routes->get('gestion/ventas', 'Ventas::historialVentas');
 
 // === Usuarios ===
 $routes->get('gestion/altaUsuario', 'Gestion::altaUsuario');
@@ -69,10 +70,10 @@ $routes->post('gestion/eliminarCategoria/(:num)', 'Categorias::bajaCategoria/$1'
 // === Consultas ===
 $routes->get('gestion/responderConsulta/(:num)', 'Gestion::responderConsulta/$1');
 $routes->post('gestion/responderConsulta/(:num)', 'Consulta::responderConsulta/$1');
-
-
 $routes->post('gestion/bajaConsulta/(:num)', 'Consultas::bajaConsulta/$1');
 
+// === Ventas ===
+$routes->get('gestion/detalleVenta/(:num)', 'Ventas::detalleVenta/$1');
 
 // === Carrito ===
 $routes->get('/carrito', 'Home::carrito');
@@ -83,4 +84,3 @@ $routes->get('/carrito/finalizar', 'Carrito::finalizar');
 
 // === Mis Compras ===
 $routes->get('/misCompras', 'Ventas::misCompras');
-$routes->get('gestion/ventas', 'Ventas::historialVentas');

@@ -290,3 +290,8 @@ p {
   height: 400px;        /* Altura fija para todas las imágenes */
   object-fit: contain;    /* Corta la imagen para que encaje sin deformar */
 }
+
+.bg-navarnica {
+    background-color: #3b9c9c !important;
+    color: white !important;
+}

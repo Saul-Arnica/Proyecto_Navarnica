@@ -19,7 +19,7 @@ class Gestion extends BaseController
         }
 
         $productosController = new ProductoModelo();
-        $productos = $productosController->where('activo', 1)->findAll();
+        $productos = $productosController->findAll();
 
         $data = [
             'productos' => $productos
@@ -252,6 +252,32 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/ventasGestion', $data)
         ]);
     }
+
+    public function detalleVenta($idVenta)
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
+
+        $ventasController = new \App\Controllers\Ventas();
+        $detalle = $ventasController->detalleVenta($idVenta);
+
+        if (!$detalle) {
+            session()->setFlashdata('error', 'Detalle de venta no encontrado.');
+            return redirect()->to('/gestion/ventas');
+        }
+
+        $data = [
+            'detalle' => $detalle
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Detalle de Venta - Navarnica',
+            'content' => view('pages/gestion/ventaDetalle', $data)
+        ]);
+    }
+
     public function responderConsulta($idConsulta)
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
