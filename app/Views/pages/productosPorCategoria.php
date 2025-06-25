@@ -42,7 +42,6 @@
         </div>
     </div>
     <script>
-
         const filtrosPorCategoria = {
             Mascotas: ['Perros', 'Gatos', 'Peces'],
             Campo: ['Semillas', 'Fertilizantes', 'Herramientas'],
@@ -52,7 +51,7 @@
         const productos = <?= json_encode($productos) ?>;
         const categoriaPrincipal = "<?= $categoria ?>";
         const baseImgPath = "<?= base_url('') ?>";
-        
+
 
         renderizarFiltros(categoriaPrincipal);
 
@@ -83,7 +82,9 @@
 
             const response = await fetch('<?= base_url('api/filtrar-productos') ?>', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     categoria,
                     filtros,
@@ -109,7 +110,12 @@
             contenedor.innerHTML = ''; // Limpia los productos actuales
 
             if (productos.length === 0) {
-                contenedor.innerHTML = '<p>No se encontraron productos.</p>';
+                contenedor.innerHTML = `
+                <div class="text-center my-5">
+                    <i class="bi bi-box-seam" style="font-size: 3rem; color: #6c757d;"></i>
+                    <h4 class="mt-3">No se encontraron productos con esos filtros</h4>
+                </div>
+                `;
                 return;
             }
 
@@ -119,7 +125,7 @@
                 contenedor.innerHTML += `
                 
                     <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <a href="<?= base_url('producto?id=')?>${prod.id_producto}" class="text-decoration-none">
+                        <a href="<?= base_url('producto?id=') ?>${prod.id_producto}" class="text-decoration-none">
                             <div class="card h-100">
                                 <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
                                 <div class="card-body">

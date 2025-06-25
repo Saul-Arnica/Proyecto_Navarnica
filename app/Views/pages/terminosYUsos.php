@@ -2,54 +2,69 @@
     <h1 class="mb-4">Términos y Condiciones</h1>
 
     <h5 class="mb-3">
-        Al acceder y utilizar este sitio web, aceptás cumplir con estos términos y condiciones. Si no estás de acuerdo
-        con alguna parte, por favor no utilices nuestro sitio.
+        Al acceder y utilizar este sitio web, aceptás cumplir con estos Términos y Condiciones de uso. Si no estás de
+        acuerdo con alguno de ellos, te solicitamos que no utilices el sitio. El uso continuado del mismo implica la
+        aceptación plena y sin reservas de todas las cláusulas detalladas a continuación.
     </h5>
 
     <h2 class="mt-4">1. Uso del sitio</h2>
-    <p>Al acceder a este sitio web, el usuario se compromete a utilizarlo de manera responsable, respetando la
-        finalidad informativa y de servicios que ofrece. El contenido publicado está destinado exclusivamente a brindar
-        información general sobre nuestros servicios veterinarios, promociones, consejos de cuidado animal y datos de
-        contacto.
+    <p>Al ingresar a este sitio web, el usuario se compromete a utilizarlo de forma adecuada, ética y respetuosa,
+        exclusivamente con fines legítimos y conforme a la finalidad para la cual fue creado. Este sitio tiene por
+        objetivo brindar información general sobre los servicios veterinarios que ofrece Veterinaria Navarnica,
+        incluyendo, pero no limitado a: descripciones de servicios, promociones, horarios de atención, consejos de
+        cuidado animal, novedades y medios de contacto.
 
-        El usuario se compromete a no utilizar el sitio con fines ilícitos, engañosos, difamatorios, abusivos,
-        fraudulentos o cualquier otro propósito que infrinja la ley o los derechos de terceros. Asimismo, se prohíbe la
-        reproducción, distribución o modificación del contenido del sitio sin la autorización expresa de la empresa.
+        Queda estrictamente prohibido utilizar el sitio con fines ilícitos, ofensivos, difamatorios, abusivos,
+        fraudulentos o que infrinjan derechos de terceros. Tampoco se permite intervenir en el funcionamiento del sitio
+        mediante el uso de software malicioso, ataques, sobrecarga de servidor u otras prácticas dañinas.
 
-        Nos reservamos el derecho de restringir o suspender el acceso a cualquier usuario que haga un uso indebido del
-        sitio web o que infrinja estos términos. El acceso al sitio no implica una relación contractual directa entre el
-        usuario y la veterinaria, salvo en los casos en que se acuerden servicios de manera expresa y por los canales
-        correspondientes.</p>
+        Se prohíbe la copia, distribución, modificación o publicación del contenido sin autorización expresa y escrita
+        de la empresa. Veterinaria Navarnica se reserva el derecho de restringir el acceso a usuarios que hagan un uso
+        indebido del sitio o violen estas condiciones.
+
+        El acceso al sitio no implica una relación contractual directa entre el usuario y la veterinaria, salvo cuando
+        se acuerden servicios explícitamente a través de los canales habilitados.
+    </p>
 
     <h2 class="mt-4">2. Propiedad intelectual</h2>
-    <p>Todo el contenido incluido en este sitio web —incluyendo, pero no limitado a, textos, imágenes, logotipos,
-        gráficos, iconos, nombres comerciales, marcas, diseños, archivos descargables y cualquier otro material— es
-        propiedad exclusiva de Veterinaria Navarnica, o bien se utiliza con la debida autorización de sus
-        respectivos propietarios.
+    <p>Todos los contenidos, diseños y elementos gráficos contenidos en este sitio web —incluyendo textos, imágenes,
+        logotipos, íconos, nombres comerciales, marcas, estructuras, funcionalidades, archivos descargables y otros
+        elementos multimedia— son propiedad exclusiva de Veterinaria Navarnica o se encuentran licenciados
+        legalmente por sus respectivos titulares.
 
-        Estos elementos están protegidos por las leyes de propiedad intelectual e industrial, tanto a nivel nacional
-        como internacional. Queda estrictamente prohibida la reproducción, distribución, modificación, transmisión,
-        reventa, publicación o cualquier otro uso no autorizado del contenido de este sitio, ya sea total o parcial, sin
-        el consentimiento previo y por escrito de Veterinaria Navarnica.
+        Están protegidos por las leyes de propiedad intelectual e industrial, tanto a nivel nacional como internacional.
+        Queda terminantemente prohibido su uso no autorizado, incluyendo reproducción, distribución, transformación o
+        publicación, sin consentimiento previo por escrito.
 
-        El uso del sitio no concede al usuario ningún derecho sobre los elementos protegidos ni sobre el contenido en
-        general. Cualquier uso indebido de estos materiales podrá dar lugar a acciones legales correspondientes.</p>
+        El acceso al sitio no implica en ningún caso la cesión de derechos sobre los contenidos. El uso indebido de
+        estos materiales podrá derivar en las acciones legales correspondientes.
+    </p>
 
     <h2 class="mt-4">3. Modificaciones</h2>
-    <p>Veterinaria Navarnica se reserva el derecho de modificar, actualizar o eliminar en cualquier momento y sin
-        previo aviso cualquier parte del contenido del sitio web, incluyendo estos Términos y Condiciones, así como los
-        servicios ofrecidos, precios, horarios de atención, promociones u otra información relevante.
+    <p>Veterinaria Navarnica se reserva el derecho de modificar, actualizar o eliminar, en cualquier momento y sin
+        previo aviso, tanto el contenido del sitio como estos Términos y Condiciones. Esto incluye cambios en servicios,
+        precios, promociones, horarios y cualquier otra información relevante.
 
-        Estas modificaciones entrarán en vigencia desde el momento de su publicación en el sitio. Es responsabilidad del
-        usuario revisar periódicamente esta sección para mantenerse informado sobre posibles cambios. El uso continuo
-        del sitio tras la publicación de actualizaciones implica la aceptación de dichos cambios.
+        Tales modificaciones tendrán efecto desde su publicación en el sitio web. Es responsabilidad del usuario revisar
+        periódicamente esta sección para estar al tanto de los posibles cambios. El uso continuado del sitio tras dichas
+        modificaciones implicará la aceptación de los nuevos términos.
 
-        Asimismo, Veterinaria Navarnica no garantiza que la información contenida en el sitio esté siempre
-        actualizada, aunque se realizarán esfuerzos razonables para mantenerla lo más precisa y vigente posible.</p>
+        Si bien se hacen esfuerzos razonables para mantener la información actualizada, no se garantiza que todo el
+        contenido esté libre de errores u omisiones.
+    </p>
 
-    <h2 class="mt-4">4. Contacto</h2>
+    <h2 class="mt-4">4. Limitación de responsabilidad</h2>
+    <p>El uso de este sitio web se realiza bajo exclusiva responsabilidad del usuario. Veterinaria Navarnica no garantiza
+        la disponibilidad continua del sitio ni se responsabiliza por interrupciones, errores técnicos o pérdidas de
+        información que pudieran ocurrir durante su uso.
+
+        Los contenidos del sitio tienen carácter informativo y no sustituyen el asesoramiento profesional personalizado.
+        Para obtener diagnósticos o servicios específicos, se recomienda contactar directamente con la clínica.
+    </p>
+
+    <h2 class="mt-4">5. Contacto</h2>
     <p>Si tenés dudas, consultas o comentarios relacionados con estos Términos y Condiciones, o sobre cualquier aspecto
         del sitio web, podés ponerte en contacto con nosotros a través del siguiente apartado:</p>
+
     <a class="btn boton-custom w-100" href="<?= base_url('informacionContacto') ?>">Contactanos</a>
-    
 </section>
