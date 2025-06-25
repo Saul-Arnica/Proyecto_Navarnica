@@ -12,14 +12,30 @@ class Gestion extends BaseController
 
     public function productos()
     {
-
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
             session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
             return redirect()->to('/login');
         }
 
-        $productosController = new ProductoModelo();
-        $productos = $productosController->where('activo', 1)->findAll();
+        $productoModelo = new ProductoModelo();
+
+        $stock = $this->request->getGet('stock');
+        $activo = $this->request->getGet('activo');
+
+        // Aplicar filtros si están presentes
+        if ($stock !== null && $stock !== '') {
+            if ($stock == '1') {
+                $productoModelo->where('stock >', 0);
+            } else {
+                $productoModelo->where('stock', 0);
+            }
+        }
+
+        if ($activo !== null && $activo !== '') {
+            $productoModelo->where('activo', $activo);
+        }
+
+        $productos = $productoModelo->findAll();
 
         $data = [
             'productos' => $productos
@@ -271,8 +287,4 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/respuestaConsulta', $data)
         ]);
     }
-
-
-
-
 }

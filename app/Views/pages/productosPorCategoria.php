@@ -76,7 +76,7 @@
         }
 
         document.getElementById('btnAplicarFiltros').addEventListener('click', async () => {
-            const categoria = categoriaPrincipal; // Podés ponerla dinámica si querés
+            const categoria = categoriaPrincipal;
             const filtros = Array.from(document.querySelectorAll('input[name="filtros[]"]:checked')).map(cb => cb.value);
             const precioMin = document.getElementById('precioMin').value || null;
             const precioMax = document.getElementById('precioMax').value || null;
@@ -135,7 +135,5 @@
                 `;
             });
         }
-
-        console.log(productos);
     </script>
 </div>

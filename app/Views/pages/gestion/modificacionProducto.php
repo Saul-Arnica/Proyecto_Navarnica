@@ -1,6 +1,10 @@
 <div class="row justify-content-center">
+    <div>
+        <a href="<?= previous_url() ?>" class="btn btn-dark">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
     <div class="col-sm-8 col-md-6 rounded">
-
         <div class="row">
             <h1 class="text-center mt-3">Editar Producto</h1>
 

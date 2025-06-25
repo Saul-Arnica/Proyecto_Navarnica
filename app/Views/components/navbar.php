@@ -18,10 +18,12 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link <?= ($actualMethod === 'index') ? 'active text-success' : '' ?>"
                         href="<?= base_url() ?>">Inicio</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= ($actualMethod === 'quienesSomos') ? 'active text-success' : '' ?>"
-                        href="<?= base_url('quienesSomos') ?>">Quienes Somos</a>
-                </li>
+                <?php if (session()->get('tipo_usuario') !== 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($actualMethod === 'quienesSomos') ? 'active text-success' : '' ?>"
+                            href="<?= base_url('quienesSomos') ?>">Quienes Somos</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link <?= ($actualMethod === 'informacionContacto') ? 'active text-success' : '' ?>"
                         href="<?= base_url('informacionContacto') ?>">Contacto</a>
@@ -39,10 +41,7 @@ $actualMethod = service('router')->methodName();
                     <a class="nav-link  <?= ($actualMethod === 'catalogoProductos' || strpos($actualMethod, 'producto') !== false) ? 'active text-success' : '' ?>"
                         href="<?= base_url('catalogoProductos') ?>">Catalago</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link  <?= ($actualMethod === 'consultas') ? 'active text-success' : '' ?>"
-                        href="<?= base_url('consultas') ?>">Consultas</a>
-                </li> -->
+
                 <?php if (session()->get('tipo_usuario') === 'admin'): ?>
                     <li class="nav-item">
                         <a class="nav-link <?= ($actualMethod === 'gestion') ? 'active text-success' : '' ?>"
@@ -61,7 +60,8 @@ $actualMethod = service('router')->methodName();
                 <?php endif; ?>
                 <?php if (!empty($carrito)): ?>
                     <li class="nav-item">
-                        <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart-fill"></i><?= count($carrito) ?></li></a>
+                        <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart-fill"></i><?= count($carrito) ?>
+                    </li></a>
                 <?php else: ?>
                     <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart"></i>0</li></a>
                 <?php endif; ?>

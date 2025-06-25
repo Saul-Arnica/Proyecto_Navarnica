@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ProductoModelo; // Importamos el modelo producto
 use App\Models\ImagenProductoModelo; // Importamos el modelo imagen producto
 use \App\Models\CategoriasProductosModelo;
@@ -36,7 +37,7 @@ class Productos extends BaseController
     //Metodos privados para obtener las categorias del producto.
 
     //TODOS LOS PRODUCTOS
-    public function obtenerProductos()//listo
+    public function obtenerProductos() //listo
     {
         $modeloProducto = new ProductoModelo();
         $modeloImagenProducto = new ImagenProductoModelo();
@@ -53,7 +54,7 @@ class Productos extends BaseController
         return $productos;
     }
 
-    public function obtenerProductosDestacados()//listo
+    public function obtenerProductosDestacados() //listo
     {
         $modeloProducto = new ProductoModelo();
         $productosDestacados = $modeloProducto->where('destacado >', 0)->findAll();
@@ -67,7 +68,7 @@ class Productos extends BaseController
         return $productosDestacados;
     }
 
-    public function obtenerProductoPorId($id)//listo
+    public function obtenerProductoPorId($id) //listo
     {
         if (!is_numeric($id)) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("ID inválido");
@@ -88,7 +89,7 @@ class Productos extends BaseController
         return $producto;
     }
 
-    public function obtenerProductosPorCategoria($categoriaSolicitud)//listo
+    public function obtenerProductosPorCategoria($categoriaSolicitud) //listo
     {
         $modeloProducto = new ProductoModelo();
         $modeloImagen = new ImagenProductoModelo();
@@ -101,8 +102,14 @@ class Productos extends BaseController
         }
 
         $categoriasProductos = $modeloCategoriasProductos->where('id_categoria', $categoria['id_categoria'])->findAll();
+
         $idsProductos = array_column($categoriasProductos, 'id_producto');
-        $productos = $modeloProducto->whereIn('id_producto', $idsProductos)->findAll();
+
+        $productos = $modeloProducto
+            ->whereIn('id_producto', $idsProductos)
+            ->where('activo', 1)
+            ->findAll();
+
         foreach ($productos as &$producto) {
             $producto['imagenes'] = $modeloImagen->where('id_producto', $producto['id_producto'])->findAll();
             $producto['imagen'] = $this->obtenerImagenPrincipalDelProducto($producto['id_producto']);
@@ -114,7 +121,7 @@ class Productos extends BaseController
         return $productos;
     }
 
-    public function buscarProductos()//listo
+    public function buscarProductos() //listo
     {
         $busqueda = $this->request->getGet('q');
         $modeloProducto = new ProductoModelo();
@@ -263,11 +270,11 @@ class Productos extends BaseController
         return $this->response->setJSON($productos);
     }
 
-    public function altaProducto() 
+    public function altaProducto()
     {
         log_message('debug', 'Archivos recibidos: ' . print_r($this->request->getFiles(), true));
 
-        if($this->request->getMethod() !== 'POST') {
+        if ($this->request->getMethod() !== 'POST') {
             // Manejo de error, por ejemplo, redirigir con un mensaje de error
             session()->setFlashdata('error', 'Método no permitido');
             return redirect()->back();
@@ -286,7 +293,7 @@ class Productos extends BaseController
 
         $resultado = $productoModelo->insert($datosProducto);
 
-        if($resultado === false) {
+        if ($resultado === false) {
             // Manejo de error, por ejemplo, redirigir con un mensaje de error
             log_message('error', 'Error en insert: ' . print_r($productoModelo->errors(), true));
             session()->setFlashdata('error', 'Error al crear el producto: ' . implode(', ', $productoModelo->errors()));
@@ -295,16 +302,14 @@ class Productos extends BaseController
         // Insertar categoria
         $idsCategorias = $this->request->getPost('id_categoria');
         if (is_array($idsCategorias)) {
-        foreach ($idsCategorias as $idCategoria) {
-            $categoriaProductoModelo->insert([
-                'id_producto' => $resultado,
-                'id_categoria' => $idCategoria
-            ]);
-            log_message('debug', 'Categorías insertadas: ' . print_r($idsCategorias, true));
-
+            foreach ($idsCategorias as $idCategoria) {
+                $categoriaProductoModelo->insert([
+                    'id_producto' => $resultado,
+                    'id_categoria' => $idCategoria
+                ]);
+                log_message('debug', 'Categorías insertadas: ' . print_r($idsCategorias, true));
+            }
         }
-
-    }
 
         // Manejo de imágenes
         helper('imagen');
@@ -351,7 +356,7 @@ class Productos extends BaseController
     {
         log_message('debug', 'Archivos recibidos: ' . print_r($this->request->getFiles(), true));
 
-        $idProducto = $this->request->getPost('id_producto'); 
+        $idProducto = $this->request->getPost('id_producto');
         $productoModelo = new ProductoModelo();
         $producto = $productoModelo->find($idProducto);
 
@@ -427,5 +432,4 @@ class Productos extends BaseController
         // Si es GET
         return view('productos/editar', ['producto' => $producto]);
     }
-
 }

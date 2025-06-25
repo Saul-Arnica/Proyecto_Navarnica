@@ -1,4 +1,9 @@
 <div class="row justify-content-center">
+    <div>
+        <a href="<?= previous_url() ?>" class="btn btn-dark">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
     <div class="col-sm-8 col-md-6 rounded">
 
         <div class="row">
@@ -82,7 +87,7 @@
                             </label>
                             <input class="form-check-input" type="checkbox" id="destacado" name="destacado" value="1">
                         </div>
-                            <div class="mb-3">
+                        <div class="mb-3">
                             <label for="imagen" class="form-label">Imagen del producto</label>
                             <input type="file" name="imagenes[]" class="form-control" accept=".jpg,.jpeg,.png" multiple required>
                         </div>
