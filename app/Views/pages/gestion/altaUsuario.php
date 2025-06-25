@@ -20,7 +20,17 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <?php if (session()->get('success')): ?>
+                    <div class="alert alert-success">
+                        <?= esc(session()->get('success')) ?>
+                    </div>
+                <?php endif; ?>
 
+                <?php if (session()->get('info')): ?>
+                    <div class="alert alert-info">
+                        <?= esc(session()->get('info')) ?>
+                    </div>
+                <?php endif; ?>
                 <form action="<?= base_url('gestion/altaUsuario') ?>" method="post" id="formularioAltaUsuario">
                     <div class="row">
                         <div class="col-12 col-md-6">
@@ -33,14 +43,14 @@
                         <div class="col-12 col-md-6">
                             <label for="apellido" class="form-label">Apellido</label>
                             <div class="input-group mb-3">
-                                <input type="text" name="apellido" class="form-control" placeholder="apellido"
+                                <input type="text" name="apellido" class="form-control" placeholder="Apellido"
                                     aria-label="apellido" aria-describedby="apellido">
                             </div>
                         </div>
                     </div>
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group mb-3">
-                        <textarea class="form-control" id="email" name="email" rows="4" placeholder="Escribí un email..."></textarea>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Escribí un email..." required>
                     </div>
                     <div class="input-group mb-3">
                         <label for="dni" class="form-label"></label>
@@ -48,12 +58,22 @@
                             <span class="input-group-text">DNI</span>
                             <input type="text" class="form-control" id="dni" name="dni" placeholder="" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <label for="password" class="form-label">Contraseña</label>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -76,6 +96,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2">
+                        <?= csrf_field() ?>
                         <button class="btn boton-custom btn-sm" type="submit">
                             Agregar Usuario
                         </button>

@@ -20,6 +20,17 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <?php if (session()->get('success')): ?>
+                    <div class="alert alert-success">
+                        <?= esc(session()->get('success')) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->get('info')): ?>
+                    <div class="alert alert-info">
+                        <?= esc(session()->get('info')) ?>
+                    </div>
+                <?php endif; ?>
 
                 <form action="<?= base_url('gestion/altaCategoria') ?>" method="post" id="formularioAltaCategoria">
                     <div class="row">

@@ -49,7 +49,7 @@ $routes->get('gestion/consultas', 'Gestion::consultas');
 $routes->get('gestion/altaUsuario', 'Gestion::altaUsuario');
 $routes->post('gestion/altaUsuario', 'Usuario::altaUsuario');
 $routes->get('gestion/editarUsuario', 'Gestion::editarUsuario');
-$routes->post('gestion/editarUsuario', 'Usuario::modificarUsuario');
+$routes->post('gestion/modificarUsuario/(:num)', 'Usuario::modificacionUsuario/$1');
 $routes->post('gestion/bajaUsuario/(:num)', 'Usuario::bajaUsuario/$1');
 
 // === Productos ===
@@ -62,13 +62,15 @@ $routes->post('gestion/bajaProducto/(:num)', 'Productos::bajaProducto/$1');
 // === Categorías ===
 $routes->get('gestion/altaCategoria', 'Gestion::altaCategoria');
 $routes->post('gestion/altaCategoria', 'Categorias::altaCategoria');
-$routes->get('gestion/editarCategoria', 'Gestion::editarCategoria');
-$routes->post('gestion/editarCategoria', 'Categorias::modificarCategoria');
+$routes->get('gestion/editarCategoria/(:num)', 'Gestion::editarCategoria/$1');
+$routes->post('gestion/modificarCategoria/(:num)', 'Categorias::modificarCategoria/$1');
 $routes->post('gestion/eliminarCategoria/(:num)', 'Categorias::bajaCategoria/$1');
 
 // === Consultas ===
-$routes->get('gestion/editarConsulta', 'Gestion::editarConsulta');
-$routes->post('gestion/editarConsulta', 'Consultas::modificarConsulta');
+$routes->get('gestion/responderConsulta/(:num)', 'Gestion::responderConsulta/$1');
+$routes->post('gestion/responderConsulta/(:num)', 'Consulta::responderConsulta/$1');
+
+
 $routes->post('gestion/bajaConsulta/(:num)', 'Consultas::bajaConsulta/$1');
 
 
@@ -81,3 +83,4 @@ $routes->get('/carrito/finalizar', 'Carrito::finalizar');
 
 // === Mis Compras ===
 $routes->get('/misCompras', 'Ventas::misCompras');
+$routes->get('gestion/ventas', 'Ventas::historialVentas');

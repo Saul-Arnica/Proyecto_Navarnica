@@ -20,7 +20,7 @@ class Categorias extends BaseController
             $categoriaModelo = new CategoriaModelo();
                 $reglas = [
                     'nombre' => 'required|min_length[3]|max_length[50]',
-                    'descripcion' => 'required|min_length[8]|max_length[50]'
+                    'descripcion' => 'required|max_length[50]'
                 ];
 
                 if (!$this->validate($reglas)) {
@@ -60,8 +60,8 @@ class Categorias extends BaseController
         session()->setFlashdata('success', 'Categoría eliminada exitosamente.');
         return redirect()->to('/gestion/categorias');
     }
-    public function modificarCategoria($idCategoria) {
-
+    public function modificarCategoria($idCategoria) 
+    {
         $categoriaModelo = new CategoriaModelo();
         $categoria = $categoriaModelo->find($idCategoria);
 

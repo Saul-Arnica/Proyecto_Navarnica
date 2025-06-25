@@ -269,3 +269,24 @@ p {
     margin-left: 0;
   }
 }
+
+.row-principal {
+  display: flex;
+  flex-wrap: nowrap; /* o wrap, según necesidad */
+}
+
+.card-principal {
+  flex: 1 1 0;  /* Que todas tengan igual ancho */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body-principal {
+  flex-grow: 1;  /* Hace que el cuerpo ocupe todo el espacio disponible */
+}
+
+.card-img-top-principal {
+  width: 100%;          /* Que ocupe todo el ancho de la tarjeta */
+  height: 400px;        /* Altura fija para todas las imágenes */
+  object-fit: contain;    /* Corta la imagen para que encaje sin deformar */
+}

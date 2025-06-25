@@ -112,27 +112,32 @@ class Consulta extends BaseController
         return view('consultas/modificacion', $data);
     }
     
-    public function responderConsulta($id) 
+    public function responderConsulta($idConsulta)
     {
-        $consultaModelo = new ConsultaModelo();
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado.');
+            return redirect()->to('/login');
+        }
+
+        $consultaModelo = new \App\Models\ConsultaModelo();
         $email = \Config\Services::email();
 
-        if ($this->request->getMethod() === 'post') {
+        $consulta = $consultaModelo->first($idConsulta);
+
+        if (!$consulta) {
+            session()->setFlashdata('error', 'Consulta no encontrada.');
+            return redirect()->to('/gestion/consultas');
+        }
+
+        if ($this->request->getMethod() === 'POST') {
             $respuesta = $this->request->getPost('respuesta');
-            $consulta = $consultaModelo->find($id);
 
-            if (!$consulta) {
-                session()->setFlashdata('error', 'Consulta no encontrada');
-                return redirect()->to('gestion/consultas');
-            }
-
-            // Actualizar la base de datos
-            $consultaModelo->update($id, [
+            $consultaModelo->update($idConsulta, [
                 'respuesta' => $respuesta,
                 'estado'    => 'respondida'
             ]);
 
-            // Enviar el correo
+            // Enviar email
             $email->setFrom('navarnica2@gmail.com', 'Navarnica Navarro y Arnica');
             $email->setTo($consulta['email']);
             $email->setSubject('Respuesta a tu consulta: ' . $consulta['asunto']);
@@ -147,20 +152,22 @@ class Consulta extends BaseController
                 El equipo de atención
             ");
 
-
             if ($email->send()) {
-                session()->setFlashdata('success', 'Respuesta enviada por correo y guardada');
+                session()->setFlashdata('success', 'Respuesta enviada por correo y guardada.');
             } else {
-                session()->setFlashdata('error', 'La respuesta fue guardada, pero no se pudo enviar el correo');
-                log_message('error', $email->printDebugger(['headers']));
+                session()->setFlashdata('error', 'La respuesta fue guardada, pero no se pudo enviar el correo.');
             }
 
-            return redirect()->to('gestion/consultas');
+            return redirect()->to('/gestion/consultas');
         }
 
-        $data['consulta'] = $consultaModelo->find($id);
-        return view('consultas/responder', $data);
+        // Si es GET
+        return view('templates/gestion-layout', [
+            'title' => 'Responder Consulta - Navarnica',
+            'content' => view('pages/gestion/respuestaConsulta', ['consulta' => $consulta])
+        ]);
     }
+
     public function testEmail()
     {
         $email = \Config\Services::email();

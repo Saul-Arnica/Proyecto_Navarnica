@@ -19,7 +19,7 @@ function generateProductCarousel(products, containerId, baseUrl) {
 
     slides += `
             <div class="carousel-item ${active}">
-            <div class="row">
+            <div class="row row-principal">
                 ${current
                   .map(
                     (prod) => `
@@ -30,9 +30,9 @@ function generateProductCarousel(products, containerId, baseUrl) {
                   ? "col-md-4"
                   : ""
               }">
-                <div class="card h-100">
-                    <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
-                  <div class="card-body">
+                <div class="card card-principal h-100">
+                    <img src="${prod.imagen}" class="card-img-top card-img-top-principal" alt="${prod.nombre}">
+                  <div class="card-body card-body-principal">
                     <h5 class="card-title">${prod.nombre}</h5>
                     <p class="card-text">${prod.descripcion}</p>
                     <p class="card-text">stock: ${prod.stock}</p>

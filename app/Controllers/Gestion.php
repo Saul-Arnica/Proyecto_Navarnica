@@ -178,18 +178,23 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/modificacionProducto', $data)
         ]);
     }
-    public function editarCategoria()
+    public function editarCategoria($id_categoria)
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
             session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
             return redirect()->to('/login');
         }
 
-        $categoriasController = new \App\Controllers\Categorias();
-        $categoria = $categoriasController->obtenerCategoriaPorId($this->request->getGet('id_categoria'));
+        if (!$id_categoria) {
+            session()->setFlashdata('error', 'Categoría no encontrada.');
+            return redirect()->to('/gestion/categorias');
+        }
+
+        $categoriaModelo = new \App\Models\CategoriaModelo();
+        $categoria = $categoriaModelo->find($id_categoria);
 
         if (!$categoria) {
-            session()->setFlashdata('error', 'Categoría no encontrada.');
+            session()->setFlashdata('error', 'Categoría no encontrada en la base de datos.');
             return redirect()->to('/gestion/categorias');
         }
 
@@ -199,9 +204,10 @@ class Gestion extends BaseController
 
         return view('templates/gestion-layout', [
             'title' => 'Editar Categoría - Navarnica',
-            'content' => view('pages/gestion/editarCategoria', $data)
+            'content' => view('pages/gestion/modificacionCategoria', $data)
         ]);
     }
+
     public function editarUsuario()
     {
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
@@ -210,7 +216,7 @@ class Gestion extends BaseController
         }
 
         $usuariosController = new \App\Controllers\Usuario();
-        $usuario = $usuariosController->obtenerUsuarioPorId($this->request->getGet('id'));
+        $usuario = $usuariosController->obtenerUsuarioPorId($this->request->getGet('id_usuario'));
 
         if (!$usuario) {
             session()->setFlashdata('error', 'Usuario no encontrado.');
@@ -223,7 +229,7 @@ class Gestion extends BaseController
 
         return view('templates/gestion-layout', [
             'title' => 'Editar Usuario - Navarnica',
-            'content' => view('pages/gestion/editarUsuario', $data)
+            'content' => view('pages/gestion/modificacionUsuario', $data)
         ]);
     }
 
@@ -235,7 +241,7 @@ class Gestion extends BaseController
         }
 
         $ventasController = new \App\Controllers\Ventas();
-        $ventas = $ventasController->obtenerVentas();
+        $ventas = $ventasController->historialVentas();
 
         $data = [
             'ventas' => $ventas
@@ -246,7 +252,25 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/ventasGestion', $data)
         ]);
     }
+    public function responderConsulta($idConsulta)
+    {
+        if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
+            session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
+            return redirect()->to('/login');
+        }
 
+        $consultaModelo = new \App\Models\ConsultaModelo();
+        $consulta = $consultaModelo->where('id_consulta', $idConsulta)->first();
+
+        $data = [
+            'consulta' => $consulta
+        ];
+
+        return view('templates/gestion-layout', [
+            'title' => 'Usuarios - Navarnica',
+            'content' => view('pages/gestion/respuestaConsulta', $data)
+        ]);
+    }
 
 
 

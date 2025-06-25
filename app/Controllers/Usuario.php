@@ -14,7 +14,7 @@ class Usuario extends BaseController
                         'nombre' => 'required|min_length[3]|max_length[50]',
                         'apellido' => 'required|min_length[3]|max_length[50]',
                         'dni' => 'required|min_length[7]|max_length[9]',
-                        'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                        'email' => 'required|valid_email|is_unique[usuarios.email]',
                         'password' => 'required|min_length[6]',
                     ];
 
@@ -58,14 +58,14 @@ class Usuario extends BaseController
                 case 'admin':
                         $reglas = [
                             'nombre' => 'required|min_length[3]|max_length[50]',
-                            'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                            'email' => 'required|valid_email|is_unique[usuarios.email]',
                             'password' => 'required|min_length[6]',
                             'confirm_password' => 'matches[password]'
                         ];
 
                         if (!$this->validate($reglas)) {
                             session()->setFlashdata('error', 'Debes completar todos los campos correctamente.');
-                            return redirect()->to('/registro');
+                            return redirect()->to('/gestion/usuarios');
                         }
 
                         // Obtener datos del formulario
@@ -77,14 +77,9 @@ class Usuario extends BaseController
                             'telefono' => $this->request->getPost('telefono'),
                             'direccion' => $this->request->getPost('direccion'),
                             'activo' => 1, // Usuario activo por defecto
-                            'tipo_usuario' => 'admin'
+                            'tipo_usuario' => 'admin',
+                            'dni' => $this->request->getPost('dni')
                         ];
-
-                        if (!$usuarioModelo->insert($datos)) {
-                            log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
-                            session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
-                        }
-
 
                         // Guardar usuario en la base de datos
                         $resultado = $usuarioModelo->insert($datos);
@@ -96,12 +91,12 @@ class Usuario extends BaseController
                         }
 
                         session()->setFlashdata('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
-                        return redirect()->to('/login');
+                        return redirect()->to('/gestion/usuarios');
                                                             break;              
                 case 'cliente':
                         $reglas = [
                             'nombre' => 'required|min_length[3]|max_length[50]',
-                            'email' => 'required|valid_email|is_unique[Usuarios.email]',
+                            'email' => 'required|valid_email|is_unique[usuarios.email]',
                             'password' => 'required|min_length[6]',
                         ];
 
@@ -119,6 +114,7 @@ class Usuario extends BaseController
                             'direccion' => $this->request->getPost('direccion'),
                             'tipo_usuario' => 'cliente',
                             'activo' => 1,
+                            'dni' => $this->request->getPost('dni')
                         ];
 
                         $resultado = $usuarioModelo->insert($datos);
@@ -126,6 +122,8 @@ class Usuario extends BaseController
                         if (!$resultado) {
                             log_message('error', 'Error en insert: ' . print_r($usuarioModelo->errors(), true));
                             session()->setFlashdata('error', 'Error al registrar el usuario. Inténtalo nuevamente.');
+                            log_message('error', 'Errores de validación: ' . print_r($this->validator->getErrors(), true));
+
                             return redirect()->to('/registro');
                         }
 
@@ -182,7 +180,7 @@ class Usuario extends BaseController
             $reglas = [
                 'nombre'    => 'permit_empty|min_length[3]|max_length[50]',
                 'apellido'  => 'permit_empty|min_length[3]|max_length[50]',
-                'email'     => "permit_empty|valid_email|is_unique[Usuarios.email,id,{$idUsuario}]",
+                'email'     => "permit_empty|valid_email|is_unique[usuarios.email,id_usuario,{$idUsuario}]",
                 'password'  => 'permit_empty|min_length[6]',
             ];
 
@@ -194,7 +192,7 @@ class Usuario extends BaseController
             $datos = [];
 
             // Comparar campo por campo, si está presente, no vacío y diferente, agregarlo
-            $campos = ['nombre', 'apellido', 'email', 'telefono', 'direccion', 'tipo_usuario', 'activo'];
+            $campos = ['nombre', 'apellido', 'email', 'telefono', 'direccion', 'tipo_usuario', 'activo', 'dni'];
             foreach ($campos as $campo) {
                 $nuevoValor = $this->request->getPost($campo);
                 if ($nuevoValor !== null && $nuevoValor !== '' && $nuevoValor != $usuario[$campo]) {
@@ -219,7 +217,7 @@ class Usuario extends BaseController
             }
 
             session()->setFlashdata('success', 'Usuario actualizado correctamente.');
-            return redirect()->to('/usuarios');
+            return redirect()->to('gestion/usuarios');
         }
 
         // En GET, mostrar el formulario con los datos actuales

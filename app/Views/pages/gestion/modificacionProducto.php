@@ -20,6 +20,17 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <?php if (session()->get('success')): ?>
+                    <div class="alert alert-success">
+                        <?= esc(session()->get('success')) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (session()->get('info')): ?>
+                    <div class="alert alert-info">
+                        <?= esc(session()->get('info')) ?>
+                    </div>
+                <?php endif; ?>
 
                 <form action="<?= base_url('gestion/editarProducto') ?>" method="post" enctype="multipart/form-data" id="formularioEditarProducto">
                     <input type="hidden" name="id_producto" value="<?= esc($producto['id_producto']) ?>">
