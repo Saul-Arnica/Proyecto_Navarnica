@@ -41,7 +41,7 @@ class Ventas extends BaseController
             $venta['detalles'] = $detalles;
         }
 
-        return view('templates/gestion-layout', [
+        return view('templates/main-layout', [
             'title' => 'Mis Compras - Navarnica',
             'content' => view('pages/misCompras', ['ventas' => $ventas])
         ]);

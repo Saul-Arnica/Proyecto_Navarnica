@@ -58,19 +58,28 @@
         </div>
 
 
-        <div class="d-flex justify-content-center">
-            <form action="<?= base_url('carrito/agregar') ?>" method="post">
-                <input type="hidden" name="id" value="<?= $producto['id_producto'] ?>">
-                <div class="row">
-                    <div class="col px-2">
-                        <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2 col">
+        <?php if (session()->get('tipo_usuario') === 'admin'): ?>
+            <div class="text-center">
+                <a href="<?= base_url('gestion/editarProducto?id_producto=' . $producto['id_producto']) ?>"
+                    class="btn btn-warning">Editar Producto</a>
+            </div>
+       <?php endif; ?>
+
+        <?php if (session()->get('tipo_usuario') !== 'admin'): ?>
+                <div class="d-flex justify-content-center">
+                <form action="<?= base_url('carrito/agregar') ?>" method="post">
+                    <input type="hidden" name="id" value="<?= $producto['id_producto'] ?>">
+                    <div class="row">
+                        <div class="col px-2">
+                            <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2 col">
+                        </div>
+                        <div class="col px-2">
+                            <button type="submit" class="btn btn-outline-primary w-100 w-md-50 col">Agregar al carrito</button>
+                        </div>
                     </div>
-                    <div class="col px-2">
-                        <button type="submit" class="btn btn-outline-primary w-100 w-md-50 col">Agregar al carrito</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        <?php endif; ?>            
     </div>
 
 </section>

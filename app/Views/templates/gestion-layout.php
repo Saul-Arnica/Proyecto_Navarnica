@@ -61,6 +61,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="nav flex-column">
+                        <li><a class="nav-link text-white" href="<?= base_url('gestion/ventas') ?>">Ventas</a></li>
                         <li><a class="nav-link text-white" href="<?= base_url('gestion/productos') ?>">Productos</a></li>
                         <li><a class="nav-link text-white" href="<?= base_url('gestion/categorias') ?>">Categorías</a></li>
                         <li><a class="nav-link text-white" href="<?= base_url('gestion/usuarios') ?>">Usuarios</a></li>

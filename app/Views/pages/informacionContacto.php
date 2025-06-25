@@ -6,7 +6,7 @@
                 <h1 class="text-center">Información de Contacto</h1>
                 <h6>Si tienes alguna pregunta o necesitas más información, no dudes en contactarnos.</h5>
                 <ul class="mt-3">
-                    <li class="fw-medium">Email: veteNavarnica@gmail.com</li>
+                    <li class="fw-medium">Email: navarnica2@gmail.com</li>
                     <li class="fw-medium">Teléfono:3794-556677</li>
                     <li class="fw-medium">Horario de atención: 09:00AM - 23:00PM</li>
                 </ul>

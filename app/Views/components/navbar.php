@@ -58,12 +58,14 @@ $actualMethod = service('router')->methodName();
                             href="<?= base_url('login') ?>">Iniciar sesión</a>
                     </li>
                 <?php endif; ?>
-                <?php if (!empty($carrito)): ?>
+                <?php if (session()->get('tipo_usuario') !== 'admin'): ?>
+                     <?php if (!empty($carrito)): ?>
                     <li class="nav-item">
                         <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart-fill"></i><?= count($carrito) ?>
                     </li></a>
                 <?php else: ?>
                     <a href="<?= base_url('carrito') ?>" class="nav-link"><i class="bi bi-cart"></i>0</li></a>
+                <?php endif; ?>
                 <?php endif; ?>
             </ul>
         </div>
