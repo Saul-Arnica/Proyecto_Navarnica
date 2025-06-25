@@ -17,8 +17,25 @@ class Gestion extends BaseController
             return redirect()->to('/login');
         }
 
-        $productosController = new ProductoModelo();
-        $productos = $productosController->findAll();
+        $productoModelo = new ProductoModelo();
+
+        $stock = $this->request->getGet('stock');
+        $activo = $this->request->getGet('activo');
+
+        // Aplicar filtros si están presentes
+        if ($stock !== null && $stock !== '') {
+            if ($stock == '1') {
+                $productoModelo->where('stock >', 0);
+            } else {
+                $productoModelo->where('stock', 0);
+            }
+        }
+
+        if ($activo !== null && $activo !== '') {
+            $productoModelo->where('activo', $activo);
+        }
+
+        $productos = $productoModelo->findAll();
 
         $data = [
             'productos' => $productos

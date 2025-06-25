@@ -23,7 +23,6 @@
                     <button type="submit" class="btn boton-custom">Filtrar</button>
                     <a href="<?= base_url('gestion/productos') ?>" class="btn btn-secondary">Limpiar</a>
                 </div>
-
             </form>
         </div>
         <div class="col text-end">
