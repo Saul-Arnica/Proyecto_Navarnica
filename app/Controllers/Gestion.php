@@ -12,7 +12,6 @@ class Gestion extends BaseController
 
     public function productos()
     {
-
         if (!session()->get('logged_in') || session()->get('tipo_usuario') !== 'admin') {
             session()->setFlashdata('error', 'Acceso no autorizado, debes ser administrador para acceder a esta página.');
             return redirect()->to('/login');
@@ -297,8 +296,4 @@ class Gestion extends BaseController
             'content' => view('pages/gestion/respuestaConsulta', $data)
         ]);
     }
-
-
-
-
 }

@@ -61,8 +61,14 @@
         <div class="d-flex justify-content-center">
             <form action="<?= base_url('carrito/agregar') ?>" method="post">
                 <input type="hidden" name="id" value="<?= $producto['id_producto'] ?>">
-                <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2">
-                <button type="submit" class="btn btn-outline-primary w-100 w-md-50">Agregar al carrito</button>
+                <div class="row">
+                    <div class="col px-2">
+                        <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2 col">
+                    </div>
+                    <div class="col px-2">
+                        <button type="submit" class="btn btn-outline-primary w-100 w-md-50 col">Agregar al carrito</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
